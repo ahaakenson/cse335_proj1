@@ -22,6 +22,8 @@ using namespace xmlnode;
 CGame::CGame()
 {
 
+// Draw decor tiles here
+
 // Uncomment to see sparty drawn on screen
 
 /*

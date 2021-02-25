@@ -20,6 +20,12 @@ CHero::CHero(CGame* game) : CItem(game, HeroImageName)
 {
 }
 
+
+/**
+ * Save the heronode
+ * \param node 
+ * \returns 
+ */
 std::shared_ptr<xmlnode::CXmlNode> CHero::XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
     auto heroNode = node->AddChild(L"hero");

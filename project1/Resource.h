@@ -5,7 +5,8 @@
 #define IDD_ABOUTBOX				100
 #define IDP_OLE_INIT_FAILED			100
 #define IDR_MAINFRAME				128
-#define IDR_project1TYPE				130
+#define IDR_project1TYPE			130
+
 
 // Next default values for new objects
 //
