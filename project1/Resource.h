@@ -8,13 +8,16 @@
 #define IDR_project1TYPE                130
 #define ID_LEVELMENU                    32771
 #define ID_LEVELMENU_                   32772
-#define ID_LEVELMENU_LEVEL0             32773  
+#define ID_LEVELMENU_LEVEL0             32773
 #define ID_LEVELMENU_LEVEL1             32774
 #define ID_LEVELMENU_LEVEL2             32775
 #define ID_LEVELMENU_LEVEL3             32776
 #define ID_CHEATMENU                    32777
 #define ID_CHEATMENU_ROADCHEAT          32778
 #define ID_CHEATMENU_RIVERCHEAT         32779
+#define ID_CHEATMENU_ROADCHEAT32780     32780
+#define ID_CHEATMENU_ROADCHEAT32781     32781
+#define ID_CHEATMENU_RIVERCHEAT32782    32782
 
 // Next default values for new objects
 // 
