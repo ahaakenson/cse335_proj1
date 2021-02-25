@@ -35,6 +35,8 @@ CChildView::~CChildView()
 
 BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_PAINT()
+	ON_COMMAND(ID_CHEATMENU_ROADCHEAT, &CChildView::OnCheatmenuRoadcheat)
+	ON_COMMAND(ID_CHEATMENU_RIVERCHEAT, &CChildView::OnCheatmenuRivercheat)
 END_MESSAGE_MAP()
 
 
@@ -109,4 +111,15 @@ void CChildView::OnPaint()
 BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 {
 	return FALSE;
+}
+
+void CChildView::OnCheatmenuRoadcheat()
+{
+	// TODO: Add your command handler code here
+}
+
+
+void CChildView::OnCheatmenuRivercheat()
+{
+	// TODO: Add your command handler code here
 }
