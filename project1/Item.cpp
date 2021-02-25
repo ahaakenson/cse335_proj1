@@ -7,6 +7,7 @@
 #include "pch.h"
 #include "Item.h"
 #include "Game.h"
+#include "XmlNode.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -46,4 +47,31 @@ void CItem::Draw(Gdiplus::Graphics* graphics)
     graphics->DrawImage(mItemImage.get(),
         float(GetX() + wid / 2), float(GetY() - hit / 2),
         (float)mItemImage->GetWidth(), (float)mItemImage->GetHeight());
+}
+
+std::shared_ptr<xmlnode::CXmlNode> CItem::XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node)
+{
+    return std::shared_ptr<xmlnode::CXmlNode>();
+}
+
+
+
+
+/**
+ * Load the attributes for an item node.
+ *
+ * This is the  base class version that loads the attributes
+ * common to all items. Override this to load custom attributes
+ * for specific items.
+ *
+ * \param node The Xml node we are loading the item from
+ */
+void CItem::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
+{
+
+    // Place holder 
+
+    mX = 0;
+    mY = 0;
+
 }

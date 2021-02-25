@@ -10,6 +10,7 @@
 
 #include <string>
 #include <memory>
+#include "XmlNode.h"
 
 class CGame;
 
@@ -53,6 +54,10 @@ public:
 	CGame* GetGame() { return mGame; }
 
 	virtual void Draw(Gdiplus::Graphics* graphics);
+
+	virtual std::shared_ptr<xmlnode::CXmlNode> XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node);
+
+	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
 protected:
 	CItem(CGame* game, const std::wstring& filename);

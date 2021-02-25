@@ -1,13 +1,18 @@
 /**
  * \file Game.h
  *
- * \author(s) Ethan Strain, 
+ * \author(s) Ethan Strain, Michael Dittman, 
  *
- * 
+ * Class that describes CGame
+ *
+ * Contains functionality to draw,
  */
 
 #pragma once
 
+#include<vector>
+#include<memory>
+#include "Item.h"
 
 /**
  * 
@@ -21,6 +26,16 @@ public:
 	void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
 	void ScaleToFit();
+
+	void Add(std::shared_ptr<CItem> item);
+
+	void Save(const std::wstring& filename);
+
+	void Load(const std::wstring& filename);
+
+	void Clear();
+
+	void Update(double elapsed);
 
 private:
 	// game playing area constants:
@@ -39,5 +54,11 @@ private:
 	float mXOffset = 0;
 
 	float mYOffset = 0;
+
+	/// The items that will be contained in the current level
+	std::vector<std::shared_ptr<CItem> > mItems;
+
+	void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node);
+
 };
 
