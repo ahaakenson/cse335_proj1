@@ -15,6 +15,23 @@ using namespace Gdiplus;
 using namespace std;
 using namespace xmlnode;
 
+
+/**
+ * Game constructor
+ */
+CGame::CGame()
+{
+
+// Uncomment to see sparty drawn on screen
+
+/*
+    shared_ptr<CHero> hero = make_shared<CHero>(this);
+    hero->SetLocation(612, 950);
+    this->Add(hero);
+*/
+
+}
+
 /**
  * Draw the game area
  * \param graphics The GDI+ graphics context to draw on
