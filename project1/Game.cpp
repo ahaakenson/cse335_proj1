@@ -32,11 +32,11 @@ CGame::CGame()
 
 // Uncomment to see sparty drawn on screen
 
-/*
-    shared_ptr<CHero> hero = make_shared<CHero>(this);
-    hero->SetLocation(612, 950);
-    this->Add(hero);
-*/
+
+  //  shared_ptr<CHero> hero = make_shared<CHero>(this);
+   // hero->SetLocation(612, 950);
+    //this->Add(hero);
+
 
 }
 

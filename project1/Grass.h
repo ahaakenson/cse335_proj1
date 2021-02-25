@@ -9,6 +9,8 @@
 #pragma once
 #include "Decor.h"
 #include "XmlNode.h"
+#include "game.h"
+#include "Item.h"
  /**
   * Class representing grass tiles
   */
@@ -23,8 +25,10 @@ public:
 
 	~CGrass();
 
+	//CGrass::CGrass(CGame* game);
+
 	void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
-
+	
 };
 
