@@ -28,8 +28,12 @@ public:
     virtual std::shared_ptr<xmlnode::CXmlNode> 
         XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
 
-private:
+private: 
+
+    /// Hero speed in the X direction
     double mSpeedX = 0;
+
+    /// Hero speed in the Y direction
     double mSpeedY = 0;
 
 };

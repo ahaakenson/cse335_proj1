@@ -22,6 +22,7 @@ class CGame
 public:
 
 	// need contructor etc.. and we should be able to get a black screen
+	CGame::CGame();
 
 	void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 

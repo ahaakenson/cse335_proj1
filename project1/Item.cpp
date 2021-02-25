@@ -49,6 +49,12 @@ void CItem::Draw(Gdiplus::Graphics* graphics)
         (float)mItemImage->GetWidth(), (float)mItemImage->GetHeight());
 }
 
+
+/**
+ * Function to save items
+ * \param node Node to save in file
+ * \returns pointer to the node
+ */
 std::shared_ptr<xmlnode::CXmlNode> CItem::XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
     return std::shared_ptr<xmlnode::CXmlNode>();
