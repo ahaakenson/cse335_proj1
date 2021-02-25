@@ -74,10 +74,11 @@ std::shared_ptr<xmlnode::CXmlNode> CItem::XmlSave(const std::shared_ptr<xmlnode:
  */
 void CItem::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
+    double x, y = 0.0;
+    x = node->GetAttributeDoubleValue(L"x", 0);
+    y = node->GetAttributeDoubleValue(L"y", 0);
 
-    // Place holder 
-
-    mX = 0;
-    mY = 0;
+    mX = x;
+    mY = y;
 
 }

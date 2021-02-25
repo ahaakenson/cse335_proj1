@@ -6,12 +6,12 @@
 
 #include "pch.h"
 #include "Decor.h"
+#include "Game.h"
 
-/**
- * Destructor
- */
-CDecor::~CDecor()
+CDecor::CDecor(CGame* game, const std::wstring& filename) : 
+	CItem(game, filename)
 {
+	
 }
 
 /**
@@ -21,5 +21,6 @@ CDecor::~CDecor()
  */
 void CDecor::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
+	CItem::XmlLoad(node);
 	// TODO: once we have level class, have that actually load decor and have it repeat like xml file specifies
 }
