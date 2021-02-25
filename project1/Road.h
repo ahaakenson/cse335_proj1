@@ -9,6 +9,8 @@
 #pragma once
 #include "Decor.h"
 #include "XmlNode.h"
+#include "Game.h"
+
 /**
  * Class representing a road.
  */
@@ -21,9 +23,9 @@ public:
 	/// Copy constructor (disabled)
 	CRoad(const CRoad&) = delete;
 
-	~CRoad();
-
 	void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
+
+	CRoad(CGame* game, const std::wstring& filename);
 
 private:
 	/// Speed of cars on this road.

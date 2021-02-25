@@ -71,7 +71,7 @@ void CChildView::OnPaint()
 
 	CRect rect;
 	GetClientRect(&rect);
-
+	
 	mGame.OnDraw(&graphics, rect.Width(), rect.Height());
 
 	if (mFirstDraw)

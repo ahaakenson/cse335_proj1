@@ -11,7 +11,6 @@
 CDecor::CDecor(CGame* game, const std::wstring& filename) : 
 	CItem(game, filename)
 {
-	
 }
 
 /**
