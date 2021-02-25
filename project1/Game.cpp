@@ -9,13 +9,18 @@
 #include "Game.h"
 #include "XMLNode.h"
 #include "Hero.h"
-#include "Grass.h"
+#include "Decor.h"
 #include <memory>
+#include <iostream>
+#include <map>
 
 using namespace Gdiplus;
 using namespace std;
 using namespace xmlnode;
 
+// Map holding the image names associated with IDs
+// TODO: change this so that images are only loaded once
+map<wstring, wstring> imageMap;
 
 /**
  * Game constructor
@@ -154,12 +159,36 @@ void CGame::Load(const std::wstring& filename)
         // Traverse the children of the root
         // node of the XML document in memory!!!!
         //
-        for (auto node : root->GetChildren())
+        for (auto section : root->GetChildren())
         {
 
-            if (node->GetType() == NODE_ELEMENT && node->GetName() == L"item")
+            // Types section of xml document
+            if (section->GetType() == NODE_ELEMENT && section->GetName() == L"types")
             {
-                XmlItem(node);
+                // Go through each node in types section
+                for (auto node : section->GetChildren())
+                {
+                    if (node->GetType() == NODE_ELEMENT && node->GetName() == L"decor")
+                    {
+                        wstring imageName = node->GetAttributeValue(L"image", L"");
+                        wstring id = node->GetAttributeValue(L"id", L"");
+                        imageMap[id] = L".\\images\\" + imageName;
+                    }
+                }
+            }
+
+            // Background section of xml document
+            else if (section->GetType() == NODE_ELEMENT && section->GetName() == L"background")
+            {
+                // Go through each node in background section
+                for (auto node : section->GetChildren())
+                {
+                    // Decor node
+                    if (node->GetType() == NODE_ELEMENT && node->GetName() == L"decor")
+                    {
+                        XmlItem(node);
+                    }
+                }
             }
 
         }
@@ -212,7 +241,22 @@ void CGame::Update(double elapsed)
 */
 void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
+    // A pointer for the item we are loading
+    shared_ptr<CItem> item;
 
+    // We have an item.  What type?
+    wstring type = node->GetName();
+    if (type == L"decor")
+    {
+        wstring id = node->GetAttributeValue(L"id", L"");
+        item = make_shared<CDecor>(this, imageMap[id]);
+    }
 
+    // Add item to game item vector if it exists
+    if (item != nullptr)
+    {
+        item->XmlLoad(node);
+        Add(item);
+    }
 
 }

@@ -71,7 +71,7 @@ void CChildView::OnPaint()
 
 	CRect rect;
 	GetClientRect(&rect);
-
+	
 	mGame.OnDraw(&graphics, rect.Width(), rect.Height());
 
 	if (mFirstDraw)
@@ -88,6 +88,12 @@ void CChildView::OnPaint()
 
 		mLastTime = time.QuadPart;
 		mTimeFreq = double(freq.QuadPart);
+
+		// TEMPORARY, ONLY TO TEST DECOR ON SCREEN
+		// loads level 1 file
+		wstring filename = L".\\levels\\level1.xml";
+		mGame.Load(filename);
+		Invalidate();
 	}
 
 	/*

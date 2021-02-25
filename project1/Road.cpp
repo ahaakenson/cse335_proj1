@@ -7,10 +7,14 @@
 #include "pch.h"
 #include "Road.h"
 
- /**
-  * Destructor
-  */
-CRoad::~CRoad()
+/**
+ * Constructor for CRoad.
+ * 
+ * \param game Pointer to game where this will belong.
+ * \param filename file where the image is.
+ */
+CRoad::CRoad(CGame* game, const std::wstring& filename) :
+	CDecor(game, filename)
 {
 }
 

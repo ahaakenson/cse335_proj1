@@ -10,6 +10,7 @@
 #include <memory>
 #include "Item.h"
 #include "XmlNode.h"
+#include "Game.h"
 
  /**
   * Base class for roads and rivers.  Represents background of game.
@@ -23,9 +24,9 @@ public:
 	/// Copy constructor (disabled)
 	CDecor(const CDecor&) = delete;
 
-	virtual ~CDecor();
-
 	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
+
+	CDecor(CGame* game, const std::wstring& filename);
 
 };
 
