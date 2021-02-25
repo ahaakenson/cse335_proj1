@@ -111,5 +111,3 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 {
 	return FALSE;
 }
-
-
