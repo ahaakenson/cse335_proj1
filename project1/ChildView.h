@@ -53,5 +53,7 @@ protected:
 public:
 	// was manually added by Ethan, may need to be implemented another way
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+	afx_msg void OnCheatmenuRoadcheat();
+	afx_msg void OnCheatmenuRivercheat();
 };
 
