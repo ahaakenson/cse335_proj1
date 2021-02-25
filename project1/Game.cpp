@@ -18,9 +18,9 @@ using namespace Gdiplus;
 using namespace std;
 using namespace xmlnode;
 
-// Map holding the image names associated with IDs
-// TODO: change this so that images are only loaded once
-map<wstring, wstring> imageMap;
+
+/// TODO: change this so that images are only loaded once
+map<wstring, wstring> imageMap; //< Map holding the image names associated with IDs
 
 /**
  * Game constructor

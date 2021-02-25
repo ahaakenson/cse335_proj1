@@ -15,7 +15,7 @@
 #include "Item.h"
 
 /**
- * 
+ * Class that describes a game of Sparty Crossing.
  */
 class CGame
 {

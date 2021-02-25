@@ -8,6 +8,12 @@
 #include "Decor.h"
 #include "Game.h"
 
+/**
+ * Constructor for CDecor.
+ * 
+ * \param game Pointer to the game this decor is a part of
+ * \param filename file where image is stored
+ */
 CDecor::CDecor(CGame* game, const std::wstring& filename) : 
 	CItem(game, filename)
 {
