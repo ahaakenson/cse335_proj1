@@ -29,6 +29,14 @@ CItem::CItem(CGame* game, const std::wstring& filename) : mGame(game)
 }
 
 /**
+ * Constructor
+ * \param game The game this item is a part of.
+ */
+CItem::CItem(CGame* game) : mGame(game)
+{
+}
+
+/**
  * Destructor
  */
 CItem::~CItem()

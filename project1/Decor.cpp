@@ -20,6 +20,16 @@ CDecor::CDecor(CGame* game, const std::wstring& filename) :
 }
 
 /**
+ * Constructor for CDecor.
+ *
+ * \param game Pointer to the game this decor is a part of
+ */
+CDecor::CDecor(CGame* game) :
+	CItem(game)
+{
+}
+
+/**
  * Draws a decor object onto the screen
  *
  * \param graphics Graphics device to draw on

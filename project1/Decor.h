@@ -24,9 +24,18 @@ public:
 	/// Copy constructor (disabled)
 	CDecor(const CDecor&) = delete;
 
-	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
-
 	CDecor(CGame* game, const std::wstring& filename);
+	CDecor(CGame* game);
+
+	/** Gets repeat in x direction
+	* \returns how many times to repeat in x direction */
+	int GetRepeatX() { return mRepeatX; }
+
+	/** Gets repeat in y direction
+	 * \returns how many times to repeat in y direction */
+	int GetRepeatY() { return mRepeatY; }
+
+	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
 	virtual void Draw(Gdiplus::Graphics* graphics);
 

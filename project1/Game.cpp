@@ -10,6 +10,7 @@
 #include "XMLNode.h"
 #include "Hero.h"
 #include "Decor.h"
+#include "Rectangle.h"
 #include <memory>
 #include <iostream>
 #include <map>
@@ -183,8 +184,8 @@ void CGame::Load(const std::wstring& filename)
                 // Go through each node in background section
                 for (auto node : section->GetChildren())
                 {
-                    // Decor node
-                    if (node->GetType() == NODE_ELEMENT && node->GetName() == L"decor")
+                    // Decor or rectangle node
+                    if (node->GetType() == NODE_ELEMENT && (node->GetName() == L"decor" || node->GetName() == L"rect"))
                     {
                         XmlItem(node);
                     }
@@ -250,6 +251,10 @@ void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
     {
         wstring id = node->GetAttributeValue(L"id", L"");
         item = make_shared<CDecor>(this, imageMap[id]);
+    }
+    else if (type == L"rect")
+    {
+        item = make_shared<CRectangle>(this);
     }
 
     // Add item to game item vector if it exists

@@ -65,6 +65,7 @@ public:
 
 protected:
 	CItem(CGame* game, const std::wstring& filename);
+	CItem(CGame* game);
 
 private:
 	/// The game this item is a part of
