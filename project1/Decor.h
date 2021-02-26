@@ -28,5 +28,13 @@ public:
 
 	CDecor(CGame* game, const std::wstring& filename);
 
+	virtual void Draw(Gdiplus::Graphics* graphics);
+
+private:
+	/// How many times decor repeats in x direction
+	int mRepeatX = 1;
+	/// How many times decor repeats in y direction
+	int mRepeatY = 1;
+
 };
 

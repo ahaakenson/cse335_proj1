@@ -44,6 +44,10 @@ public:
 	 * \returns height in pixels */
 	double GetHeight() const { return mItemImage->GetHeight(); }
 
+	/** Gets a pointer to the image bitmap
+	 * \returns height in pixels */
+	Gdiplus::Bitmap* GetImage() const { return mItemImage.get(); }
+
 	/// Set the item location
 	/// \param x X location
 	/// \param y Y location
