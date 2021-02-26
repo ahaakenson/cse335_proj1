@@ -56,6 +56,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     //
     // Automatic Scaling
     //
+    //
     float scaleX = float(width) / float(Width);
     float scaleY = float(height) / float(Height);
     mScale = min(scaleX, scaleY);
@@ -82,6 +83,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 
     }
     
+    // Black lines are still leaking through the space between tiles
 }
 
 
