@@ -37,9 +37,10 @@ void CDecor::Draw(Gdiplus::Graphics* graphics)
 		{
 			// POSSIBLY TEMPORARY
 			// Multiplies coordinates by 64 until we have a concrete virtual pixel solution
+			// EDIT: Ethan - moved conversion of mX and mY to pixels into CItem XmlLoad()
 			graphics->DrawImage(itemImage,
 				//float(GetX() - wid / 2 + x * 64), float(GetY() - hit / 2 + y * 64),
-				float(GetX() * 64 + x * 64), float(GetY() * 64 + y * 64),
+				float(GetX() + x * 64), float(GetY() + y * 64),
 				(float)itemImage->GetWidth(), (float)itemImage->GetHeight());
 		}
 	}

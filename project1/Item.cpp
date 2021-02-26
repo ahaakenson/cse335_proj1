@@ -12,6 +12,8 @@
 using namespace Gdiplus;
 using namespace std;
 
+const double tileToPixels = 64;
+
 /**
  * Constructor
  * \param game The game this item is a part of.
@@ -78,7 +80,8 @@ void CItem::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
     x = node->GetAttributeDoubleValue(L"x", 0);
     y = node->GetAttributeDoubleValue(L"y", 0);
 
-    mX = x;
-    mY = y;
+    // tile values multiplied by 64 to convert to pixels
+    mX = x * tileToPixels;
+    mY = y * tileToPixels;
 
 }

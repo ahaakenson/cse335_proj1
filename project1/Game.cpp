@@ -52,6 +52,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     SolidBrush brush(Color::Black);
     graphics->FillRectangle(&brush, 0, 0, width, height);
 
+    
     //
     // Automatic Scaling
     //
@@ -80,6 +81,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
         item->Draw(graphics);
 
     }
+    
 }
 
 

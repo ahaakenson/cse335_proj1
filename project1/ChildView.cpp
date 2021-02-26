@@ -6,6 +6,7 @@
 #include "framework.h"
 #include "project1.h"
 #include "ChildView.h"
+#include "DoubleBufferDC.h"
 
 
 using namespace std;
@@ -36,6 +37,7 @@ CChildView::~CChildView()
 
 BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_PAINT()
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 
@@ -65,9 +67,9 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 void CChildView::OnPaint() 
 {
 	CPaintDC paintDC(this);
-	//CDoubleBufferDC dc(&paintDC); // device context for painting
+	CDoubleBufferDC dc(&paintDC); // device context for painting
 
-	Graphics graphics(paintDC.m_hDC);	// change paintDC back to dc once CDoubleBufferDC is implemented (to prevent flashing)
+	Graphics graphics(dc.m_hDC);	// change paintDC back to dc once CDoubleBufferDC is implemented (to prevent flashing)
 
 	CRect rect;
 	GetClientRect(&rect);
@@ -108,9 +110,12 @@ void CChildView::OnPaint()
 	// mGame.Update(elapsed);
 }
 
+
 /**
- * For double buffer to prevent flashes
- * \param pDC
+ * Erase the background
+ *
+ * This is disabled to eliminate flicker
+ * \param pDC Device context
  * \returns FALSE
  */
 BOOL CChildView::OnEraseBkgnd(CDC* pDC)
