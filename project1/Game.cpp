@@ -53,8 +53,10 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     SolidBrush brush(Color::Black);
     graphics->FillRectangle(&brush, 0, 0, width, height);
 
+    
     //
     // Automatic Scaling
+    //
     //
     float scaleX = float(width) / float(Width);
     float scaleY = float(height) / float(Height);
@@ -81,6 +83,8 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
         item->Draw(graphics);
 
     }
+    
+    // Black lines are still leaking through the space between tiles
 }
 
 

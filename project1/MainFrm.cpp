@@ -83,8 +83,8 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 	//  the CREATESTRUCT cs
 
 	// starting window size
-	cs.cx = 1224;
-	cs.cy = 1024;
+	cs.cx = 1043;
+	cs.cy = 984;
 
 	cs.dwExStyle &= ~WS_EX_CLIENTEDGE;
 	cs.lpszClass = AfxRegisterWndClass(0);
