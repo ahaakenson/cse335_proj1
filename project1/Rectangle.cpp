@@ -28,8 +28,8 @@ CRectangle::CRectangle(CGame* game) :
  */
 void CRectangle::Draw(Gdiplus::Graphics* graphics)
 {
-	double xCoordinate = GetX() * 64;
-	double yCoordinate = GetY() * 64;
+	double xCoordinate = GetX();
+	double yCoordinate = GetY();
 	SolidBrush brush(Color(mColor[0], mColor[1], mColor[2]));
 	// Repeats drawing rectangles in both directions
 	for (int x = 0; x < GetRepeatX(); x++)
