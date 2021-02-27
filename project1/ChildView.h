@@ -52,7 +52,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 public:
-	// was manually added by Ethan, may need to be implemented another way
+	
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 };

@@ -20,6 +20,42 @@ CDecor::CDecor(CGame* game, const std::wstring& filename) :
 }
 
 /**
+ * Constructor for CDecor.
+ *
+ * \param game Pointer to the game this decor is a part of
+ */
+CDecor::CDecor(CGame* game) :
+	CItem(game)
+{
+}
+
+/**
+ * Draws a decor object onto the screen
+ *
+ * \param graphics Graphics device to draw on
+ */
+void CDecor::Draw(Gdiplus::Graphics* graphics)
+{
+	Gdiplus::Bitmap* itemImage = this->GetImage();
+	double wid = itemImage->GetWidth();
+	double hit = itemImage->GetHeight();
+
+	// Repeats image in both directions 
+	for (int x = 0; x < mRepeatX; x++)
+	{
+		for (int y = 0; y < mRepeatY; y++)
+		{
+			// POSSIBLY TEMPORARY
+			// Multiplies coordinates by 64 until we have a concrete virtual pixel solution
+			// EDIT: Ethan - moved conversion of mX and mY to pixels into CItem XmlLoad()
+			graphics->DrawImage(itemImage,
+				float(GetX() + x * 64), float(GetY() + y * 64),
+				(float)itemImage->GetWidth(), (float)itemImage->GetHeight());
+		}
+	}
+}
+
+/**
  * Load the attributes for a decor node.
  * 
  * \param node The Xml node we are loading the decor from
@@ -27,5 +63,10 @@ CDecor::CDecor(CGame* game, const std::wstring& filename) :
 void CDecor::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
 	CItem::XmlLoad(node);
-	// TODO: once we have level class, have that actually load decor and have it repeat like xml file specifies
+
+	// Save repeats in each direction
+	int repeatX = node->GetAttributeIntValue(L"repeat-x", 1);
+	int repeatY = node->GetAttributeIntValue(L"repeat-y", 1);
+	mRepeatX = repeatX;
+	mRepeatY = repeatY;
 }
