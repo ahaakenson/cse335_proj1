@@ -32,13 +32,12 @@ CGame::CGame()
 // Draw decor tiles here
 
 // Uncomment to see sparty drawn on screen
-
-
-  //  shared_ptr<CHero> hero = make_shared<CHero>(this);
-   // hero->SetLocation(612, 950);
-    //this->Add(hero);
-
-
+    /*
+    shared_ptr<CHero> hero = make_shared<CHero>(this);
+    hero->SetLocation(612, 912);
+    this->Add(hero);
+    this->mHero = hero;
+    */
 }
 
 /**
@@ -237,6 +236,20 @@ void CGame::Update(double elapsed)
     }
     
 */
+
+}
+
+void CGame::moveHero(UINT nChar)
+{
+
+    switch (nChar)
+    {
+
+    case 'e':
+        mHero->moveForward();
+        break;
+
+    }
 
 }
 

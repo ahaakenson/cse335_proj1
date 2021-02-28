@@ -136,7 +136,7 @@ namespace Testing
 
 		}
 
-		TEST_METHOD(TestCGameLoad)
+		TEST_METHOD(TestCHeroLoad)
 		{
 
 			// Create a path to temporary files
@@ -178,6 +178,28 @@ namespace Testing
 			//game.Save(file2);
 
 			//TestHeroType(file2);
+
+
+		}
+
+		TEST_METHOD(TestCHeroMoveForward)
+		{
+
+			// Create a new game
+			CGame game;
+
+			// Assign the pressed key to be e
+			UINT nChar = 'e';
+
+			
+
+			// Test to be sure of the hero's starting position
+			//Assert::IsTrue();
+
+			game.moveHero(nChar);
+
+			 
+
 
 
 		}

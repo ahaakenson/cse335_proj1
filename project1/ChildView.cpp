@@ -39,6 +39,7 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_PAINT()
 	ON_WM_ERASEBKGND()
 	ON_WM_LBUTTONDOWN()
+	ON_WM_KEYDOWN()
 END_MESSAGE_MAP()
 
 
@@ -130,4 +131,12 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 	// TODO: Add your message handler code here and/or call default
 
 	CWnd::OnLButtonDown(nFlags, point);
+}
+
+
+void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	
+	mGame.moveHero(nChar);
+
 }

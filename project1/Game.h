@@ -13,6 +13,7 @@
 #include<vector>
 #include<memory>
 #include "Item.h"
+#include "Hero.h"
 
 /**
  * Class that describes a game of Sparty Crossing.
@@ -38,6 +39,8 @@ public:
 
 	void Update(double elapsed);
 
+	void moveHero(UINT nChar);
+
 private:
 	// game playing area constants:
 	// leftmost 1024 x 1024 is the game grid
@@ -60,6 +63,9 @@ private:
 	std::vector<std::shared_ptr<CItem> > mItems;
 
 	void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node);
+
+	/// Pointer for our hero
+	std::shared_ptr<CHero> mHero = nullptr;
 
 };
 
