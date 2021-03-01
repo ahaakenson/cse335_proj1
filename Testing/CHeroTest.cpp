@@ -187,20 +187,31 @@ namespace Testing
 
 			// Create a new game
 			CGame game;
-
-			// Assign the pressed key to be e
-			UINT nChar = 'e';
-
 			
+			// Create a new hero
+			shared_ptr<CHero> hero = make_shared<CHero>(&game);
 
-			// Test to be sure of the hero's starting position
-			//Assert::IsTrue();
+			// Set its location (irrelevant, but processes for hero creation recorded regardless)
+			hero->SetLocation(0, 0);
 
+			// Add the hero item to the game list
+			game.Add(hero);
+			
+			// Set the games hero to this hero
+			game.SetHero(hero);
+
+			// Test to ensure the hero's position
+			Assert::IsTrue(hero->GetX() == 0);
+			Assert::IsTrue(hero->GetY() == 0);
+
+			// Assign the pressed key to be e (move forward)
+			UINT nChar = 69;
+
+			// Moves the hero 96 units (before virtual pixels, this will need changing)
 			game.moveHero(nChar);
 
-			 
-
-
+			Assert::IsTrue(hero->GetX() == 0);
+			Assert::IsTrue(hero->GetY() == 96);
 
 		}
 

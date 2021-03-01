@@ -18,6 +18,8 @@ const std::wstring HeroImageName = L"images/sparty.png";
  */
 CHero::CHero(CGame* game) : CItem(game, HeroImageName)
 {
+
+
 }
 
 

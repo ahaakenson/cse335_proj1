@@ -37,7 +37,7 @@ public:
 
 	void Clear();
 
-	void Update(double elapsed);
+	void SetHero(std::shared_ptr<CHero> hero) { mHero = hero; }
 
 	void moveHero(UINT nChar);
 

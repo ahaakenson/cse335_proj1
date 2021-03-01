@@ -100,17 +100,25 @@ void CGame::ScaleToFit()
 
 
 /**
- * Responsible for adding items to mItems
+ * Responsible for adding items to mItems.
  *
  * \param item The item to add to the vector of items in the current level
  */
 void CGame::Add(std::shared_ptr<CItem> item)
 {
 
+    // Push an item back onto the list of mItems
     mItems.push_back(item);
 
 }
 
+
+/**
+ * Function to save the state of the game.
+ * This function is used for testing purposes.
+ *
+ * \param filename Filename to save
+ */
 void CGame::Save(const std::wstring& filename)
 {
 
@@ -218,34 +226,15 @@ void CGame::Clear()
     mItems.erase(mItems.begin(), mItems.end());
 }
 
-
-/**
- * 
- * \param elapsed 
- */
-void CGame::Update(double elapsed)
-{
-
-/*
-    
-    // uncomment when we implement Update in subclasses
-
-    for (auto item : mItems)
-    {
-        item->Update(elapsed);
-    }
-    
-*/
-
-}
-
 void CGame::moveHero(UINT nChar)
 {
 
+    // Call the appropriate move function based on what key was hit
     switch (nChar)
     {
-
-    case 'e':
+    
+    // This works but I don't like that it uses a number not the char
+    case 69:
         mHero->moveForward();
         break;
 
