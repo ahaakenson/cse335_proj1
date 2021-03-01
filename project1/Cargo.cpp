@@ -43,7 +43,7 @@ void CCargo::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 	mName = node->GetAttributeValue(L"name", L"");
 
 	mImage = node->GetAttributeValue(L"image", L"");
-	mCarriedImage = node->GetAttributeValue(L"image", L"");
+	mCarriedImage = node->GetAttributeValue(L"carried-image", L"");
 }
 
 
