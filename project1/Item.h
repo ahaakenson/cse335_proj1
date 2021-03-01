@@ -63,6 +63,10 @@ public:
 
 	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
+	/// Handle updates for animation
+	/// \param elapsed The time since the last update
+	virtual void Update(double elapsed) {}
+
 protected:
 	CItem(CGame* game, const std::wstring& filename);
 	CItem(CGame* game);

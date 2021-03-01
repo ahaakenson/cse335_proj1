@@ -41,6 +41,8 @@ public:
 
 	void moveHero(UINT nChar);
 
+	void Update(double elapsed);
+
 private:
 	// game playing area constants:
 	// leftmost 1024 x 1024 is the game grid

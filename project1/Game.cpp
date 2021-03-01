@@ -28,16 +28,6 @@ map<wstring, wstring> imageMap; //< Map holding the image names associated with 
  */
 CGame::CGame()
 {
-
-// Draw decor tiles here
-
-// Uncomment to see sparty drawn on screen
-    /*
-    shared_ptr<CHero> hero = make_shared<CHero>(this);
-    hero->SetLocation(612, 912);
-    this->Add(hero);
-    this->mHero = hero;
-    */
 }
 
 /**
@@ -290,4 +280,17 @@ void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
         Add(item);
     }
 
+}
+
+
+/**
+ * Handle updates for animation
+ * \param elapsed The time since the last update
+ */
+void CGame::Update(double elapsed)
+{
+    for (auto item : mItems)
+    {
+        item->Update(elapsed);
+    }
 }
