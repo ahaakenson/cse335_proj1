@@ -249,6 +249,74 @@ namespace Testing
 
 		}
 
+		TEST_METHOD(TestCHeroMoveRight)
+		{
+
+			// Create a new game
+			CGame game;
+
+			// Create a new hero
+			shared_ptr<CHero> hero = make_shared<CHero>(&game);
+
+			// Set its location (irrelevant, but processes for hero creation recorded regardless)
+			hero->SetLocation(0, 0);
+
+			// Add the hero item to the game list
+			game.Add(hero);
+
+			// Set the games hero to this hero
+			game.SetHero(hero);
+
+			// Test to ensure the hero's position
+			Assert::IsTrue(hero->GetX() == 0);
+			Assert::IsTrue(hero->GetY() == 0);
+
+			// Assign the pressed key to be e (move right)
+			UINT nChar = 70;
+
+			// Moves the hero 96 units (before virtual pixels, this will need changing)
+			game.moveHero(nChar);
+
+			// This will be changed later due to out of bounds testing
+			Assert::IsTrue(hero->GetX() == 96);
+			Assert::IsTrue(hero->GetY() == 0);
+
+		}
+
+		TEST_METHOD(TestCHeroMoveLeft)
+		{
+
+			// Create a new game
+			CGame game;
+
+			// Create a new hero
+			shared_ptr<CHero> hero = make_shared<CHero>(&game);
+
+			// Set its location (irrelevant, but processes for hero creation recorded regardless)
+			hero->SetLocation(0, 0);
+
+			// Add the hero item to the game list
+			game.Add(hero);
+
+			// Set the games hero to this hero
+			game.SetHero(hero);
+
+			// Test to ensure the hero's position
+			Assert::IsTrue(hero->GetX() == 0);
+			Assert::IsTrue(hero->GetY() == 0);
+
+			// Assign the pressed key to be e (move left)
+			UINT nChar = 83;
+
+			// Moves the hero 96 units (before virtual pixels, this will need changing)
+			game.moveHero(nChar);
+
+			// This will be changed later due to out of bounds testing
+			Assert::IsTrue(hero->GetX() == -96);
+			Assert::IsTrue(hero->GetY() == 0);
+
+		}
+
 
 	};
 }

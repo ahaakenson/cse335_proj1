@@ -32,5 +32,9 @@ public:
 
     void moveBackward();
 
+    void moveLeft();
+
+    void moveRight();
+
 };
 

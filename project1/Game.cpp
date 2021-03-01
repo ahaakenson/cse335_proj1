@@ -248,6 +248,16 @@ void CGame::moveHero(UINT nChar)
         mHero->moveForward();
         break;
 
+    // Move the hero right
+    case 70:
+        mHero->moveRight();
+        break;
+    
+    // Move the hero left
+    case 83:
+        mHero->moveLeft();
+        break;
+
     }
 
 }
