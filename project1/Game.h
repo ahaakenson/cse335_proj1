@@ -27,8 +27,6 @@ public:
 
 	void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
 
-	void ScaleToFit();
-
 	void Add(std::shared_ptr<CItem> item);
 
 	void Save(const std::wstring& filename);

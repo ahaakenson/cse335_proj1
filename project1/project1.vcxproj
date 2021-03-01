@@ -187,6 +187,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Cargo.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="Decor.h" />
     <ClInclude Include="DoubleBufferDC.h" />
@@ -206,6 +207,7 @@
     <ClInclude Include="XmlNode.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cargo.cpp" />
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="Decor.cpp" />
     <ClCompile Include="Game.cpp" />
