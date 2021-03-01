@@ -51,3 +51,15 @@ void CHero::moveForward()
     this->SetLocation(currentX, currentY + 96);
 
 }
+
+void CHero::moveBackward()
+{
+
+    // Get the current position
+    double currentY = this->GetY();
+    double currentX = this->GetX();
+
+    // Move the hero forward, this may have to be changed w/ Virtual pixels
+    this->SetLocation(currentX, currentY - 96);
+
+}

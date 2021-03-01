@@ -30,5 +30,7 @@ public:
 
     void moveForward();
 
+    void moveBackward();
+
 };
 

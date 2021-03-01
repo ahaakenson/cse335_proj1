@@ -226,13 +226,23 @@ void CGame::Clear()
     mItems.erase(mItems.begin(), mItems.end());
 }
 
+
+
+/**
+ * Function for the game to move it's hero.
+ * \param nChar The character the was pressed.
+ */
 void CGame::moveHero(UINT nChar)
 {
 
     // Call the appropriate move function based on what key was hit
     switch (nChar)
     {
-    
+    // 68 = d, Move the Hero Backward
+    case 68:
+        mHero->moveBackward();
+        break;
+
     // This works but I don't like that it uses a number not the char
     case 69:
         mHero->moveForward();
