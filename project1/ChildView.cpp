@@ -146,7 +146,8 @@ void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CChildView::OnLevelmenuLevel0()
 {
-	wstring filename = L".\\levels\\level0.xml";
+	// loading content from level 1
+	wstring filename = L".\\levels\\level1.xml";
 	mGame.Load(filename);
 
 	// This is here only for hero testing, remove later

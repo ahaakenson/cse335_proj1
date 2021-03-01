@@ -48,7 +48,7 @@ void CHero::moveForward()
     double currentX = this->GetX();
 
     // Move the hero forward, this may have to be changed w/ Virtual pixels
-    this->SetLocation(currentX, currentY - 48);
+    this->SetLocation(currentX, currentY - 64);
 
 }
 
@@ -64,7 +64,7 @@ void CHero::moveBackward()
     double currentX = this->GetX();
 
     // Move the hero forward, this may have to be changed w/ Virtual pixels
-    this->SetLocation(currentX, currentY + 48);
+    this->SetLocation(currentX, currentY + 64);
 
 }
 
@@ -79,7 +79,7 @@ void CHero::moveLeft()
     double currentX = this->GetX();
 
     // Move the hero forward, this may have to be changed w/ Virtual pixels
-    this->SetLocation(currentX - 48, currentY);
+    this->SetLocation(currentX - 64, currentY);
 
 }
 
@@ -94,6 +94,6 @@ void CHero::moveRight()
     double currentX = this->GetX();
 
     // Move the hero forward, this may have to be changed w/ Virtual pixels
-    this->SetLocation(currentX + 48, currentY);
+    this->SetLocation(currentX + 64, currentY);
 
 }

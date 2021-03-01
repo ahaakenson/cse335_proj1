@@ -230,21 +230,25 @@ void CGame::moveHero(UINT nChar)
     {
     // 68 = d, Move the Hero Backward
     case 68:
+    case 40:
         mHero->moveBackward();
         break;
 
     // This works but I don't like that it uses a number not the char
     case 69:
+    case 38:
         mHero->moveForward();
         break;
 
     // Move the hero right
     case 70:
+    case 39:
         mHero->moveRight();
         break;
     
     // Move the hero left
     case 83:
+    case 37:
         mHero->moveLeft();
         break;
 
