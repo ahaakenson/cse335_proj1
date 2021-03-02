@@ -60,6 +60,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     graphics->TranslateTransform(mXOffset, mYOffset);
     graphics->ScaleTransform(mScale, mScale);
 
+    
     // From here on you are drawing virtual pixels
 
     // TODO: draw game items + background
