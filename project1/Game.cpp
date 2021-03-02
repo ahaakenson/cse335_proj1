@@ -15,6 +15,7 @@
 #include <iostream>
 #include <map>
 #include "Cargo.h"
+#include "Car.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -159,12 +160,39 @@ void CGame::Load(const std::wstring& filename)
                 // Go through each node in types section
                 for (auto node : section->GetChildren())
                 {
+                    // If the type was decor
                     if (node->GetType() == NODE_ELEMENT && node->GetName() == L"decor")
                     {
                         wstring imageName = node->GetAttributeValue(L"image", L"");
                         wstring id = node->GetAttributeValue(L"id", L"");
                         imageMap[id] = L".\\images\\" + imageName;
                     }
+                    
+                    // This isn't working the way it should be
+
+                    // If the type was car
+                    if (node->GetType() == NODE_ELEMENT && node->GetName() == L"car")
+                    {
+                        wstring imageName = node->GetAttributeValue(L"image", L"");
+                        wstring id = node->GetAttributeValue(L"id", L"");
+                        imageMap[id] = L".\\images\\" + imageName;
+
+                        XmlItem(node);
+
+                    }
+
+                    // If type was boat
+                    /*
+                    if (node->GetType() == NODE_ELEMENT && node->GetName() == L"boat")
+                    {
+                        wstring imageName = node->GetAttributeValue(L"image", L"");
+                        wstring id = node->GetAttributeValue(L"id", L"");
+                        imageMap[id] = L".\\images\\" + imageName;
+
+                        XmlItem(node);
+
+                    }
+                    */
                 }
             }
 
@@ -267,6 +295,10 @@ void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
     else if (type == L"rect")
     {
         item = make_shared<CRectangle>(this);
+    }
+    else if(type == L"car")
+    { 
+        //item = make_shared<CVehicle>(this);
     }
 
     // Add item to game item vector if it exists
