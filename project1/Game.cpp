@@ -14,6 +14,7 @@
 #include <memory>
 #include <iostream>
 #include <map>
+#include "Cargo.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -63,8 +64,6 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     
     // From here on you are drawing virtual pixels
 
-    // TODO: draw game items + background
-
     // Iterate through all of the items in mItems
     // and draw them.
     for (auto item : mItems)
@@ -77,17 +76,6 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     // Black lines are still leaking through the space between tiles
 }
 
-
-/**
- * Must determine the size of the window and scale to fit the screen.
- * choose a scale so the playing area will fit both horizontally and
- * vertically.
- * 
- * Unsure of parameters
- */
-void CGame::ScaleToFit()
-{
-}
 
 
 /**

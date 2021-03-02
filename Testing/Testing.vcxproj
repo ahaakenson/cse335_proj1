@@ -180,7 +180,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="CVehicleTest.cpp">
+    <ClCompile Include="CItemTest.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -30,7 +30,7 @@
     <ClCompile Include="CHeroTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CVehicleTest.cpp">
+    <ClCompile Include="CItemTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
