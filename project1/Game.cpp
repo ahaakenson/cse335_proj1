@@ -226,16 +226,19 @@ void CGame::Clear()
 void CGame::moveHero(UINT nChar)
 {
 
+    // This works but I don't like that it uses a number not the char
+
     // Call the appropriate move function based on what key was hit
     switch (nChar)
     {
-    // 68 = d, Move the Hero Backward
+    
+    // Move hero backward
     case 68:
     case 40:
         mHero->moveBackward();
         break;
 
-    // This works but I don't like that it uses a number not the char
+    // Move hero forward 
     case 69:
     case 38:
         mHero->moveForward();
