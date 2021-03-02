@@ -40,6 +40,7 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_ERASEBKGND()
 	ON_WM_LBUTTONDOWN()
 	ON_WM_KEYDOWN()
+	ON_COMMAND(ID_LEVELMENU_LEVEL0, &CChildView::OnLevelmenuLevel0)
 END_MESSAGE_MAP()
 
 
@@ -136,7 +137,26 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	
+	// Initiate movement checks
 	mGame.moveHero(nChar);
+	Invalidate();
+
+}
+
+
+void CChildView::OnLevelmenuLevel0()
+{
+	// loading content from level 1
+	wstring filename = L".\\levels\\level1.xml";
+	mGame.Load(filename);
+
+	// This is here only for hero testing, remove later
+	shared_ptr<CHero> hero = make_shared<CHero>(&mGame);
+	hero->SetLocation(512, 928);
+	mGame.Add(hero);
+	mGame.SetHero(hero);
+
+	Invalidate();
+
 
 }

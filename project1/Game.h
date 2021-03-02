@@ -39,6 +39,8 @@ public:
 
 	void moveHero(UINT nChar);
 
+	void Update(double elapsed);
+
 private:
 	// game playing area constants:
 	// leftmost 1024 x 1024 is the game grid
@@ -49,7 +51,6 @@ private:
 
 	/// Game area height in virtual pixels
 	const static int Height = 1024;
-
 
 	float mScale = 0;
 

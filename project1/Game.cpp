@@ -15,6 +15,7 @@
 #include <iostream>
 #include <map>
 #include "Cargo.h"
+#include "Car.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -29,16 +30,6 @@ map<wstring, wstring> imageMap; //< Map holding the image names associated with 
  */
 CGame::CGame()
 {
-
-// Draw decor tiles here
-
-// Uncomment to see sparty drawn on screen
-    /*
-    shared_ptr<CHero> hero = make_shared<CHero>(this);
-    hero->SetLocation(612, 912);
-    this->Add(hero);
-    this->mHero = hero;
-    */
 }
 
 /**
@@ -52,7 +43,6 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     // Fill the background with black
     SolidBrush brush(Color::Black);
     graphics->FillRectangle(&brush, 0, 0, width, height);
-
     
     //
     // Automatic Scaling
@@ -71,6 +61,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     graphics->TranslateTransform(mXOffset, mYOffset);
     graphics->ScaleTransform(mScale, mScale);
 
+    
     // From here on you are drawing virtual pixels
 
     // Iterate through all of the items in mItems
@@ -168,12 +159,39 @@ void CGame::Load(const std::wstring& filename)
                 // Go through each node in types section
                 for (auto node : section->GetChildren())
                 {
+                    // If the type was decor
                     if (node->GetType() == NODE_ELEMENT && node->GetName() == L"decor")
                     {
                         wstring imageName = node->GetAttributeValue(L"image", L"");
                         wstring id = node->GetAttributeValue(L"id", L"");
                         imageMap[id] = L".\\images\\" + imageName;
                     }
+                    
+                    // This isn't working the way it should be
+
+                    // If the type was car
+                    if (node->GetType() == NODE_ELEMENT && node->GetName() == L"car")
+                    {
+                        wstring imageName = node->GetAttributeValue(L"image", L"");
+                        wstring id = node->GetAttributeValue(L"id", L"");
+                        imageMap[id] = L".\\images\\" + imageName;
+
+                        XmlItem(node);
+
+                    }
+
+                    // If type was boat
+                    /*
+                    if (node->GetType() == NODE_ELEMENT && node->GetName() == L"boat")
+                    {
+                        wstring imageName = node->GetAttributeValue(L"image", L"");
+                        wstring id = node->GetAttributeValue(L"id", L"");
+                        imageMap[id] = L".\\images\\" + imageName;
+
+                        XmlItem(node);
+
+                    }
+                    */
                 }
             }
 
@@ -223,26 +241,33 @@ void CGame::Clear()
 void CGame::moveHero(UINT nChar)
 {
 
+    // This works but I don't like that it uses a number not the char
+
     // Call the appropriate move function based on what key was hit
     switch (nChar)
     {
-    // 68 = d, Move the Hero Backward
+    
+    // Move hero backward
     case 68:
+    case 40:
         mHero->moveBackward();
         break;
 
-    // This works but I don't like that it uses a number not the char
+    // Move hero forward 
     case 69:
+    case 38:
         mHero->moveForward();
         break;
 
     // Move the hero right
     case 70:
+    case 39:
         mHero->moveRight();
         break;
     
     // Move the hero left
     case 83:
+    case 37:
         mHero->moveLeft();
         break;
 
@@ -270,6 +295,10 @@ void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
     {
         item = make_shared<CRectangle>(this);
     }
+    else if(type == L"car")
+    { 
+        //item = make_shared<CVehicle>(this);
+    }
 
     // Add item to game item vector if it exists
     if (item != nullptr)
@@ -278,4 +307,17 @@ void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
         Add(item);
     }
 
+}
+
+
+/**
+ * Handle updates for animation
+ * \param elapsed The time since the last update
+ */
+void CGame::Update(double elapsed)
+{
+    for (auto item : mItems)
+    {
+        item->Update(elapsed);
+    }
 }

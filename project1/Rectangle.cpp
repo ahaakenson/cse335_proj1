@@ -37,7 +37,7 @@ void CRectangle::Draw(Gdiplus::Graphics* graphics)
 		for (int y = 0; y < GetRepeatY(); y++)
 		{
 			// Draws a filled rectangle
-			graphics->FillRectangle(&brush, (int)xCoordinate + x * 64, (int)yCoordinate + y * 64, mWidth * 64, mHeight * 64);
+			graphics->FillRectangle(&brush, (int)xCoordinate + x * 64, (int)yCoordinate + y * 64, mWidth * 64 + 1, mHeight * 64 + 1);
 		}
 	}
 }

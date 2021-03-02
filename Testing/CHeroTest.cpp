@@ -211,7 +211,7 @@ namespace Testing
 			game.moveHero(nChar);
 
 			Assert::IsTrue(hero->GetX() == 0);
-			Assert::IsTrue(hero->GetY() == 96);
+			Assert::IsTrue(hero->GetY() == -64);
 
 		}
 
@@ -245,7 +245,7 @@ namespace Testing
 
 			// This will be changed later due to out of bounds testing
 			Assert::IsTrue(hero->GetX() == 0);
-			Assert::IsTrue(hero->GetY() == -96);
+			Assert::IsTrue(hero->GetY() == 64);
 
 		}
 
@@ -278,7 +278,7 @@ namespace Testing
 			game.moveHero(nChar);
 
 			// This will be changed later due to out of bounds testing
-			Assert::IsTrue(hero->GetX() == 96);
+			Assert::IsTrue(hero->GetX() == 64);
 			Assert::IsTrue(hero->GetY() == 0);
 
 		}
@@ -312,7 +312,7 @@ namespace Testing
 			game.moveHero(nChar);
 
 			// This will be changed later due to out of bounds testing
-			Assert::IsTrue(hero->GetX() == -96);
+			Assert::IsTrue(hero->GetX() == -64);
 			Assert::IsTrue(hero->GetY() == 0);
 
 		}
