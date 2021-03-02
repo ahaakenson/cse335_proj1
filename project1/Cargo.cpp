@@ -59,9 +59,9 @@ void CCargo::Release()
 
 bool CCargo::HitTest(int x, int y)
 {
-	/*
-	double wid = mItemImage->GetWidth();
-	double hit = mItemImage->GetHeight();
+	
+	double wid = GetImage()->GetWidth();
+	double hit = GetImage()->GetHeight();
 
 	// Make x and y relative to the top-left corner of the bitmap image.
 	// Subtracting the center makes x, y relative to the center of
@@ -77,6 +77,6 @@ bool CCargo::HitTest(int x, int y)
 		return false;
 	}
 	else return true;
-	*/
+	
 	return true;
 }

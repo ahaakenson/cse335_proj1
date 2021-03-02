@@ -52,7 +52,6 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     // Fill the background with black
     SolidBrush brush(Color::Black);
     graphics->FillRectangle(&brush, 0, 0, width, height);
-
     
     //
     // Automatic Scaling
