@@ -38,6 +38,8 @@ public:
 
 	void Release();
 
+	bool HitTest(int x, int y);
+
 private:
 
 	/// Flag for if the cargo is currently being held by the hero
