@@ -20,11 +20,19 @@
 #include "Vehicle.h"
 #include "Hero.h"
 #include "Decor.h"
+#include "IsCargoVisitor.h"
 
 
 using namespace std;
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+
+/// Cargo filename 
+const std::wstring CargoImageName = L"images/goose.png";
+/// Vehicle filename 
+const std::wstring VehicleImageName = L"images/green-raft.png";
+/// Decor filename 
+const std::wstring DecorImageName = L"images/river.png";
 
 namespace Testing
 {
@@ -163,6 +171,35 @@ namespace Testing
 				L"Visitor number of hero objects");
 			Assert::AreEqual(1, visitor2.mNumDecors,
 				L"Visitor number of decor objects");
+		}
+
+		TEST_METHOD(TestGameHitTest)
+		{
+			// Construct a game
+			CGame game;
+
+			// Add one of each object
+			auto cargo = make_shared<CCargo>(&game, CargoImageName);
+			auto vehicle = make_shared<CVehicle>(&game, VehicleImageName);
+			auto hero = make_shared<CHero>(&game);
+			auto decor = make_shared<CDecor>(&game, DecorImageName);
+
+			game.Add(cargo);
+			game.Add(vehicle);
+			game.Add(hero);
+			game.Add(decor);
+
+			// Set their positions
+			cargo->SetLocation(100, 200);
+			vehicle->SetLocation(400, 200);
+			hero->SetLocation(100, 500);
+			decor->SetLocation(400, 500);
+
+			Assert::IsTrue(game.HitTest(100, 200) != nullptr);
+			Assert::IsTrue(game.HitTest(400, 200) == nullptr);
+			Assert::IsTrue(game.HitTest(100, 500) == nullptr);
+			Assert::IsTrue(game.HitTest(400, 500) == nullptr);
+
 		}
 
 	};

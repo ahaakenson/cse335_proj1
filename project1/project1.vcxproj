@@ -197,6 +197,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Grass.h" />
     <ClInclude Include="Hero.h" />
+    <ClInclude Include="IsCargoVisitor.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemVisitor.h" />
     <ClInclude Include="MainFrm.h" />
@@ -218,6 +219,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Grass.cpp" />
     <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="IsCargoVisitor.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemVisitor.cpp" />
     <ClCompile Include="MainFrm.cpp" />

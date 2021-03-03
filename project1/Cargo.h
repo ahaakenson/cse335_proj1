@@ -32,6 +32,10 @@ public:
 
 	CCargo(CGame* game);
 
+	/** Returns whether or not Cargo is being carried by the Hero
+	 * \return True if Cargo is being carried */
+	bool GetCarryStatus() { return mCarriedByHero; }
+
 	virtual void Draw(Gdiplus::Graphics* graphics);
 
 	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);

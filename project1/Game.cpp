@@ -16,6 +16,7 @@
 #include <map>
 #include "Cargo.h"
 #include "Car.h"
+#include "IsCargoVisitor.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -323,10 +324,37 @@ void CGame::Update(double elapsed)
 }
 
 
+/**
+ * Accept a visitor for the collection
+ * \param visitor The visitor for the collection
+ */
 void CGame::Accept(CItemVisitor* visitor)
 {
     for (auto item : mItems)
     {
         item->Accept(visitor);
     }
+}
+
+
+/**  Test an x,y click location to see if it clicked
+* on some cargo item in the game.
+* \param x X location
+* \param y Y location
+* \returns Pointer to cargo item we clicked on or nullptr if none.
+*/
+CCargo* CGame::HitTest(int x, int y)
+{
+    CIsCargoVisitor visitor;
+
+    for (auto i = mItems.rbegin(); i != mItems.rend(); i++)
+    {
+        (*i)->Accept(&visitor);
+        if (visitor.IsCargo() && visitor.Cargo()->HitTest(x, y))
+        {
+            return visitor.Cargo();
+        }
+    }
+
+    return  nullptr;
 }

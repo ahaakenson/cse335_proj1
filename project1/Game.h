@@ -14,6 +14,7 @@
 #include<memory>
 #include "Item.h"
 #include "Hero.h"
+#include "Cargo.h"
 
 /**
  * Class that describes a game of Sparty Crossing.
@@ -42,6 +43,8 @@ public:
 	void Update(double elapsed);
 
 	void Accept(CItemVisitor* visitor);
+
+	CCargo* HitTest(int x, int y);
 
 private:
 	// game playing area constants:

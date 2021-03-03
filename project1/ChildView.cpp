@@ -129,9 +129,19 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 
 void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	// TODO: Add your message handler code here and/or call default
+	mClickedCargo = mGame.HitTest(point.x, point.y);
 
-	CWnd::OnLButtonDown(nFlags, point);
+	if (mClickedCargo != nullptr)
+	{
+		if (mClickedCargo->GetCarryStatus())
+		{
+			mClickedCargo->Release();
+		}
+		else
+		{
+			mClickedCargo->PickUp();
+		}
+	}
 }
 
 

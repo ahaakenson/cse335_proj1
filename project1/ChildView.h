@@ -37,8 +37,8 @@ private:
 	/// Game object being played
 	CGame mGame;
 
-	/// Any item we currently clicked
-	std::shared_ptr<CItem> mClickedItem;
+	/// Any cargo we currently clicked
+	CCargo* mClickedCargo;
 
 	/// True until the first time we draw
 	bool mFirstDraw = true;
