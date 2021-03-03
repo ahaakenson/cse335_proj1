@@ -35,12 +35,13 @@ public:
     void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
 protected:
-    CVehicle(CGame* game, const std::wstring& filename);
+    CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 
 private:
     /// Vehicle speed
-    double mSpeed;
+    double mSpeed = 1;
 
+    /// Time between swapping images
     double mSwapTime = 0;
 
 };

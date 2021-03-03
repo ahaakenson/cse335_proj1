@@ -16,15 +16,25 @@ const std::wstring HeroImageName = L"images/sparty.png";
  * Constructor for the Hero
  * \param game The game this Hero is a part of
  */
+/*
 CHero::CHero(CGame* game) : CItem(game, HeroImageName)
 {
 
+}*/
 
+/**
+ * Constructor for the Hero
+ * \param game The game this Hero is a part of
+ * \param bitmap Bitmap of the default image of hero
+ */
+CHero::CHero(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
+    CItem(game, bitmap)
+{
 }
 
 
 /**
- * Save the heronode
+ * Save the hero node
  * \param node 
  * \returns 
  */

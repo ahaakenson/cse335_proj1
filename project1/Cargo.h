@@ -28,7 +28,7 @@ public:
 	/// Copy constructor (disabled)
 	CCargo(const CCargo&) = delete;
 
-	CCargo(CGame* game, const std::wstring& filename);
+	CCargo(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 
 	virtual void Draw(Gdiplus::Graphics* graphics);
 
