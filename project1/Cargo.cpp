@@ -49,6 +49,7 @@ void CCargo::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 
 void CCargo::PickUp()
 {
+
 }
 
 
