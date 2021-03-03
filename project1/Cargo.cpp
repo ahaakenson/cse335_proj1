@@ -14,10 +14,19 @@
  * Constructor for CCargo
  * 
  * \param game Pointer to game object
- * \param filename File where the image is stored
+ * \param bitmap Bitmap of item's image
  */
-CCargo::CCargo(CGame* game, const std::wstring& filename) :
-	CItem(game, filename)
+CCargo::CCargo(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
+	CItem(game, bitmap)
+{
+}
+
+/**
+ * Constructor for CCargo
+ *
+ * \param game Pointer to the game this decor is a part of
+ */
+CCargo::CCargo(CGame* game) : CItem(game)
 {
 }
 
@@ -55,4 +64,28 @@ void CCargo::PickUp()
 
 void CCargo::Release()
 {
+}
+
+
+bool CCargo::HitTest(int x, int y)
+{
+	
+	double wid = GetImage()->GetWidth();
+	double hit = GetImage()->GetHeight();
+
+	// Make x and y relative to the top-left corner of the bitmap image.
+	// Subtracting the center makes x, y relative to the center of
+	// the image. Adding half the size makes x, y relative to the top
+	// corner of the image.
+	double testX = x - GetX() + wid / 2;
+	double testY = y - GetY() + hit / 2;
+
+	// Test to see if x, y are in the image
+	if (testX < 0 || testY < 0 || testX >= wid || testY >= hit)
+	{
+		// We are outside the image
+		return false;
+	}
+	else return true;
+
 }

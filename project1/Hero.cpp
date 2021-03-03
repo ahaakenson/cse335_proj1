@@ -16,15 +16,25 @@ const std::wstring HeroImageName = L"images/sparty.png";
  * Constructor for the Hero
  * \param game The game this Hero is a part of
  */
+/*
 CHero::CHero(CGame* game) : CItem(game, HeroImageName)
 {
 
+}*/
 
+/**
+ * Constructor for the Hero
+ * \param game The game this Hero is a part of
+ * \param bitmap Bitmap of the default image of hero
+ */
+CHero::CHero(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
+    CItem(game, bitmap)
+{
 }
 
 
 /**
- * Save the heronode
+ * Save the hero node
  * \param node 
  * \returns 
  */
@@ -48,10 +58,14 @@ void CHero::moveForward()
     double currentX = this->GetX();
 
     // Move the hero forward, this may have to be changed w/ Virtual pixels
-    this->SetLocation(currentX, currentY + 96);
+    this->SetLocation(currentX, currentY - 64);
 
 }
 
+
+/**
+ * Function to make the hero move backwards
+ */
 void CHero::moveBackward()
 {
 
@@ -60,10 +74,13 @@ void CHero::moveBackward()
     double currentX = this->GetX();
 
     // Move the hero forward, this may have to be changed w/ Virtual pixels
-    this->SetLocation(currentX, currentY - 96);
+    this->SetLocation(currentX, currentY + 64);
 
 }
 
+/**
+ * Function to make the hero move left
+ */
 void CHero::moveLeft()
 {
 
@@ -72,10 +89,13 @@ void CHero::moveLeft()
     double currentX = this->GetX();
 
     // Move the hero forward, this may have to be changed w/ Virtual pixels
-    this->SetLocation(currentX - 96, currentY);
+    this->SetLocation(currentX - 64, currentY);
 
 }
 
+/**
+ * Function to make the hero move right
+ */
 void CHero::moveRight()
 {
 
@@ -84,6 +104,6 @@ void CHero::moveRight()
     double currentX = this->GetX();
 
     // Move the hero forward, this may have to be changed w/ Virtual pixels
-    this->SetLocation(currentX + 96, currentY);
+    this->SetLocation(currentX + 64, currentY);
 
 }

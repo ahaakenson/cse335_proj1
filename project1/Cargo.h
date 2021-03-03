@@ -28,7 +28,13 @@ public:
 	/// Copy constructor (disabled)
 	CCargo(const CCargo&) = delete;
 
-	CCargo(CGame* game, const std::wstring& filename);
+	CCargo(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
+
+	CCargo(CGame* game);
+
+	/** Returns whether or not Cargo is being carried by the Hero
+	 * \return True if Cargo is being carried */
+	bool GetCarryStatus() { return mCarriedByHero; }
 
 	virtual void Draw(Gdiplus::Graphics* graphics);
 
@@ -37,6 +43,12 @@ public:
 	void PickUp();
 
 	void Release();
+
+	bool HitTest(int x, int y);
+
+	/** Accept a visitor
+	 * \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitCargo(this); }
 
 private:
 

@@ -24,7 +24,7 @@ public:
 	/// Copy constructor (disabled)
 	CDecor(const CDecor&) = delete;
 
-	CDecor(CGame* game, const std::wstring& filename);
+	CDecor(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 	CDecor(CGame* game);
 
 	/** Gets repeat in x direction
@@ -38,6 +38,10 @@ public:
 	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
 	virtual void Draw(Gdiplus::Graphics* graphics);
+
+	/** Accept a visitor
+	 * \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitDecor(this); }
 
 private:
 	/// How many times decor repeats in x direction

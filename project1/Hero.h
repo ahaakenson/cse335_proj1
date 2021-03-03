@@ -23,7 +23,8 @@ public:
     /// Copy constructor (disabled)
     CHero(const CHero&) = delete;
 
-    CHero::CHero(CGame* game);
+    //CHero::CHero(CGame* game);
+    CHero::CHero(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 
     virtual std::shared_ptr<xmlnode::CXmlNode> 
         XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
@@ -35,6 +36,10 @@ public:
     void moveLeft();
 
     void moveRight();
+
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitHero(this); }
 
 };
 

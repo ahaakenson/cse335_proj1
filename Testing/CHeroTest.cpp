@@ -16,6 +16,10 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
+using namespace Gdiplus;
+
+const std::wstring HeroImageName = L"images/sparty.png";
+shared_ptr<Bitmap> heroBitmap = shared_ptr<Bitmap>(Bitmap::FromFile(HeroImageName.c_str()));
 
 namespace Testing
 {
@@ -80,7 +84,7 @@ namespace Testing
 		void PopulateHero(CGame* game)
 		{
 			// Create a new hero
-			shared_ptr<CHero> hero = make_shared<CHero>(game);
+			shared_ptr<CHero> hero = make_shared<CHero>(game, heroBitmap);
 			// Add the hero to the game
 			game->Add(hero);
 		}
@@ -189,7 +193,7 @@ namespace Testing
 			CGame game;
 			
 			// Create a new hero
-			shared_ptr<CHero> hero = make_shared<CHero>(&game);
+			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
 
 			// Set its location (irrelevant, but processes for hero creation recorded regardless)
 			hero->SetLocation(0, 0);
@@ -211,7 +215,7 @@ namespace Testing
 			game.moveHero(nChar);
 
 			Assert::IsTrue(hero->GetX() == 0);
-			Assert::IsTrue(hero->GetY() == 96);
+			Assert::IsTrue(hero->GetY() == -64);
 
 		}
 
@@ -222,7 +226,7 @@ namespace Testing
 			CGame game;
 
 			// Create a new hero
-			shared_ptr<CHero> hero = make_shared<CHero>(&game);
+			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
 
 			// Set its location (irrelevant, but processes for hero creation recorded regardless)
 			hero->SetLocation(0, 0);
@@ -245,7 +249,7 @@ namespace Testing
 
 			// This will be changed later due to out of bounds testing
 			Assert::IsTrue(hero->GetX() == 0);
-			Assert::IsTrue(hero->GetY() == -96);
+			Assert::IsTrue(hero->GetY() == 64);
 
 		}
 
@@ -256,7 +260,7 @@ namespace Testing
 			CGame game;
 
 			// Create a new hero
-			shared_ptr<CHero> hero = make_shared<CHero>(&game);
+			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
 
 			// Set its location (irrelevant, but processes for hero creation recorded regardless)
 			hero->SetLocation(0, 0);
@@ -278,7 +282,7 @@ namespace Testing
 			game.moveHero(nChar);
 
 			// This will be changed later due to out of bounds testing
-			Assert::IsTrue(hero->GetX() == 96);
+			Assert::IsTrue(hero->GetX() == 64);
 			Assert::IsTrue(hero->GetY() == 0);
 
 		}
@@ -290,7 +294,7 @@ namespace Testing
 			CGame game;
 
 			// Create a new hero
-			shared_ptr<CHero> hero = make_shared<CHero>(&game);
+			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
 
 			// Set its location (irrelevant, but processes for hero creation recorded regardless)
 			hero->SetLocation(0, 0);
@@ -312,7 +316,7 @@ namespace Testing
 			game.moveHero(nChar);
 
 			// This will be changed later due to out of bounds testing
-			Assert::IsTrue(hero->GetX() == -96);
+			Assert::IsTrue(hero->GetX() == -64);
 			Assert::IsTrue(hero->GetY() == 0);
 
 		}
