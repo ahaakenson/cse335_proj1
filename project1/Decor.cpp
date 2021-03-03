@@ -12,10 +12,10 @@
  * Constructor for CDecor.
  * 
  * \param game Pointer to the game this decor is a part of
- * \param filename file where image is stored
+ * \param bitmap Bitmap of this item's image
  */
-CDecor::CDecor(CGame* game, const std::wstring& filename) : 
-	CItem(game, filename)
+CDecor::CDecor(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
+	CItem(game, bitmap)
 {
 }
 

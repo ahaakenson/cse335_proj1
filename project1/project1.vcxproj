@@ -199,6 +199,7 @@
     <ClInclude Include="Hero.h" />
     <ClInclude Include="IsCargoVisitor.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="ItemVisitor.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="pch.h" />
@@ -221,6 +222,7 @@
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="IsCargoVisitor.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="ItemVisitor.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="pch.cpp">

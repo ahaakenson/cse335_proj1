@@ -11,10 +11,10 @@
  * Constructor for CRoad.
  * 
  * \param game Pointer to game where this will belong.
- * \param filename file where the image is.
+ * \param bitmap Bitmap of image
  */
-CRoad::CRoad(CGame* game, const std::wstring& filename) :
-	CDecor(game, filename)
+CRoad::CRoad(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
+	CDecor(game, bitmap)
 {
 }
 

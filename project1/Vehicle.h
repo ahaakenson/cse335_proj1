@@ -41,11 +41,14 @@ public:
     /** Accept a visitor
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitVehicle(this); }
+protected:
+    CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 
 private:
     /// Vehicle speed
-    double mSpeed;
+    double mSpeed = 1;
 
+    /// Time between swapping images
     double mSwapTime = 0;
 
 };

@@ -26,14 +26,9 @@
 using namespace std;
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace Gdiplus;
 
-/// Cargo filename 
-const std::wstring CargoImageName = L"images/goose.png";
-/// Vehicle filename 
-const std::wstring VehicleImageName = L"images/green-raft.png";
-/// Decor filename 
-const std::wstring DecorImageName = L"images/river.png";
-
+wstring gameTestFilename = L"images/road1.png";
 namespace Testing
 {
 	class CTestVisitor : public CItemVisitor
@@ -134,6 +129,7 @@ namespace Testing
 
 		TEST_METHOD(TestCGameVisitor)
 		{
+			shared_ptr<Bitmap> bitmap = shared_ptr<Bitmap>(Bitmap::FromFile(gameTestFilename.c_str()));
 			// Construct a game
 			CGame game;
 
@@ -150,10 +146,10 @@ namespace Testing
 				L"Visitor number of decor objects");
 
 			// Add one of each object
-			auto cargo = make_shared<CCargo>(&game);
+			auto cargo = make_shared<CCargo>(&game, bitmap);
 			auto vehicle = make_shared<CVehicle>(&game);
-			auto hero = make_shared<CHero>(&game);
-			auto decor = make_shared<CDecor>(&game);
+			auto hero = make_shared<CHero>(&game, bitmap);
+			auto decor = make_shared<CDecor>(&game, bitmap);
 
 			game.Add(cargo);
 			game.Add(vehicle);
