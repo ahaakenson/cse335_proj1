@@ -84,22 +84,19 @@ void CLevel::Load(const std::wstring& filename)
                     // If the type was decor or boat
                     if (node->GetType() == NODE_ELEMENT && (node->GetName() == L"decor" || node->GetName() == L"boat"))
                     {
-                        wstring imageName = node->GetAttributeValue(L"image", L"");
+                        wstring imageName = L".\\images\\" + node->GetAttributeValue(L"image", L"");
                         wstring id = node->GetAttributeValue(L"id", L"");
-                        wstring imageFilename = L".\\images\\" + imageName;
-                        mImageMap[id].push_back(LoadImage(imageFilename));
+                        mImageMap[id].push_back(LoadImage(imageName));
                     }
 
                     // If the type was car
                     if (node->GetType() == NODE_ELEMENT && node->GetName() == L"car")
                     {
-                        wstring imageName1 = node->GetAttributeValue(L"image1", L"");
-                        wstring imageName2 = node->GetAttributeValue(L"image2", L"");
+                        wstring imageName1 = L".\\images\\" + node->GetAttributeValue(L"image1", L"");
+                        wstring imageName2 = L".\\images\\" + node->GetAttributeValue(L"image2", L"");
                         wstring id = node->GetAttributeValue(L"id", L"");
-                        wstring imageFilename1 = L".\\images\\" + imageName1;
-                        wstring imageFilename2 = L".\\images\\" + imageName2;
-                        mImageMap[id].push_back(LoadImage(imageFilename1));
-                        mImageMap[id].push_back(LoadImage(imageFilename2));
+                        mImageMap[id].push_back(LoadImage(imageName1));
+                        mImageMap[id].push_back(LoadImage(imageName2));
                     }
                 }
             }
@@ -121,12 +118,42 @@ void CLevel::Load(const std::wstring& filename)
             // Hero or cargo tag
             else if (section->GetType() == NODE_ELEMENT && (section->GetName() == L"hero" || section->GetName() == L"cargo"))
             {
-                wstring imageName = section->GetAttributeValue(L"image", L"");
+                wstring imageName = L".\\images\\" + section->GetAttributeValue(L"image", L"");
                 // Hero will have no id
                 wstring id = section->GetAttributeValue(L"id", L"");
-                wstring imageFilename = L".\\images\\" + imageName;
-                mImageMap[id].push_back(LoadImage(imageFilename));
+                mImageMap[id].push_back(LoadImage(imageName));
+
+                // Load hit image and mask for hero
+                if (section->GetName() == L"hero")
+                {
+                    wstring hitImageName = L".\\images\\" + section->GetAttributeValue(L"hit-image", L"");
+                    wstring maskImageName = L".\\images\\" + section->GetAttributeValue(L"mask", L"");
+                    mImageMap[id].push_back(LoadImage(hitImageName));
+                    if (maskImageName != L".\\images\\")
+                    {
+                        mImageMap[id].push_back(LoadImage(maskImageName));
+                    }
+                }
+                // Load carried image for cargo
+                else if (section->GetName() == L"cargo")
+                {
+                    wstring carriedImageName = L".\\images\\" + section->GetAttributeValue(L"carried-image", L"");
+                    mImageMap[id].push_back(LoadImage(carriedImageName));
+                }
                 XmlItem(section);
+            }
+            // Road or river tag
+            else if (section->GetType() == NODE_ELEMENT && (section->GetName() == L"road" || section->GetName() == L"river"))
+            {
+                // Get speed and width of the road/river
+                double speed = section->GetAttributeDoubleValue(L"speed", 1.0);
+                int width = section->GetAttributeIntValue(L"width", 1.0);
+
+                // Iterate through the cars and boats and create objects from them
+                for (auto node : section->GetChildren())
+                {
+                    XmlItem(node, speed, width);
+                }
             }
 
         }
@@ -143,13 +170,16 @@ void CLevel::Load(const std::wstring& filename)
 /**
 * Handle an item node.
 * \param node Pointer to XML node we are handling
+* \param speed Speed of vehicles on road or river, default value of 0.0
+* \param width Width of river or road, default value of 0
 */
-void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
+void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const double speed, const int width)
 {
     // A pointer for the item we are loading
     shared_ptr<CItem> item;
 
     wstring id = node->GetAttributeValue(L"id", L"");
+
     // We have an item.  What type?
     wstring type = node->GetName();
     if (type == L"decor")
@@ -160,16 +190,29 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
     {
         item = make_shared<CRectangle>(mGame);
     }
+    /* Format of car vector in map:
+    * [0]- default image
+    * [1]- second image
+    */
     else if (type == L"car")
     {
         //item = make_shared<CVehicle>(this);
     }
+    /* Format of hero vector in map:
+    * [0]- default image
+    * [1]- hit image
+    * [2]- mask- PLEASE NOTE THAT LEVEL 2 DOES NOT HAVE A MASK
+    */
     else if (type == L"hero")
     {
         shared_ptr<CHero> hero = make_shared<CHero>(mGame, mImageMap[id][0]);
         mHero = hero;
         item = hero;
     }
+    /* Format of cargo vector in map:
+    * [0]- default image
+    * [1]- carried image
+    */
     else if (type == L"cargo")
     {
         item = make_shared<CCargo>(mGame, mImageMap[id][0]);
