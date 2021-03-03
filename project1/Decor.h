@@ -24,7 +24,7 @@ public:
 	/// Copy constructor (disabled)
 	CDecor(const CDecor&) = delete;
 
-	CDecor(CGame* game, const std::wstring& filename);
+	CDecor(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 	CDecor(CGame* game);
 
 	/** Gets repeat in x direction

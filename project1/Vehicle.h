@@ -26,9 +26,9 @@ public:
     /// Copy constructor (disabled)
     CVehicle(const CVehicle&) = delete;
 
-    CVehicle(CGame* game, const std::wstring& filename);
-
     CVehicle(CGame* game);
+
+    CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 
     /// Set the speed
     /// \param speed Speed
@@ -44,8 +44,9 @@ public:
 
 private:
     /// Vehicle speed
-    double mSpeed;
+    double mSpeed = 1;
 
+    /// Time between swapping images
     double mSwapTime = 0;
 
 };

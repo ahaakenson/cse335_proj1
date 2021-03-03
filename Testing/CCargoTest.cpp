@@ -5,9 +5,12 @@
 #include "Game.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace std;
+using namespace Gdiplus;
 
 /// Cargo filename 
 const std::wstring CargoImageName = L"images/goose.png";
+
 
 namespace Testing
 {
@@ -23,9 +26,10 @@ namespace Testing
 		
 		TEST_METHOD(TestCCargoHitTest)
 		{
+			shared_ptr<Bitmap> cargoBitmap = shared_ptr<Bitmap>(Bitmap::FromFile(CargoImageName.c_str()));
 			// Create a cargo to test
 			CGame game;
-			CCargo cargo(&game, CargoImageName);
+			CCargo cargo(&game, cargoBitmap);
 
 			// Give it a location
 			cargo.SetLocation(100, 200);

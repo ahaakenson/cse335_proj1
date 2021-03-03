@@ -3,6 +3,7 @@
 
 #include "Item.h"
 #include "Game.h"
+#include "Level.h"
 #include <string>
 #include <memory>
 
@@ -11,13 +12,15 @@ using namespace std;
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 wstring filename = L"images/road1.png";
+
 namespace Testing
 {
+
 	/** Mock class for testing CIitem */
 	class CItemMock : public CItem
 	{
 	public:
-		CItemMock(CGame* game) : CItem(game, filename) {}
+		CItemMock(CGame* game, shared_ptr<Bitmap> bitmap) : CItem(game, bitmap) {}
 
 		/** Accept a visitor
 		* \param visitor The visitor we accept */
@@ -35,9 +38,10 @@ namespace Testing
 		
 		TEST_METHOD(TestCItemGettersSetters)
 		{
+			shared_ptr<Bitmap> itemBitmap = shared_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
 			// Construct an item to test
 			CGame game;
-			CItemMock item(&game);
+			CItemMock item(&game, itemBitmap);
 
 			// Test SetLocation, GetX, and GetY
 			item.SetLocation(9.3, 15.6);
@@ -48,7 +52,7 @@ namespace Testing
 			Assert::IsTrue(&game == item.GetGame());
 
 			unique_ptr<Bitmap> image = unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
-			
+			item.GetHeight();
 			// Test GetWidth and GetHeight
 			Assert::AreEqual(image->GetWidth(), item.GetWidth(), 0.0001);
 			Assert::AreEqual(image->GetHeight(), item.GetHeight(), 0.0001);

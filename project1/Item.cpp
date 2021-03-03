@@ -17,17 +17,10 @@ const double tileToPixels = 64;
 /**
  * Constructor
  * \param game The game this item is a part of.
- * \param filename The name of the file we are loading from.
+ * \param bitmap Bitmap of this item's image.
  */
-CItem::CItem(CGame* game, const std::wstring& filename) : mGame(game)
+CItem::CItem(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) : mGame(game), mItemImage(bitmap)
 {
-    mItemImage = unique_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
-    if (mItemImage->GetLastStatus() != Ok)
-    {
-        wstring msg(L"Failed to open ");
-        msg += filename;
-        AfxMessageBox(msg.c_str());
-    }
 }
 
 /**
