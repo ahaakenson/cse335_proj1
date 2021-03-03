@@ -20,7 +20,11 @@ namespace Testing
 	class CItemMock : public CItem
 	{
 	public:
-		CItemMock(CGame* game, shared_ptr<Bitmap> bitmap) : CItem(game, bitmap) {}
+		CItemMock(CGame* game) : CItem(game, filename) {}
+
+		/** Accept a visitor
+		* \param visitor The visitor we accept */
+		virtual void Accept(CItemVisitor* visitor) override { }
 	};
 	TEST_CLASS(CItemTest)
 	{

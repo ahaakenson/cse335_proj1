@@ -47,6 +47,8 @@ public:
 
 	void Update(double elapsed);
 
+	void Accept(CItemVisitor* visitor);
+
 private:
 	// game playing area constants:
 	// leftmost 1024 x 1024 is the game grid

@@ -39,6 +39,10 @@ public:
 
 	virtual void Draw(Gdiplus::Graphics* graphics);
 
+	/** Accept a visitor
+	 * \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitDecor(this); }
+
 private:
 	/// How many times decor repeats in x direction
 	int mRepeatX = 1;
