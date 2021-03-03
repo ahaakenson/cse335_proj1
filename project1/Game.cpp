@@ -343,7 +343,6 @@ void CGame::Add(std::shared_ptr<CLevel> level)
 {
     mLevels.push_back(level);
 }
-}
 
 
 void CGame::Accept(CItemVisitor* visitor)

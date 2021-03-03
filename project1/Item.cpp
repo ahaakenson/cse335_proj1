@@ -21,7 +21,6 @@ const double tileToPixels = 64;
  */
 CItem::CItem(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) : mGame(game), mItemImage(bitmap)
 {
-    //mItemImage = bitmap;
 }
 
 /**
