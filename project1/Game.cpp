@@ -295,10 +295,7 @@ void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
     {
         item = make_shared<CRectangle>(this);
     }
-    else if(type == L"car")
-    { 
-        //item = make_shared<CVehicle>(this);
-    }
+
 
     // Add item to game item vector if it exists
     if (item != nullptr)

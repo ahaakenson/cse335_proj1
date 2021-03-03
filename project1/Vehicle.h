@@ -41,7 +41,6 @@ private:
     /// Vehicle speed
     double mSpeed;
 
-    double mSwapTime = 0;
 
 };
 
