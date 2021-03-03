@@ -30,6 +30,8 @@ public:
 
 	CCargo(CGame* game, const std::wstring& filename);
 
+	CCargo(CGame* game);
+
 	virtual void Draw(Gdiplus::Graphics* graphics);
 
 	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
@@ -39,6 +41,10 @@ public:
 	void Release();
 
 	bool HitTest(int x, int y);
+
+	/** Accept a visitor
+	 * \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitCargo(this); }
 
 private:
 

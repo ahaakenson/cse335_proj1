@@ -26,6 +26,10 @@ public:
     /// Copy constructor (disabled)
     CVehicle(const CVehicle&) = delete;
 
+    CVehicle(CGame* game, const std::wstring& filename);
+
+    CVehicle(CGame* game);
+
     /// Set the speed
     /// \param speed Speed
     void SetSpeed(double speed) { mSpeed = speed; }
@@ -34,8 +38,9 @@ public:
 
     void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
-protected:
-    CVehicle(CGame* game, const std::wstring& filename);
+    /** Accept a visitor
+     * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override { visitor->VisitVehicle(this); }
 
 private:
     /// Vehicle speed

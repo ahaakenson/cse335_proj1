@@ -18,6 +18,10 @@ namespace Testing
 	{
 	public:
 		CItemMock(CGame* game) : CItem(game, filename) {}
+
+		/** Accept a visitor
+		* \param visitor The visitor we accept */
+		virtual void Accept(CItemVisitor* visitor) override { }
 	};
 	TEST_CLASS(CItemTest)
 	{

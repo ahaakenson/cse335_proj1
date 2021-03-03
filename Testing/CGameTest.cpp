@@ -16,6 +16,10 @@
 #include <streambuf>
 #include <fstream>
 #include "Game.h"
+#include "Cargo.h"
+#include "Vehicle.h"
+#include "Hero.h"
+#include "Decor.h"
 
 
 using namespace std;
@@ -24,6 +28,20 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace Testing
 {
+	class CTestVisitor : public CItemVisitor
+	{
+	public:
+		virtual void VisitCargo(CCargo* cargo) { mNumCargo++; }
+		virtual void VisitVehicle(CVehicle* vehicle) { mNumVehicles++; }
+		virtual void VisitHero(CHero* hero) { mNumHeroes++; }
+		virtual void VisitDecor(CDecor* decor) { mNumDecors++; }
+
+		int mNumCargo = 0;
+		int mNumVehicles = 0;
+		int mNumHeroes = 0;
+		int mNumDecors = 0;
+	};
+
 	TEST_CLASS(CGameTest)
 	{
 	public:
@@ -104,6 +122,47 @@ namespace Testing
 			game.Save(file3);
 
 			TestIsXml(file3);
+		}
+
+		TEST_METHOD(TestCGameVisitor)
+		{
+			// Construct a game
+			CGame game;
+
+			// Ensure no visit functions called on empty game
+			CTestVisitor visitor;
+			game.Accept(&visitor);
+			Assert::AreEqual(0, visitor.mNumCargo,
+				L"Visitor number of cargo objects");
+			Assert::AreEqual(0, visitor.mNumVehicles,
+				L"Visitor number of vehicle objects");
+			Assert::AreEqual(0, visitor.mNumHeroes,
+				L"Visitor number of hero objects");
+			Assert::AreEqual(0, visitor.mNumDecors,
+				L"Visitor number of decor objects");
+
+			// Add one of each object
+			auto cargo = make_shared<CCargo>(&game);
+			auto vehicle = make_shared<CVehicle>(&game);
+			auto hero = make_shared<CHero>(&game);
+			auto decor = make_shared<CDecor>(&game);
+
+			game.Add(cargo);
+			game.Add(vehicle);
+			game.Add(hero);
+			game.Add(decor);
+
+			// Ensure every visit function works
+			CTestVisitor visitor2;
+			game.Accept(&visitor2);
+			Assert::AreEqual(1, visitor2.mNumCargo,
+				L"Visitor number of cargo objects");
+			Assert::AreEqual(1, visitor2.mNumVehicles,
+				L"Visitor number of vehicle objects");
+			Assert::AreEqual(1, visitor2.mNumHeroes,
+				L"Visitor number of hero objects");
+			Assert::AreEqual(1, visitor2.mNumDecors,
+				L"Visitor number of decor objects");
 		}
 
 	};

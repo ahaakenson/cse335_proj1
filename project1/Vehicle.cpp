@@ -18,6 +18,15 @@ CVehicle::CVehicle(CGame* game, const std::wstring& filename) :
 {
 }
 
+/**
+ * Constructor for CVehicle.
+ *
+ * \param game Pointer to the game this decor is a part of
+ */
+CVehicle::CVehicle(CGame* game) : CItem(game)
+{
+}
+
 void CVehicle::Update(double elapsed)
 {
 	SetLocation(GetX() + mSpeed * elapsed, GetY());

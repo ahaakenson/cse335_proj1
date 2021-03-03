@@ -321,3 +321,12 @@ void CGame::Update(double elapsed)
         item->Update(elapsed);
     }
 }
+
+
+void CGame::Accept(CItemVisitor* visitor)
+{
+    for (auto item : mItems)
+    {
+        item->Accept(visitor);
+    }
+}

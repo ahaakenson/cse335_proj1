@@ -21,6 +21,15 @@ CCargo::CCargo(CGame* game, const std::wstring& filename) :
 {
 }
 
+/**
+ * Constructor for CCargo
+ *
+ * \param game Pointer to the game this decor is a part of
+ */
+CCargo::CCargo(CGame* game) : CItem(game)
+{
+}
+
 void CCargo::Draw(Gdiplus::Graphics* graphics)
 {
 	// If mCarriedByHero is true, and no other objects are being carried,

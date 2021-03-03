@@ -11,6 +11,7 @@
 #include <string>
 #include <memory>
 #include "XmlNode.h"
+#include "ItemVisitor.h"
 
 class CGame;
 
@@ -66,6 +67,10 @@ public:
 	/// Handle updates for animation
 	/// \param elapsed The time since the last update
 	virtual void Update(double elapsed) {}
+
+	/** Accept a visitor
+	 * \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor* visitor) = 0;
 
 protected:
 	CItem(CGame* game, const std::wstring& filename);
