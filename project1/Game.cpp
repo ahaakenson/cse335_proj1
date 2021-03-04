@@ -16,6 +16,7 @@
 #include "Cargo.h"
 #include "Car.h"
 #include "IsCargoVisitor.h"
+#include "IsVehicleVisitor.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -315,7 +316,12 @@ void CGame::Update(double elapsed)
 {
     for (auto item : mItems)
     {
-        item->Update(elapsed);
+        CIsVehicleVisitor visitor;
+        item->Accept(&visitor);
+        if (visitor.IsVehicle())
+        {
+            visitor.Vehicle()->Update(elapsed);
+        }
     }
 }
 

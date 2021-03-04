@@ -23,6 +23,9 @@ using namespace Gdiplus;
 /// Frame duration in milliseconds
 const int FrameDuration = 30;
 
+/// Maximum amount of time to allow for elapsed
+const double MaxElapsed = 0.050;
+
 /**
  * Constructor
  */
@@ -45,7 +48,6 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_COMMAND(ID_LEVELMENU_LEVEL1, &CChildView::OnLevelmenuLevel1)
 	ON_COMMAND(ID_LEVELMENU_LEVEL2, &CChildView::OnLevelmenuLevel2)
 	ON_COMMAND(ID_LEVELMENU_LEVEL3, &CChildView::OnLevelmenuLevel3)
-	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -122,7 +124,19 @@ void CChildView::OnPaint()
 	double elapsed = double(diff) / mTimeFreq;
 	mLastTime = time.QuadPart;
 
-	mGame.Update(elapsed);
+	// Prevent tunnelling
+	while (elapsed > MaxElapsed)
+	{
+		mGame.Update(MaxElapsed);
+
+		elapsed -= MaxElapsed;
+	}
+
+	// Consume any remaining time
+	if (elapsed > 0)
+	{
+		mGame.Update(elapsed);
+	}
 }
 
 
@@ -214,14 +228,4 @@ void CChildView::OnLevelmenuLevel3()
 	// TODO: Add your command handler code here
 	mGame.Load(3);
 	Invalidate();
-}
-
-/**
- * Handle timer events
- * \param nIDEvent The timer event ID
- */
-void CChildView::OnTimer(UINT_PTR nIDEvent)
-{
-	Invalidate();
-	CWnd::OnTimer(nIDEvent);
 }
