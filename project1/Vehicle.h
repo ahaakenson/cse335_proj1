@@ -28,7 +28,7 @@ public:
 
     CVehicle(CGame* game);
 
-    CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
+    CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed);
 
     /// Set the speed
     /// \param speed Speed

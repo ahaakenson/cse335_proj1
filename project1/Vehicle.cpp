@@ -13,9 +13,11 @@
  * \param game Pointer to the game this decor is a part of
  * \param bitmap Bitmap of this item's image
  */
-CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
+CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed) :
 	CItem(game, bitmap)
 {
+
+
 }
 
 /**
@@ -29,7 +31,7 @@ CVehicle::CVehicle(CGame* game) : CItem(game)
 
 void CVehicle::Update(double elapsed)
 {
-	SetLocation(GetX() + mSpeed * elapsed, GetY());
+	SetLocation(GetX() + mSpeed* elapsed, GetY());
 }
 
 /**

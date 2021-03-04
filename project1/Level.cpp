@@ -202,7 +202,7 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     }
     else if (type == L"boat")
     {
-        item = make_shared<CBoat>(mGame, mImageMap[id][0]);
+        item = make_shared<CBoat>(mGame, mImageMap[id][0], speed);
     }
     /* Format of hero vector in map:
     * [0]- default image
