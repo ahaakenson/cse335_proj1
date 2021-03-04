@@ -36,7 +36,7 @@ public:
     /// \param speed Speed
     void SetSpeed(double speed) { mSpeed = speed; }
 
-    void Update(double elapsed);
+    virtual void Update(double elapsed);
 
     virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 

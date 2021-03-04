@@ -102,8 +102,8 @@ void CVehicle::Draw(Gdiplus::Graphics* graphics)
         // Fill a rectangle starting off the screen and going to the edge of the boundary
         graphics->FillRectangle(&black, float(-600), float(GetY() - hit / 2),
             (float)600, (float)800);
-    }
 
+    }
     // If the vehicle is over the right boundary
     else if (GetWidth() / 2 + GetX() > Width)
     {
@@ -123,5 +123,17 @@ void CVehicle::Draw(Gdiplus::Graphics* graphics)
         // Draw the vehcile normally
         CItem::Draw(graphics);
     }
+
+    // Set the vehicle to the right boundary
+    if ((GetX()) < -1024)
+    {
+        SetLocation(Width + 300, GetY());
+    }
+    // Set to the left boundary
+    else if(GetX()> Width + 1024)
+    {
+        SetLocation(-300, GetY());
+    }
+
 
 }
