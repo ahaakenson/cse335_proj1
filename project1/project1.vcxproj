@@ -199,6 +199,7 @@
     <ClInclude Include="Grass.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="IsCargoVisitor.h" />
+    <ClInclude Include="IsVehicleVisitor.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="ItemVisitor.h" />
@@ -224,6 +225,7 @@
     <ClCompile Include="Grass.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="IsCargoVisitor.cpp" />
+    <ClCompile Include="IsVehicleVisitor.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="ItemVisitor.cpp" />

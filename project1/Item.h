@@ -64,10 +64,6 @@ public:
 
 	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
-	/// Handle updates for animation
-	/// \param elapsed The time since the last update
-	virtual void Update(double elapsed) {}
-
 	/** Accept a visitor
 	 * \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) = 0;

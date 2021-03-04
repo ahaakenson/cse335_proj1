@@ -18,17 +18,19 @@ class CIsCargoVisitor : public CItemVisitor
 public:
 	virtual void VisitCargo(CCargo* cargo) override;
 
-    /** Returns whether or not the tile is a RocketPad.
-    * \returns True if tile is a RocketPad, False otherwise. */
+    /** Returns whether or not the item is Cargo.
+    * \returns True if item is Cargo, False otherwise. */
     bool IsCargo() { return mIsCargo; }
 
-    /** Returns rocket pad.
-    * \returns The rocket pad that was double clicked. */
+    /** Returns cargo.
+    * \returns The cargo that was visited. */
     CCargo* Cargo() { return mCargo; }
 
 private:
+    /// Whether or not the item is Cargo.
     bool mIsCargo = false;
 
+    /// The cargo that was visited.
     CCargo* mCargo;
 };
 
