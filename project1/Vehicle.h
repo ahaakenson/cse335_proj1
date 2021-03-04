@@ -30,17 +30,21 @@ public:
 
     CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 
+    CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos);
+
     /// Set the speed
     /// \param speed Speed
     void SetSpeed(double speed) { mSpeed = speed; }
 
     void Update(double elapsed);
 
-    void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
+    virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
     /** Accept a visitor
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitVehicle(this); }
+
+    virtual void Draw(Gdiplus::Graphics* graphics) override;
 
 private:
     /// Vehicle speed

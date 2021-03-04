@@ -14,5 +14,8 @@
  */
 class CRiver : public CDecor
 {
+
+
+
 };
 

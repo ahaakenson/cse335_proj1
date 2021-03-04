@@ -55,6 +55,14 @@ public:
 
 	CCargo* HitTest(int x, int y);
 
+	/// Get the width of the aquarium
+	/// \returns Aquarium width
+	int GetWidth() const { return Width; }
+
+	/// Get the height of the aquarium
+	/// \returns Aquarium height
+	int GetHeight() const { return Height; }
+
 private:
 	// game playing area constants:
 	// leftmost 1024 x 1024 is the game grid

@@ -14,6 +14,19 @@ using namespace std;
 
 const double tileToPixels = 64;
 
+
+/**
+ * Constructor
+ * \param game The game this item is a part of.
+ * \param bitmap Bitmap of this item's image.
+ * \param yPos Y position 
+ * \param xPos X position
+ */
+CItem::CItem(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, int yPos, int xPos)
+    : mGame(game), mItemImage(bitmap), mY(yPos), mX(xPos)
+{
+}
+
 /**
  * Constructor
  * \param game The game this item is a part of.
@@ -79,7 +92,7 @@ void CItem::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
     double x, y = 0.0;
     x = node->GetAttributeDoubleValue(L"x", 0);
-    y = node->GetAttributeDoubleValue(L"y", 0);
+    y = node->GetAttributeDoubleValue(L"y", 15.5);
 
     // tile values multiplied by 64 to convert to pixels
     mX = x * tileToPixels;

@@ -4,11 +4,8 @@
  * \author(s) Ethan Strain
  */
 
-
 #include "pch.h"
 #include "Cargo.h"
-
-
 
 /**
  * Constructor for CCargo
@@ -32,8 +29,12 @@ CCargo::CCargo(CGame* game) : CItem(game)
 
 void CCargo::Draw(Gdiplus::Graphics* graphics)
 {
+
 	// If mCarriedByHero is true, and no other objects are being carried,
 	// should be drawn on top of hero (should this be in derived classes?)
+
+	CItem::Draw(graphics);
+
 
 }
 
