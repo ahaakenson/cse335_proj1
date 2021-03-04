@@ -44,6 +44,8 @@ public:
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitVehicle(this); }
 
+    virtual void Draw(Gdiplus::Graphics* graphics) override;
+
 private:
     /// Vehicle speed
     double mSpeed = 1;

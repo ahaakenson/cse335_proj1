@@ -28,3 +28,6 @@ void CBoat::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
     CVehicle::XmlLoad(node);
 
 }
+
+
+

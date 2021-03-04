@@ -7,7 +7,7 @@
 #include "pch.h"
 #include "Vehicle.h"
 
-
+using namespace Gdiplus;
 
 /**
  * Constructor
@@ -70,5 +70,46 @@ void CVehicle::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 	//mSpeed = node->GetAttributeDoubleValue(L"speed", 0);
 
     //CItem::XmlLoad(node);
+
+}
+
+
+/**
+ * Draw the vehicle
+ * \param graphics 
+ */
+void CVehicle::Draw(Gdiplus::Graphics* graphics)
+{
+    // Get the image item
+    Gdiplus::Bitmap* itemImage = this->GetImage();
+
+    // Height and Width of Image
+    double wid = itemImage->GetWidth();
+    double hit = itemImage->GetHeight();
+
+    const int Width = 1024;
+
+    if (GetX() - GetWidth() / 2 < 0)
+    {
+        CItem::Draw(graphics);
+
+        SolidBrush black(Color(0, 0, 0));
+
+        graphics->FillRectangle(&black, float(-600), float(GetY() - hit / 2),
+            (float)600, (float)800);
+    }
+    else if (GetWidth() / 2 + GetX() > Width)
+    {
+        CItem::Draw(graphics);
+
+        SolidBrush black(Color(0, 0, 0));
+
+        graphics->FillRectangle(&black, float(Width), float(GetY() - hit / 2),
+            (float)800, (float)800);
+    }
+    else
+    {
+        CItem::Draw(graphics);
+    }
 
 }
