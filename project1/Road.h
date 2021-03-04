@@ -25,7 +25,7 @@ public:
 
 	void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
-	CRoad(CGame* game, const std::wstring& filename);
+	CRoad(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 
 private:
 	/// Speed of cars on this road.

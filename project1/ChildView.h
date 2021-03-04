@@ -37,8 +37,8 @@ private:
 	/// Game object being played
 	CGame mGame;
 
-	/// Any item we currently clicked
-	std::shared_ptr<CItem> mClickedItem;
+	/// Any cargo we currently clicked
+	CCargo* mClickedCargo;
 
 	/// True until the first time we draw
 	bool mFirstDraw = true;
@@ -57,5 +57,8 @@ public:
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
 	afx_msg void OnLevelmenuLevel0();
+	afx_msg void OnLevelmenuLevel1();
+	afx_msg void OnLevelmenuLevel2();
+	afx_msg void OnLevelmenuLevel3();
 };
 

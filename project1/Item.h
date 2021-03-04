@@ -11,6 +11,7 @@
 #include <string>
 #include <memory>
 #include "XmlNode.h"
+#include "ItemVisitor.h"
 
 class CGame;
 
@@ -67,8 +68,12 @@ public:
 	/// \param elapsed The time since the last update
 	virtual void Update(double elapsed) {}
 
+	/** Accept a visitor
+	 * \param visitor The visitor we accept */
+	virtual void Accept(CItemVisitor* visitor) = 0;
+
 protected:
-	CItem(CGame* game, const std::wstring& filename);
+	CItem(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 	CItem(CGame* game);
 
 private:
@@ -79,7 +84,7 @@ private:
 	double mX = 0;			///< X location for the center of the item
 	double mY = 0;			///< Y location for the center of the item
 
-	// The image of this item
-	std::unique_ptr<Gdiplus::Bitmap> mItemImage;
+	/// The image of this item
+	std::shared_ptr<Gdiplus::Bitmap> mItemImage;
 };
 

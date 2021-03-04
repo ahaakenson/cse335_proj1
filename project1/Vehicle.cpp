@@ -11,10 +11,19 @@
  * Constructor for CVehicle.
  *
  * \param game Pointer to the game this decor is a part of
- * \param filename file where image is stored
+ * \param bitmap Bitmap of this item's image
  */
-CVehicle::CVehicle(CGame* game, const std::wstring& filename) :
-	CItem(game, filename)
+CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
+	CItem(game, bitmap)
+{
+}
+
+/**
+ * Constructor for CVehicle.
+ *
+ * \param game Pointer to the game this decor is a part of
+ */
+CVehicle::CVehicle(CGame* game) : CItem(game)
 {
 }
 

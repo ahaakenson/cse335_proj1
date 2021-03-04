@@ -7,6 +7,7 @@
 #include "project1.h"
 #include "ChildView.h"
 #include "DoubleBufferDC.h"
+#include "Level.h"
 
 
 using namespace std;
@@ -41,6 +42,9 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_KEYDOWN()
 	ON_COMMAND(ID_LEVELMENU_LEVEL0, &CChildView::OnLevelmenuLevel0)
+	ON_COMMAND(ID_LEVELMENU_LEVEL1, &CChildView::OnLevelmenuLevel1)
+	ON_COMMAND(ID_LEVELMENU_LEVEL2, &CChildView::OnLevelmenuLevel2)
+	ON_COMMAND(ID_LEVELMENU_LEVEL3, &CChildView::OnLevelmenuLevel3)
 END_MESSAGE_MAP()
 
 
@@ -94,10 +98,17 @@ void CChildView::OnPaint()
 		mLastTime = time.QuadPart;
 		mTimeFreq = double(freq.QuadPart);
 
-		// TEMPORARY, ONLY TO TEST DECOR ON SCREEN
-		// loads level 1 file
-		wstring filename = L".\\levels\\level1.xml";
-		mGame.Load(filename);
+		wstring pathName = L".\\levels\\level";
+		// Loads levels 0-2 and adds them to levels vector
+		for (int i = 0; i < 3; i++)
+		{
+			wstring filename = pathName + to_wstring(i) + L".xml";
+			shared_ptr<CLevel> levelPtr = make_shared<CLevel>(&mGame);
+			levelPtr->Load(filename);
+			mGame.Add(levelPtr);
+		}
+		// Load level 0 from level vector
+		mGame.Load(0);
 		Invalidate();
 	}
 
@@ -129,9 +140,19 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 
 void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	// TODO: Add your message handler code here and/or call default
+	mClickedCargo = mGame.HitTest(point.x, point.y);
 
-	CWnd::OnLButtonDown(nFlags, point);
+	if (mClickedCargo != nullptr)
+	{
+		if (mClickedCargo->GetCarryStatus())
+		{
+			mClickedCargo->Release();
+		}
+		else
+		{
+			mClickedCargo->PickUp();
+		}
+	}
 }
 
 
@@ -143,20 +164,53 @@ void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 }
 
-
+/**
+ * Menu handler for loading level 0
+ */
 void CChildView::OnLevelmenuLevel0()
 {
 	// loading content from level 1
-	wstring filename = L".\\levels\\level1.xml";
-	mGame.Load(filename);
+	//wstring filename = L".\\levels\\level1.xml";
+	//mGame.Load(filename);
 
 	// This is here only for hero testing, remove later
-	shared_ptr<CHero> hero = make_shared<CHero>(&mGame);
-	hero->SetLocation(512, 928);
-	mGame.Add(hero);
-	mGame.SetHero(hero);
+	//shared_ptr<CHero> hero = make_shared<CHero>(&mGame);
+	//hero->SetLocation(512, 928);
+	//mGame.Add(hero);
+	//mGame.SetHero(hero);
 
+	mGame.Load(0);
 	Invalidate();
 
 
+}
+
+/**
+ * Menu handler for loading level 1
+ */
+void CChildView::OnLevelmenuLevel1()
+{
+	// TODO: Add your command handler code here
+	mGame.Load(1);
+	Invalidate();
+}
+
+/**
+ * Menu handler for loading level 2
+ */
+void CChildView::OnLevelmenuLevel2()
+{
+	// TODO: Add your command handler code here
+	mGame.Load(2);
+	Invalidate();
+}
+
+/**
+ * Menu handler for loading level 3
+ */
+void CChildView::OnLevelmenuLevel3()
+{
+	// TODO: Add your command handler code here
+	mGame.Load(3);
+	Invalidate();
 }

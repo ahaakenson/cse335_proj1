@@ -7,15 +7,15 @@
 
 #include "pch.h"
 #include "Game.h"
-#include "XMLNode.h"
+#include "XmlNode.h"
 #include "Hero.h"
 #include "Decor.h"
 #include "Rectangle.h"
 #include <memory>
-#include <iostream>
 #include <map>
 #include "Cargo.h"
 #include "Car.h"
+#include "IsCargoVisitor.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -289,7 +289,7 @@ void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
     if (type == L"decor")
     {
         wstring id = node->GetAttributeValue(L"id", L"");
-        item = make_shared<CDecor>(this, imageMap[id]);
+        //item = make_shared<CDecor>(this, imageMap[id]);
     }
     else if (type == L"rect")
     {
@@ -317,4 +317,63 @@ void CGame::Update(double elapsed)
     {
         item->Update(elapsed);
     }
+}
+
+/**
+ * Loads level from level vector
+ * 
+ * \param level int of level to load (e.g. 0 for level 0)
+ */
+void CGame::Load(const int level)
+{
+    Clear();
+    mItems = mLevels[level]->GetItems();
+    mHero = mLevels[level]->GetHero();
+    return;
+}
+
+/**
+ * Adds a level to level vector
+ *
+ * \param level level object to add to level vector
+ */
+void CGame::Add(std::shared_ptr<CLevel> level)
+{
+    mLevels.push_back(level);
+}
+
+
+/**
+ * Accept a visitor for the collection
+ * \param visitor The visitor for the collection
+ */
+void CGame::Accept(CItemVisitor* visitor)
+{
+    for (auto item : mItems)
+    {
+        item->Accept(visitor);
+    }
+}
+
+
+/**  Test an x,y click location to see if it clicked
+* on some cargo item in the game.
+* \param x X location
+* \param y Y location
+* \returns Pointer to cargo item we clicked on or nullptr if none.
+*/
+CCargo* CGame::HitTest(int x, int y)
+{
+    CIsCargoVisitor visitor;
+
+    for (auto i = mItems.rbegin(); i != mItems.rend(); i++)
+    {
+        (*i)->Accept(&visitor);
+        if (visitor.IsCargo() && visitor.Cargo()->HitTest(x, y))
+        {
+            return visitor.Cargo();
+        }
+    }
+
+    return  nullptr;
 }

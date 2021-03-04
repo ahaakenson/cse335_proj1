@@ -14,10 +14,19 @@
  * Constructor for CCargo
  * 
  * \param game Pointer to game object
- * \param filename File where the image is stored
+ * \param bitmap Bitmap of item's image
  */
-CCargo::CCargo(CGame* game, const std::wstring& filename) :
-	CItem(game, filename)
+CCargo::CCargo(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
+	CItem(game, bitmap)
+{
+}
+
+/**
+ * Constructor for CCargo
+ *
+ * \param game Pointer to the game this decor is a part of
+ */
+CCargo::CCargo(CGame* game) : CItem(game)
 {
 }
 
@@ -49,6 +58,7 @@ void CCargo::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 
 void CCargo::PickUp()
 {
+
 }
 
 
