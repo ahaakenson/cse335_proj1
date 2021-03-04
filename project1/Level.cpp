@@ -13,11 +13,11 @@
 #include "Rectangle.h"
 #include "Cargo.h"
 #include "Boat.h"
+#include "Car.h"
 #include <memory>
 #include <map>
 #include <vector>
 #include <string>
-
 
 using namespace std;
 using namespace Gdiplus;
@@ -199,7 +199,8 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     */
     else if (type == L"car")
     {
-        //item = make_shared<CCar>(this);
+        int xPos = node->GetAttributeIntValue(L"x", 0);
+        item = make_shared<CCar>(mGame, mImageMap[id][0], speed*16, 32 + yPos*64, xPos*64);
     }
     else if (type == L"boat")
     {

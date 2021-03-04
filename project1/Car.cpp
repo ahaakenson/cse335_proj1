@@ -7,8 +7,12 @@
 #include "pch.h"
 #include "Car.h"
 
-CCar::CCar(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
-	CVehicle(game, bitmap)
+ /**
+ * Constructor
+ * \param game Game that car is in
+ * \param bitmap Image of car
+ */
+CCar::CCar(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos) : CVehicle(game, bitmap, speed, yPos, xPos)
 {
 }
 

@@ -23,9 +23,9 @@ public:
     /// Copy constructor (disabled)
     CCar(const CCar&) = delete;
 
-    CCar::CCar(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
+    CCar::CCar(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos);
 
-    virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
+    virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
 
 private:
     /// Image swap time

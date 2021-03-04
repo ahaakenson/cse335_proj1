@@ -311,7 +311,8 @@ void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
     }
     else if (type == L"car")
     {
-        //item = make_shared<CCar>(this, bitmap);
+        wstring id = node->GetAttributeValue(L"id", L"");
+        //item = make_shared<CCar>(this, imageMap[id]);
     }
 
     // Add item to game item vector if it exists
