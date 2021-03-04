@@ -46,8 +46,5 @@ private:
     /// Vehicle speed
     double mSpeed = 1;
 
-    /// Time between swapping images
-    double mSwapTime = 0;
-
 };
 

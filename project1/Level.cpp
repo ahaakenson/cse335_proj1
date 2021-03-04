@@ -198,11 +198,11 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     */
     else if (type == L"car")
     {
-        //item = make_shared<CVehicle>(this);
+        //item = make_shared<CCar>(this);
     }
     else if (type == L"boat")
     {
-        item = make_shared<CDecor>(mGame, mImageMap[id][0]);
+        item = make_shared<CBoat>(mGame, mImageMap[id][0]);
     }
     /* Format of hero vector in map:
     * [0]- default image
@@ -221,7 +221,7 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     */
     else if (type == L"cargo")
     {
-        item = make_shared<CBoat>(mGame, mImageMap[id][0]);
+        item = make_shared<CCargo>(mGame, mImageMap[id][0]);
     }
 
     // Add item to game item vector if it exists

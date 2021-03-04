@@ -23,5 +23,7 @@ public:
 
     CBoat::CBoat(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 
+    virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
+
 };
 

@@ -16,3 +16,10 @@
 CBoat::CBoat(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) : CVehicle(game, bitmap)
 {
 }
+
+void CBoat::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
+{
+
+    CVehicle::XmlLoad(node);
+
+}

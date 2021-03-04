@@ -43,7 +43,10 @@ void CVehicle::Update(double elapsed)
  */
 void CVehicle::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
-	SetLocation(node->GetAttributeDoubleValue(L"x", 0), node->GetAttributeDoubleValue(L"y", 0));
+	//SetLocation(node->GetAttributeDoubleValue(L"x", 0), node->GetAttributeDoubleValue(L"y", 0));
 
-	mSpeed = node->GetAttributeDoubleValue(L"speed", 0);
+	//mSpeed = node->GetAttributeDoubleValue(L"speed", 0);
+
+    CItem::XmlLoad(node);
+
 }

@@ -207,6 +207,7 @@
     <ClInclude Include="project1.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="River.h" />
     <ClInclude Include="Road.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Vehicle.h" />
@@ -235,6 +236,7 @@
     </ClCompile>
     <ClCompile Include="project1.cpp" />
     <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="River.cpp" />
     <ClCompile Include="Road.cpp" />
     <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="XmlNode.cpp" />
