@@ -12,9 +12,10 @@
  * \param game Game that car is in
  * \param bitmap Image of car
  */
-CCar::CCar(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos) 
-    : CVehicle(game, bitmap, speed, yPos, xPos)
+CCar::CCar(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap1, std::shared_ptr<Gdiplus::Bitmap> bitmap2, double speed, int yPos, int xPos)
+    : CVehicle(game, bitmap1, speed, yPos, xPos)
 {
+    mSwappedImage = bitmap2;
 }
 
 
@@ -37,7 +38,7 @@ void CCar::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
  */
 void CCar::Update(double elapsed)
 {
-
+    // some logic to swap every time swap-time has passed
 
 
     CVehicle::Update(elapsed);

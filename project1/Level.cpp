@@ -200,7 +200,7 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     else if (type == L"car")
     {
         int xPos = node->GetAttributeIntValue(L"x", 0);
-        item = make_shared<CCar>(mGame, mImageMap[id][0], speed*64, 32 + yPos*64, xPos*64);
+        item = make_shared<CCar>(mGame, mImageMap[id][0], mImageMap[id][1], speed*64, 32 + yPos*64, xPos*64);
     }
     else if (type == L"boat")
     {
