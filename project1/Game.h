@@ -12,6 +12,7 @@
 
 #include<vector>
 #include<memory>
+#include<utility>
 #include "Item.h"
 #include "Hero.h"
 #include "Cargo.h"
@@ -28,6 +29,8 @@ public:
 	CGame::CGame();
 
 	void OnDraw(Gdiplus::Graphics* graphics, int width, int height);
+
+	std::pair<double, double> ScaleCoords(int x, int y);
 
 	void Add(std::shared_ptr<CItem> item);
 	void Add(std::shared_ptr<CLevel> level);

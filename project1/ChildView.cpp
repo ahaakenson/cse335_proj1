@@ -153,9 +153,16 @@ BOOL CChildView::OnEraseBkgnd(CDC* pDC)
 }
 
 
+/**
+ * Handle a click on the game area
+ * \param nFlags Flags
+ * \param point Position on the screen that was clicked
+ */
 void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	mClickedCargo = mGame.HitTest(point.x, point.y);
+	std::pair<double, double> coords = mGame.ScaleCoords(point.x, point.y);
+
+	mClickedCargo = mGame.HitTest(coords.first, coords.second);
 
 	if (mClickedCargo != nullptr)
 	{

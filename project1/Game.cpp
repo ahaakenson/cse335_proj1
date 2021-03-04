@@ -13,6 +13,7 @@
 #include "Rectangle.h"
 #include <memory>
 #include <map>
+#include <utility>
 #include "Cargo.h"
 #include "Car.h"
 #include "IsCargoVisitor.h"
@@ -74,10 +75,22 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 
     }
     
-    // Black lines are still leaking through the space between tiles
 }
 
 
+/**
+ * Helps handle a mouse click on the game area.
+ * Scales the coordinates into virtual pixels.
+ * \param x X location clicked on
+ * \param y Y location clicked on
+ */
+std::pair<double, double> CGame::ScaleCoords(int x, int y)
+{
+    double oX = (x - mXOffset) / mScale;
+    double oY = (x - mYOffset) / mScale;
+
+    return std::make_pair(oX, oY);
+}
 
 /**
  * Responsible for adding items to mItems.
@@ -296,7 +309,10 @@ void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
     {
         item = make_shared<CRectangle>(this);
     }
-
+    else if (type == L"car")
+    {
+        //item = make_shared<CCar>(this, bitmap);
+    }
 
     // Add item to game item vector if it exists
     if (item != nullptr)
