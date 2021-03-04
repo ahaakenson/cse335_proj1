@@ -60,5 +60,6 @@ public:
 	afx_msg void OnLevelmenuLevel1();
 	afx_msg void OnLevelmenuLevel2();
 	afx_msg void OnLevelmenuLevel3();
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };
 

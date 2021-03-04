@@ -45,6 +45,7 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_COMMAND(ID_LEVELMENU_LEVEL1, &CChildView::OnLevelmenuLevel1)
 	ON_COMMAND(ID_LEVELMENU_LEVEL2, &CChildView::OnLevelmenuLevel2)
 	ON_COMMAND(ID_LEVELMENU_LEVEL3, &CChildView::OnLevelmenuLevel3)
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -213,4 +214,11 @@ void CChildView::OnLevelmenuLevel3()
 	// TODO: Add your command handler code here
 	mGame.Load(3);
 	Invalidate();
+}
+
+
+void CChildView::OnTimer(UINT_PTR nIDEvent)
+{
+	Invalidate();
+	CWnd::OnTimer(nIDEvent);
 }
