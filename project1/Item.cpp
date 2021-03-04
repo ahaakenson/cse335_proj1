@@ -14,6 +14,19 @@ using namespace std;
 
 const double tileToPixels = 64;
 
+
+/**
+ * Constructor
+ * \param game The game this item is a part of.
+ * \param bitmap Bitmap of this item's image.
+ * \param yPos Y position 
+ * \param xPos X position
+ */
+CItem::CItem(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, int yPos, int xPos)
+    : mGame(game), mItemImage(bitmap), mY(yPos), mX(xPos)
+{
+}
+
 /**
  * Constructor
  * \param game The game this item is a part of.

@@ -73,6 +73,7 @@ public:
 	virtual void Accept(CItemVisitor* visitor) = 0;
 
 protected:
+	CItem(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, int yPos, int xPos);
 	CItem(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 	CItem(CGame* game);
 

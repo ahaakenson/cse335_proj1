@@ -28,7 +28,9 @@ public:
 
     CVehicle(CGame* game);
 
-    CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed);
+    CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
+
+    CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos);
 
     /// Set the speed
     /// \param speed Speed
@@ -36,7 +38,7 @@ public:
 
     void Update(double elapsed);
 
-    void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
+    virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
     /** Accept a visitor
      * \param visitor The visitor we accept */

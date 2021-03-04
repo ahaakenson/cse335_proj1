@@ -26,7 +26,7 @@ public:
 	CLevel(CGame* game);
 
 	void Load(const std::wstring& filename);
-	void XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const double speed = 0.0, const int width = 0);
+	void XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const double speed = 0.0, const int width = 0, const int yPos = 0);
 	void Add(std::shared_ptr<CItem> item);
 	/** Getter for item vector
 	 * 

@@ -13,8 +13,8 @@
  * \param game Pointer to the game this decor is a part of
  * \param bitmap Bitmap of this item's image
  */
-CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed) :
-	CItem(game, bitmap)
+CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos) : mSpeed(speed),
+	CItem(game, bitmap, yPos, xPos)
 {
 
 
@@ -26,6 +26,10 @@ CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double 
  * \param game Pointer to the game this decor is a part of
  */
 CVehicle::CVehicle(CGame* game) : CItem(game)
+{
+}
+
+CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) : CItem(game, bitmap)
 {
 }
 
@@ -45,10 +49,12 @@ void CVehicle::Update(double elapsed)
  */
 void CVehicle::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
-	//SetLocation(node->GetAttributeDoubleValue(L"x", 0), node->GetAttributeDoubleValue(L"y", 0));
+	//this->SetLocation(node->GetAttributeDoubleValue(L"x", 0), GetY());
 
 	//mSpeed = node->GetAttributeDoubleValue(L"speed", 0);
 
-    CItem::XmlLoad(node);
+    //CItem::XmlLoad(node);
+
+    
 
 }

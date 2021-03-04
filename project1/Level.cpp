@@ -149,12 +149,13 @@ void CLevel::Load(const std::wstring& filename)
             {
                 // Get speed and width of the road/river
                 double speed = section->GetAttributeDoubleValue(L"speed", 1.0);
-                int width = section->GetAttributeIntValue(L"width", 1.0);
+                int width = section->GetAttributeIntValue(L"width", 1);
+                int yPos = section->GetAttributeIntValue(L"y", 0); 
 
                 // Iterate through the cars and boats and create objects from them
                 for (auto node : section->GetChildren())
                 {
-                    XmlItem(node, speed, width);
+                    XmlItem(node, speed, width, yPos);
                 }
             }
 
@@ -175,7 +176,7 @@ void CLevel::Load(const std::wstring& filename)
 * \param speed Speed of vehicles on road or river, default value of 0.0
 * \param width Width of river or road, default value of 0
 */
-void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const double speed, const int width)
+void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const double speed, const int width, const int yPos)
 {
     // A pointer for the item we are loading
     shared_ptr<CItem> item;
@@ -202,7 +203,8 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     }
     else if (type == L"boat")
     {
-        item = make_shared<CBoat>(mGame, mImageMap[id][0], speed);
+        int xPos = node->GetAttributeIntValue(L"x", 0);
+        item = make_shared<CBoat>(mGame, mImageMap[id][0], speed*64, 32 + yPos*64, xPos*64);
     }
     /* Format of hero vector in map:
     * [0]- default image
