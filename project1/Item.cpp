@@ -63,6 +63,7 @@ void CItem::Draw(Gdiplus::Graphics* graphics)
     graphics->DrawImage(mItemImage.get(),
         float(GetX() - wid / 2), float(GetY() - hit / 2),
         (float)mItemImage->GetWidth(), (float)mItemImage->GetHeight());
+
 }
 
 

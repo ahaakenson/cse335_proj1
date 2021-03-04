@@ -27,9 +27,14 @@ public:
 
     virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
 
+    virtual void Update(double elapsed) override;
+
 private:
     /// Image swap time
     double mSwapTime = 0;
+
+    /// Swapped image
+    std::shared_ptr<Gdiplus::Bitmap> mSwappedImage;
 
 };
 

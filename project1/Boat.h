@@ -1,7 +1,7 @@
 /**
  * \file Boat.h
  *
- * \author Michael Dittman
+ * \author Michael Dittman , Matthew Norris
  *
  * Class that describes the boat
  */
@@ -27,7 +27,7 @@ public:
 
 
 private:
-    /// Image swap time
+    /// Image swap time for boat
     double mSwapTime = 0;
 
 };
