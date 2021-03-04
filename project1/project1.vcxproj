@@ -187,6 +187,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Boat.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="Cargo.h" />
     <ClInclude Include="ChildView.h" />
@@ -212,6 +213,7 @@
     <ClInclude Include="XmlNode.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Boat.cpp" />
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="Cargo.cpp" />
     <ClCompile Include="ChildView.cpp" />

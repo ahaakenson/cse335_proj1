@@ -329,6 +329,7 @@ void CGame::Load(const int level)
     Clear();
     mItems = mLevels[level]->GetItems();
     mHero = mLevels[level]->GetHero();
+    mHero->SetLocation(512, 930);
     return;
 }
 

@@ -30,6 +30,7 @@ CHero::CHero(CGame* game) : CItem(game, HeroImageName)
 CHero::CHero(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
     CItem(game, bitmap)
 {
+
 }
 
 

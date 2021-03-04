@@ -63,10 +63,13 @@ private:
 	/// Game area height in virtual pixels
 	const static int Height = 1024;
 
+	/// Scale for virtual pixels
 	float mScale = 0;
 
+	/// X Offset for virtual pixels
 	float mXOffset = 0;
 
+	/// Y Offset for virtual pixels
 	float mYOffset = 0;
 
 	/// The items that will be contained in the current level
