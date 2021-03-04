@@ -92,7 +92,7 @@ void CItem::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
     double x, y = 0.0;
     x = node->GetAttributeDoubleValue(L"x", 0);
-    y = node->GetAttributeDoubleValue(L"y", 0);
+    y = node->GetAttributeDoubleValue(L"y", 15.5);
 
     // tile values multiplied by 64 to convert to pixels
     mX = x * tileToPixels;
