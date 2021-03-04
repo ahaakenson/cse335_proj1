@@ -7,11 +7,15 @@
 #include "pch.h"
 #include "Vehicle.h"
 
+
+
 /**
- * Constructor for CVehicle.
- *
+ * Constructor
  * \param game Pointer to the game this decor is a part of
  * \param bitmap Bitmap of this item's image
+ * \param speed Speed of the boat
+ * \param yPos Y position
+ * \param xPos X position
  */
 CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos) : mSpeed(speed),
 	CItem(game, bitmap, yPos, xPos)
@@ -29,10 +33,22 @@ CVehicle::CVehicle(CGame* game) : CItem(game)
 {
 }
 
+
+
+/**
+ * Constructor
+ * \param game Pointer to the game this decor is a part of
+ * \param bitmap Bitmap of this item's image
+ */
 CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) : CItem(game, bitmap)
 {
 }
 
+
+/**
+ * Update function for vehicle
+ * \param elapsed Time elapsed
+ */
 void CVehicle::Update(double elapsed)
 {
 	SetLocation(GetX() + mSpeed* elapsed, GetY());
@@ -54,7 +70,5 @@ void CVehicle::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 	//mSpeed = node->GetAttributeDoubleValue(L"speed", 0);
 
     //CItem::XmlLoad(node);
-
-    
 
 }
