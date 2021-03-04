@@ -216,7 +216,10 @@ void CChildView::OnLevelmenuLevel3()
 	Invalidate();
 }
 
-
+/**
+ * Handle timer events
+ * \param nIDEvent The timer event ID
+ */
 void CChildView::OnTimer(UINT_PTR nIDEvent)
 {
 	Invalidate();
