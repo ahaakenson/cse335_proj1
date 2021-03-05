@@ -63,7 +63,7 @@ void CCargo::PickUp()
 	{
 		mImage = mCarriedImage;
 	}
-	/// Will we have to implement an image swap similar to the boats? Confused on this
+	/// Will we have to implement an image swap similar to the cars? Confused on this
 }
 
 
