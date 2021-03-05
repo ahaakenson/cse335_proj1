@@ -129,7 +129,8 @@ void CChildView::OnPaint()
 	while (elapsed > MaxElapsed)
 	{
 		mGame.Update(MaxElapsed);
-		mGame.UpdateControlPanel(elapsed);
+		mGame.UpdateControlPanel(MaxElapsed);
+		//mGame.CollisionTest()
 
 		elapsed -= MaxElapsed;
 	}
@@ -185,7 +186,7 @@ void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	// Initiate movement checks
 	mGame.moveHero(nChar);
-	Invalidate();
+	//Invalidate();
 
 }
 
@@ -194,20 +195,8 @@ void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
  */
 void CChildView::OnLevelmenuLevel0()
 {
-	// loading content from level 1
-	//wstring filename = L".\\levels\\level1.xml";
-	//mGame.Load(filename);
-
-	// This is here only for hero testing, remove later
-	//shared_ptr<CHero> hero = make_shared<CHero>(&mGame);
-	//hero->SetLocation(512, 928);
-	//mGame.Add(hero);
-	//mGame.SetHero(hero);
-
 	mGame.Load(0);
 	Invalidate();
-
-
 }
 
 /**

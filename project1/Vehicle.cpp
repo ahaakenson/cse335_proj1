@@ -51,6 +51,21 @@ CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) : CItem
  */
 void CVehicle::Update(double elapsed)
 {
+
+    // Width of the window
+    const double Width = 1024.0;
+
+    // Set the vehicle to the right boundary
+    if ((GetX()) < -1024)
+    {
+        SetLocation(Width + 300.0, GetY());
+    }
+    // Set to the left boundary
+    else if (GetX() > Width + 1024.0)
+    {
+        SetLocation(-300, GetY());
+    }
+
 	SetLocation(GetX() + mSpeed* elapsed, GetY());
 }
 
@@ -123,17 +138,5 @@ void CVehicle::Draw(Gdiplus::Graphics* graphics)
         // Draw the vehcile normally
         CItem::Draw(graphics);
     }
-
-    // Set the vehicle to the right boundary
-    if ((GetX()) < -1024)
-    {
-        SetLocation(Width + 300.0, GetY());
-    }
-    // Set to the left boundary
-    else if(GetX()> Width + 1024.0)
-    {
-        SetLocation(-300, GetY());
-    }
-
 
 }

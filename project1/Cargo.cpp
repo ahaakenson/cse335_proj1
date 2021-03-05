@@ -59,6 +59,10 @@ void CCargo::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 
 void CCargo::PickUp()
 {
+	mCarriedByHero = true;
+
+	//mLevel->GetImage([])
+
 	if (mCarriedByHero = true)
 	{
 		mImage = mCarriedImage;

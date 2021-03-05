@@ -41,5 +41,12 @@ public:
      * \param visitor The visitor we accept */
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitHero(this); }
 
+    virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
+
+
+private:
+
+    std::wstring mName;
+
 };
 

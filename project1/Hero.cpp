@@ -8,10 +8,6 @@
 #include "Hero.h"
 #include <iostream>
 
- /// The Hero's image
-const std::wstring HeroImageName = L"images/sparty.png";
-
-
 /**
  * Constructor for the Hero
  * \param game The game this Hero is a part of
@@ -30,6 +26,21 @@ CHero::CHero(CGame* game) : CItem(game, HeroImageName)
 CHero::CHero(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
     CItem(game, bitmap)
 {
+
+}
+
+/**
+ * Load the attributes for a decor node.
+ *
+ * \param node The Xml node we are loading the decor from
+ */
+void CHero::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
+{
+    CItem::XmlLoad(node);
+
+    // Save repeats in each direction
+    std::wstring name = node->GetAttributeValue(L"name", L"Sparty");
+    mName = name;
 
 }
 
