@@ -74,13 +74,13 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     SolidBrush orange(Color(255, 165, 0));
 
 
-    graphics->DrawString(L"Cargo 1", -1,
+    graphics->DrawString(L"Fox", -1,
         &font, PointF(1024, 40), &orange);
 
-    graphics->DrawString(L"Cargo 2", -1,
+    graphics->DrawString(L"Goose", -1,
         &font, PointF(1024, 80), &orange);
 
-    graphics->DrawString(L"Cargo 3", -1,
+    graphics->DrawString(L"Grain", -1,
         &font, PointF(1024, 120), &orange);
 
 

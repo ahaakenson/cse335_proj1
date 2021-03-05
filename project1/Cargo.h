@@ -1,7 +1,7 @@
 /**
  * \file Cargo.h
  *
- * \author(s) Ethan Strain, 
+ * \author(s) Ethan Strain, Matthew Norris
  *
  * Class to handle cargo type items
  */

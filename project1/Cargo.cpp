@@ -1,7 +1,7 @@
 /**
  * \file Cargo.cpp
  *
- * \author(s) Ethan Strain
+ * \author(s) Ethan Strain, Matthew Norris
  */
 
 #include "pch.h"
@@ -59,12 +59,21 @@ void CCargo::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 
 void CCargo::PickUp()
 {
-
+	if (mCarriedByHero = true)
+	{
+		mImage = mCarriedImage;
+	}
+	/// Will we have to implement an image swap similar to the boats? Confused on this
 }
 
 
 void CCargo::Release()
 {
+	if (mCarriedByHero = false)
+	{
+		mCarriedImage = mImage;
+	}
+	///
 }
 
 
