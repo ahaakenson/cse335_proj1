@@ -42,11 +42,23 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     FontFamily fontFamily(L"Arial");
     Gdiplus::Font font(&fontFamily, 24);
 
-    SolidBrush green(Color(144, 238, 144));
-    graphics->DrawString(L"Level 1", -1,
-        &font, PointF(1024, 2), &green);
+    // If the total elapsed time is less than this number, draw the level
+    if (mTime < 6)
+    {
+        SolidBrush green(Color(144, 238, 144));
+        graphics->DrawString(L"Level 1", -1,
+            &font, PointF(1024, 2), &green);
+    }
+    else
+    {
+        // Start drawing the time
+    }
 
+
+    // Draw the Cargo
     SolidBrush orange(Color(255, 165, 0));
+
+
     graphics->DrawString(L"Cargo 1", -1,
         &font, PointF(1024, 40), &orange);
 
