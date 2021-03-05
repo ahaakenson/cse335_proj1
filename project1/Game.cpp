@@ -18,6 +18,7 @@
 #include "Car.h"
 #include "IsCargoVisitor.h"
 #include "IsVehicleVisitor.h"
+#include "ControlPanel.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -32,6 +33,9 @@ map<wstring, wstring> imageMap; //< Map holding the image names associated with 
  */
 CGame::CGame()
 {
+
+    mControlPanel = std::make_shared<CControlPanel>(this);
+
 }
 
 /**
@@ -72,8 +76,9 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
     {
         // For every item, draw the item
         item->Draw(graphics);
-
     }
+
+    DrawControlPanel(graphics);
     
 }
 
@@ -400,4 +405,26 @@ CCargo* CGame::HitTest(int x, int y)
     }
 
     return  nullptr;
+}
+
+
+/**
+ * Update the control panel
+ */
+void CGame::UpdateControlPanel(double elapsed)
+{
+
+    mControlPanel->Update(elapsed);
+
+}
+
+
+/**
+ * Draw the control panel
+ */
+void CGame::DrawControlPanel(Gdiplus::Graphics* graphics)
+{
+
+    mControlPanel->Draw(graphics);
+
 }

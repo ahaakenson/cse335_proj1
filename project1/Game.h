@@ -17,6 +17,9 @@
 #include "Hero.h"
 #include "Cargo.h"
 #include "Level.h"
+#include "ControlPanel.h"
+
+class CControlPanel;
 
 /**
  * Class that describes a game of Sparty Crossing.
@@ -63,6 +66,10 @@ public:
 	/// \returns Aquarium height
 	int GetHeight() const { return Height; }
 
+	void UpdateControlPanel(double elapsed);
+
+	void DrawControlPanel(Gdiplus::Graphics* graphics);
+
 private:
 	// game playing area constants:
 	// leftmost 1024 x 1024 is the game grid
@@ -93,6 +100,9 @@ private:
 
 	/// Pointer for our hero
 	std::shared_ptr<CHero> mHero = nullptr;
+
+	/// Pointer for control panel
+	std::shared_ptr<CControlPanel> mControlPanel;
 
 };
 

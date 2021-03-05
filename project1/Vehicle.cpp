@@ -88,7 +88,7 @@ void CVehicle::Draw(Gdiplus::Graphics* graphics)
     double hit = itemImage->GetHeight();
 
     // Width of the window
-    const int Width = 1024;
+    const double Width = 1024.0;
 
     // If the vehcile is starting to pass the left boundary
     if (GetX() - GetWidth() / 2 < 0)
@@ -127,10 +127,10 @@ void CVehicle::Draw(Gdiplus::Graphics* graphics)
     // Set the vehicle to the right boundary
     if ((GetX()) < -1024)
     {
-        SetLocation(Width + 300, GetY());
+        SetLocation(Width + 300.0, GetY());
     }
     // Set to the left boundary
-    else if(GetX()> Width + 1024)
+    else if(GetX()> Width + 1024.0)
     {
         SetLocation(-300, GetY());
     }

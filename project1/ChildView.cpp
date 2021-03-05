@@ -129,6 +129,7 @@ void CChildView::OnPaint()
 	while (elapsed > MaxElapsed)
 	{
 		mGame.Update(MaxElapsed);
+		mGame.UpdateControlPanel(elapsed);
 
 		elapsed -= MaxElapsed;
 	}
@@ -137,6 +138,7 @@ void CChildView::OnPaint()
 	if (elapsed > 0)
 	{
 		mGame.Update(elapsed);
+		mGame.UpdateControlPanel(elapsed);
 	}
 }
 

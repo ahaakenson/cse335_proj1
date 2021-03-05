@@ -11,7 +11,7 @@
 #include "Game.h"
 
 
-class CControlPanel: public CGame
+class CControlPanel
 {
 public: 
 
@@ -21,6 +21,8 @@ public:
 	/// Copy constructor (disabled)
 	CControlPanel(const CControlPanel&) = delete;
 
+	CControlPanel(CGame* game);
+
 	//Function that will draw our timer, and other control panel graphics
 	virtual void Draw(Gdiplus::Graphics* graphics);
 
@@ -29,8 +31,18 @@ public:
 
 
 private: 
-	//count for our timer
-	double time = 0;
+	
+	// The game this control panel belongs to
+	CGame* mGame;
+
+	// Total time
+	double mTime = 0;
+
+	// Minutes
+	int mMinutes = 0;
+
+	// Seconds
+	int mSeconds = 0;
 	
 };
 
