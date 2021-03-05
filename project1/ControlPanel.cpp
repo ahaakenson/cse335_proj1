@@ -37,13 +37,16 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     wstring minutes = to_wstring(mMinutes);
 
    // string minutes = to_string(mMinutes);
-    string seconds = to_string(mSeconds);
+    wstring seconds = to_wstring(mSeconds);
 
     FontFamily fontFamily(L"Arial");
     Gdiplus::Font font(&fontFamily, 24);
 
+    // The amount of time to display the level icon for
+    const double displayLevelTime = 3.0; // Seconds
+
     // If the total elapsed time is less than this number, draw the level
-    if (mTime < 6)
+    if (mTime < displayLevelTime)
     {
         SolidBrush green(Color(144, 238, 144));
         graphics->DrawString(L"Level 1", -1,
@@ -51,7 +54,19 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     }
     else
     {
-        // Start drawing the time
+        SolidBrush green(Color(144, 238, 144));
+
+        // Minutes
+        graphics->DrawString(L"00", -1,
+            &font, PointF(1024, 2), &green);
+
+        // Minutes
+        graphics->DrawString(L":", -1,
+            &font, PointF(1060, 2), &green);
+
+        // Seconds
+        graphics->DrawString(L"00", -1,
+            &font, PointF(1070, 2), &green);
     }
 
 
