@@ -63,10 +63,10 @@ void CCargo::PickUp()
 
 	//mLevel->GetImage([])
 
-	if (mCarriedByHero = true)
-	{
-		mImage = mCarriedImage;
-	}
+	//if (mCarriedByHero = true)
+	//{
+	//	mImage = mCarriedImage;
+	//}
 	/// Will we have to implement an image swap similar to the cars? Confused on this
 }
 
@@ -102,4 +102,16 @@ bool CCargo::HitTest(int x, int y)
 	}
 	else return true;
 
+}
+
+/**
+ * Update function for vehicle
+ * \param elapsed Time elapsed
+ */
+void CCargo::Update(double elapsed, std::shared_ptr<CHero> hero)
+{
+	if (mCarriedByHero)
+	{
+		SetLocation(hero->GetX(), hero->GetY());
+	}
 }
