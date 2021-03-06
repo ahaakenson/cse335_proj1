@@ -8,6 +8,11 @@
 #include "Hero.h"
 #include <iostream>
 
+/// The upper border of the screen
+const int topBorder = 128;
+
+const int lowerBorder = 896;
+
 /**
  * Constructor for the Hero
  * \param game The game this Hero is a part of
@@ -69,9 +74,11 @@ void CHero::moveForward()
     double currentY = this->GetY();
     double currentX = this->GetX();
 
-    // Move the hero forward, this may have to be changed w/ Virtual pixels
-    this->SetLocation(currentX, currentY - 64);
-
+    // Move the hero forward, unless at top of the screen
+    if (currentY > topBorder)
+    {
+        this->SetLocation(currentX, currentY - 64);
+    }
 }
 
 
@@ -85,9 +92,11 @@ void CHero::moveBackward()
     double currentY = this->GetY();
     double currentX = this->GetX();
 
-    // Move the hero forward, this may have to be changed w/ Virtual pixels
-    this->SetLocation(currentX, currentY + 64);
-
+    // Move the hero forward, unless at bottom of the screen
+    if (currentY < lowerBorder)
+    {
+        this->SetLocation(currentX, currentY + 64);
+    }
 }
 
 /**
