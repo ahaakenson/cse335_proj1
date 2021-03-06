@@ -13,6 +13,7 @@
 #include "pch.h"
 #include "ControlPanel.h"
 #include <string>
+#include <wchar.h>
 
 using namespace std;
 using namespace Gdiplus;
@@ -80,15 +81,34 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     // Font for level
     Gdiplus::Font font(&fontFamily, 24);
 
+     
     // Draw the level number
     SolidBrush green(Color(144, 238, 144));
-    graphics->DrawString(L"Level 1", -1,
-        &font, PointF(1024, 40), &green);
+
+    switch (mLevelNumber)
+    {
+    case 0:
+        graphics->DrawString(L"Level 0", -1,
+            &font, PointF(1024, 40), &green);
+        break;
+    case 1:
+        graphics->DrawString(L"Level 1", -1,
+            &font, PointF(1024, 40), &green);
+        break;
+    case 2:
+        graphics->DrawString(L"Level 2", -1,
+            &font, PointF(1024, 40), &green);
+        break;
+    case 3:
+        graphics->DrawString(L"Level 3", -1,
+            &font, PointF(1024, 40), &green);
+        break;
+    }
+
+    SolidBrush orange(Color(255, 165, 0));
 
 
     // Draw the Cargo
-    SolidBrush orange(Color(255, 165, 0));
-
 
     graphics->DrawString(L"Fox", -1,
         &font, PointF(1024, 90), &orange);
