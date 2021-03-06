@@ -49,8 +49,14 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
     // Font for timer
     Gdiplus::Font timerFont(&fontFamily, 22);
+ 
+    // Brush for "Level x begin"
+    SolidBrush orange(Color(255, 111, 1));
 
-    // Brush for timer and get ready
+    // Font for "Level x begin"
+    Gdiplus::Font levelBeginFont(&fontFamily, 44);
+
+    // Brush for "Get ready!"
     SolidBrush white(Color(248, 242, 218));
 
     // The amount of time to display the level icon for
@@ -61,7 +67,30 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     {
         graphics->DrawString(L"Get Ready!", -1,
             &getReadyFont, PointF(1024, 2), &white);
+
+        // Draw "Level x Begin"
+        switch (mLevelNumber)
+        {
+        case 0:
+            graphics->DrawString(L"Level 0 Begin", -1,
+                &levelBeginFont, PointF(350,512), &orange);
+            break;
+        case 1:
+            graphics->DrawString(L"Level 1 Begin", -1,
+                &levelBeginFont, PointF(350, 512), &orange);
+            break;
+        case 2:
+            graphics->DrawString(L"Level 2 Begin", -1,
+                &levelBeginFont, PointF(350, 512), &orange);
+            break;
+        case 3:
+            graphics->DrawString(L"Level 3 Begin", -1,
+                &levelBeginFont, PointF(350, 512), &orange);
+            break;
+        }
+
     }
+    // Draw the timer
     else
     {
 
@@ -105,19 +134,19 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
         break;
     }
 
-    SolidBrush orange(Color(255, 165, 0));
+    SolidBrush pink(Color(255, 192, 203));
 
 
     // Draw the Cargo
 
     graphics->DrawString(L"Fox", -1,
-        &font, PointF(1024, 90), &orange);
+        &font, PointF(1024, 90), &pink);
 
     graphics->DrawString(L"Goose", -1,
-        &font, PointF(1024, 130), &orange);
+        &font, PointF(1024, 130), &pink);
 
     graphics->DrawString(L"Grain", -1,
-        &font, PointF(1024, 170), &orange);
+        &font, PointF(1024, 170), &pink);
 
 
 }
