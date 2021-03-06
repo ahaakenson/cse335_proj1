@@ -196,7 +196,7 @@ namespace Testing
 			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
 
 			// Set its location (irrelevant, but processes for hero creation recorded regardless)
-			hero->SetLocation(0, 0);
+			hero->SetLocation(192, 192);
 
 			// Add the hero item to the game list
 			game.Add(hero);
@@ -205,8 +205,8 @@ namespace Testing
 			game.SetHero(hero);
 
 			// Test to ensure the hero's position
-			Assert::IsTrue(hero->GetX() == 0);
-			Assert::IsTrue(hero->GetY() == 0);
+			Assert::IsTrue(hero->GetX() == 192);
+			Assert::IsTrue(hero->GetY() == 192);
 
 			// Assign the pressed key to be e (move forward)
 			UINT nChar = 69;
@@ -214,8 +214,14 @@ namespace Testing
 			// Moves the hero 96 units (before virtual pixels, this will need changing)
 			game.moveHero(nChar);
 
-			Assert::IsTrue(hero->GetX() == 0);
-			Assert::IsTrue(hero->GetY() == -64);
+			Assert::IsTrue(hero->GetX() == 192);
+			Assert::IsTrue(hero->GetY() == 128);
+
+			// Move forward again
+			game.moveHero(nChar);
+
+			// ensure hero doesn't move at top boundary (y didn't change)
+			Assert::IsTrue(hero->GetY() == 128);
 
 		}
 
@@ -251,6 +257,14 @@ namespace Testing
 			Assert::IsTrue(hero->GetX() == 0);
 			Assert::IsTrue(hero->GetY() == 64);
 
+			// Set location at lower boundary
+			hero->SetLocation(192, 896);
+
+			// move the hero backward again
+			game.moveHero(nChar);
+
+			// Ensure hero doesn't move at lower boundary
+			Assert::IsTrue(hero->GetY() == 896);
 		}
 
 		TEST_METHOD(TestCHeroMoveRight)

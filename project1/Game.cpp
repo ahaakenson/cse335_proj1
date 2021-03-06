@@ -338,11 +338,18 @@ void CGame::Update(double elapsed)
 {
     for (auto item : mItems)
     {
-        CIsVehicleVisitor visitor;
-        item->Accept(&visitor);
-        if (visitor.IsVehicle())
+        CIsVehicleVisitor vehicleVisitor;
+        item->Accept(&vehicleVisitor);
+        if (vehicleVisitor.IsVehicle())
         {
-            visitor.Vehicle()->Update(elapsed);
+            vehicleVisitor.Vehicle()->Update(elapsed);
+        }
+
+        CIsCargoVisitor cargoVisitor;
+        item->Accept(&cargoVisitor);
+        if (cargoVisitor.IsCargo())
+        {
+            cargoVisitor.Cargo()->Update(elapsed, mHero);
         }
     }
 }

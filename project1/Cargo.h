@@ -46,6 +46,8 @@ public:
 
 	bool HitTest(int x, int y);
 
+	void Update(double elapsed, std::shared_ptr<CHero> hero);
+
 	/** Accept a visitor
 	 * \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitCargo(this); }

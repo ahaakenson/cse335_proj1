@@ -58,13 +58,17 @@ public:
 
 	CCargo* HitTest(int x, int y);
 
-	/// Get the width of the aquarium
-	/// \returns Aquarium width
+	/// Get the width of the game window
+	/// \returns Game window width
 	int GetWidth() const { return Width; }
 
-	/// Get the height of the aquarium
-	/// \returns Aquarium height
+	/// Get the height of the game window
+	/// \returns Game window height
 	int GetHeight() const { return Height; }
+
+	/// Get a pointer to the Hero
+	/// \returns pointer to Hero
+	std::shared_ptr<CHero> GetHero() const { return mHero; }
 
 	void UpdateControlPanel(double elapsed);
 
