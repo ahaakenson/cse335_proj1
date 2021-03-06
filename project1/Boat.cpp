@@ -13,7 +13,8 @@
  * \param game Game that boat is in
  * \param bitmap Image of boat
  */
-CBoat::CBoat(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos) : CVehicle(game, bitmap, speed, yPos, xPos)
+CBoat::CBoat(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos, int width) : 
+    CVehicle(game, bitmap, speed, yPos, xPos, width)
 {
 }
 

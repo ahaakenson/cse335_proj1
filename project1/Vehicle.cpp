@@ -17,8 +17,8 @@ using namespace Gdiplus;
  * \param yPos Y position
  * \param xPos X position
  */
-CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos) : mSpeed(speed),
-	CItem(game, bitmap, yPos, xPos)
+CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos, int width) : mSpeed(speed),
+	mLaneWidth(width), CItem(game, bitmap, yPos, xPos)
 {
 
 
@@ -46,24 +46,30 @@ CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) : CItem
 
 
 /**
- * Update function for vehicle
+ * Update function for vehicle. Checks if a vehicle needs to be reset 
+ * to the other side of the screen.
  * \param elapsed Time elapsed
  */
 void CVehicle::Update(double elapsed)
 {
 
-    // Width of the window
-    const double Width = 1024.0;
+    const int maxVehicleWidth = 256;
 
-    // Set the vehicle to the right boundary
-    if ((GetX()) < -1024)
+    // Width of the lane (in pixels)
+    int laneWidth = mLaneWidth * 64;
+
+    // If going off the left of the screen
+    if (GetX() + maxVehicleWidth <= 0 && mSpeed < 0)
     {
-        SetLocation(Width + 300.0, GetY());
+        // Set the vehicle to the right boundary
+        SetLocation(GetX() + laneWidth + maxVehicleWidth, GetY());
     }
-    // Set to the left boundary
-    else if (GetX() > Width + 1024.0)
+
+    // If going off the right of the screen
+    if (GetX() + maxVehicleWidth >= laneWidth + GetWidth() && mSpeed > 0)
     {
-        SetLocation(-300, GetY());
+        // Set to the left boundary
+        SetLocation(GetX() - laneWidth - maxVehicleWidth, GetY());
     }
 
 	SetLocation(GetX() + mSpeed* elapsed, GetY());

@@ -30,7 +30,7 @@ public:
 
     CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 
-    CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos);
+    CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos, int width);
 
     /// Set the speed
     /// \param speed Speed
@@ -50,5 +50,7 @@ private:
     /// Vehicle speed
     double mSpeed = 1;
 
+    /// Width of the lane this vehicle travels on
+    int mLaneWidth = 0;
 };
 

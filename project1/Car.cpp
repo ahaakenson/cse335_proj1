@@ -12,8 +12,8 @@
  * \param game Game that car is in
  * \param bitmap Image of car
  */
-CCar::CCar(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap1, std::shared_ptr<Gdiplus::Bitmap> bitmap2, double speed, int yPos, int xPos)
-    : CVehicle(game, bitmap1, speed, yPos, xPos)
+CCar::CCar(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap1, std::shared_ptr<Gdiplus::Bitmap> bitmap2, double speed, int yPos, int xPos, int width)
+    : CVehicle(game, bitmap1, speed, yPos, xPos, width)
 {
     mSwappedImage = bitmap2;
 }

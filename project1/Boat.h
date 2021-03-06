@@ -21,7 +21,7 @@ public:
     /// Copy constructor (disabled)
     CBoat(const CBoat&) = delete;
 
-    CBoat::CBoat(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos);
+    CBoat::CBoat(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos, int width);
 
     virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
 
