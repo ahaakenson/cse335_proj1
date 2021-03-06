@@ -161,6 +161,14 @@ void CLevel::Load(const std::wstring& filename)
 
         }
 
+        // Copy over hero and cargo items to item vector
+        for (auto& item : mTempHeroCargoVec)
+        {
+            Add(item);
+        }
+        // Delete cargo hero vector
+        mTempHeroCargoVec.erase(mTempHeroCargoVec.begin(), mTempHeroCargoVec.end());
+
 
     }
     catch (CXmlNode::Exception ex)
@@ -180,6 +188,8 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
 {
     // A pointer for the item we are loading
     shared_ptr<CItem> item;
+    // Determines which vector to add item to
+    bool heroCargo = false;
 
     wstring id = node->GetAttributeValue(L"id", L"");
 
@@ -187,10 +197,12 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     wstring type = node->GetName();
     if (type == L"decor")
     {
+        heroCargo = false;
         item = make_shared<CDecor>(mGame, mImageMap[id][0]);
     }
     else if (type == L"rect")
     {
+        heroCargo = false;
         item = make_shared<CRectangle>(mGame);
     }
     /* Format of car vector in map:
@@ -199,11 +211,13 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     */
     else if (type == L"car")
     {
+        heroCargo = false;
         int xPos = node->GetAttributeIntValue(L"x", 0);
         item = make_shared<CCar>(mGame, mImageMap[id][0], mImageMap[id][1], speed*64, 32 + yPos*64, xPos*64);
     }
     else if (type == L"boat")
     {
+        heroCargo = false;
         int xPos = node->GetAttributeIntValue(L"x", 0);
         item = make_shared<CBoat>(mGame, mImageMap[id][0], speed*64, 32 + yPos*64, xPos*64);
     }
@@ -214,6 +228,7 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     */
     else if (type == L"hero")
     {
+        heroCargo = true;
         shared_ptr<CHero> hero = make_shared<CHero>(mGame, mImageMap[id][0]);
         mHero = hero;
         item = hero;
@@ -224,14 +239,23 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     */
     else if (type == L"cargo")
     {
+        heroCargo = true;
         item = make_shared<CCargo>(mGame, mImageMap[id][0]);
     }
 
-    // Add item to game item vector if it exists
+    // Item exists, add it to one of the vectors
     if (item != nullptr)
     {
         item->XmlLoad(node);
-        Add(item);
+
+        if (!heroCargo)
+        {
+            Add(item);
+        }
+        else
+        {
+            AddHeroCargo(item);
+        }
     }
 }
 
@@ -243,4 +267,14 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
 void CLevel::Add(std::shared_ptr<CItem> item)
 {
     mItemVec.push_back(item);
+}
+
+/**
+ * Adds an item to hero/cargo vector
+ *
+ * \param item item to add to hero/cargo vector
+ */
+void CLevel::AddHeroCargo(std::shared_ptr<CItem> item)
+{
+    mTempHeroCargoVec.push_back(item);
 }

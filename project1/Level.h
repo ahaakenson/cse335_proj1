@@ -28,6 +28,7 @@ public:
 	void Load(const std::wstring& filename);
 	void XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const double speed = 0.0, const int width = 0, const int yPos = 0);
 	void Add(std::shared_ptr<CItem> item);
+	void AddHeroCargo(std::shared_ptr<CItem> item);
 	/** Getter for item vector
 	 * 
 	 * \return item vector
@@ -49,5 +50,7 @@ private:
 	CGame* mGame; 
 	/// Pointer to hero of this level
 	std::shared_ptr<CHero> mHero; 
+	/// Temporary vector to hold hero and cargo to maintain draw order
+	std::vector<std::shared_ptr<CItem>> mTempHeroCargoVec;
 };
 
