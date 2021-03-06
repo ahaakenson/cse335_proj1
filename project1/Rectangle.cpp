@@ -22,6 +22,17 @@ CRectangle::CRectangle(CGame* game) :
 }
 
 /**
+ * Copy constructor
+ * \param rectangle Rectangle being copied
+ */
+CRectangle::CRectangle(const CRectangle& rectangle) : CDecor(rectangle)
+{
+	mColor = rectangle.mColor;
+	mHeight = rectangle.mHeight;
+	mWidth = rectangle.mWidth;
+}
+
+/**
  * Draws a rectangle object onto the screen
  *
  * \param graphics Graphics device to draw on

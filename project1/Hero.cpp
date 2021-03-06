@@ -30,6 +30,15 @@ CHero::CHero(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
 }
 
 /**
+ * Copy constructor
+ * \param hero Hero being copied
+ */
+CHero::CHero(const CHero& hero) : CItem(hero)
+{
+    mName = hero.mName;
+}
+
+/**
  * Load the attributes for a decor node.
  *
  * \param node The Xml node we are loading the decor from

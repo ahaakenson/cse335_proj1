@@ -27,6 +27,16 @@ CCargo::CCargo(CGame* game) : CItem(game)
 {
 }
 
+CCargo::CCargo(const CCargo& cargo) : CItem(cargo)
+{
+	mCarriedByHero = cargo.mCarriedByHero;
+	mEaten = cargo.mEaten;
+	mName = cargo.mName;
+	mId = cargo.mId;
+	mImage = cargo.mImage;
+	mCarriedImage = cargo.mCarriedImage;
+}
+
 void CCargo::Draw(Gdiplus::Graphics* graphics)
 {
 

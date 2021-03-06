@@ -45,6 +45,18 @@ CItem::CItem(CGame* game) : mGame(game)
 }
 
 /**
+ * Copy constructor
+ * \param item Copy of this item being created.
+ */
+CItem::CItem(const CItem& item)
+{
+    mX = item.GetX();
+    mY = item.GetY();
+    mItemImage = item.mItemImage;
+    mGame = item.mGame;
+}
+
+/**
  * Destructor
  */
 CItem::~CItem()

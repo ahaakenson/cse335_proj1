@@ -18,6 +18,15 @@ CCar::CCar(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap1, std::shared_pt
     mSwappedImage = bitmap2;
 }
 
+/**
+ * Copy constructor
+ * \param car Car being copied.
+ */
+CCar::CCar(const CCar& car) : CVehicle(car)
+{
+    mSwappedImage = car.mSwappedImage;
+    mSwapTime = car.mSwapTime;
+}
 
 /**
  * 

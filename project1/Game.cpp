@@ -14,6 +14,7 @@
 #include <memory>
 #include <map>
 #include <utility>
+#include <algorithm>
 #include "Cargo.h"
 #include "Car.h"
 #include "IsCargoVisitor.h"
@@ -92,7 +93,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 std::pair<double, double> CGame::ScaleCoords(int x, int y)
 {
     double oX = (x - mXOffset) / mScale;
-    double oY = (x - mYOffset) / mScale;
+    double oY = (y - mYOffset) / mScale;
 
     return std::make_pair(oX, oY);
 }
@@ -354,8 +355,23 @@ void CGame::Update(double elapsed)
 void CGame::Load(const int level)
 {
     Clear();
-    mItems = mLevels[level]->GetItems();
-    mHero = mLevels[level]->GetHero();
+    // Add Decor and vehicle copies to items vector
+    for (auto& levelItem : mLevels[level]->GetItems())
+    {
+        auto item = levelItem->clone();
+        Add(item);
+    }
+
+    // Make a clone of hero and set pointer to that
+    mHero = mLevels[level]->GetHero()->cloneHero();
+    Add(mHero);
+
+    // Add cargo copies to items vector
+    for (auto& cargoItem : mLevels[level]->GetCargo())
+    {
+        auto item = cargoItem->clone();
+        Add(item);
+    }
 
     // Set the location of the hero
     mHero->SetLocation(480, 928);

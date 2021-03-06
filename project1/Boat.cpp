@@ -17,6 +17,14 @@ CBoat::CBoat(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed,
 {
 }
 
+/**
+ * Copy constructor
+ * \param boat Boat being copied.
+ */
+CBoat::CBoat(const CBoat& boat) : CVehicle(boat)
+{
+    mSwapTime = boat.mSwapTime;
+}
 
 /**
  * Function to load the boat

@@ -23,8 +23,8 @@ public:
     /// Default constructor (disabled)
     CVehicle() = delete;
 
-    /// Copy constructor (disabled)
-    CVehicle(const CVehicle&) = delete;
+    /// Copy constructor
+    CVehicle(const CVehicle&);
 
     CVehicle(CGame* game);
 
@@ -45,6 +45,11 @@ public:
     virtual void Accept(CItemVisitor* visitor) override { visitor->VisitVehicle(this); }
 
     virtual void Draw(Gdiplus::Graphics* graphics) override;
+
+    /** Clones a vehicle by invoking the copy constructor, returns an item pointer
+    * \return pointer to a copied object
+    */
+    virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CVehicle>(*this); }
 
 private:
     /// Vehicle speed

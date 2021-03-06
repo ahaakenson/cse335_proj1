@@ -24,8 +24,8 @@ public:
 	/// Default contructor (disabled)
 	CItem() = delete;
 
-	/// Copy constructor (disabled)
-	CItem(const CItem&) = delete;
+	/// Copy constructor
+	CItem(const CItem& item);
 
 	virtual ~CItem();
 
@@ -66,7 +66,12 @@ public:
 
 	/** Accept a visitor
 	 * \param visitor The visitor we accept */
-	virtual void Accept(CItemVisitor* visitor) = 0;
+	virtual void Accept(CItemVisitor* visitor) {};
+
+	/** Pure virtual function which clones an item by invoking copy constructor
+	* \return pointer to a copied item
+	*/
+	virtual std::shared_ptr<CItem> clone() const = 0;
 
 protected:
 	CItem(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, int yPos, int xPos);

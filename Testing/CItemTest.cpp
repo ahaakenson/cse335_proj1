@@ -25,6 +25,8 @@ namespace Testing
 		/** Accept a visitor
 		* \param visitor The visitor we accept */
 		virtual void Accept(CItemVisitor* visitor) override { }
+
+		virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CItemMock>(*this); }
 	};
 	TEST_CLASS(CItemTest)
 	{
