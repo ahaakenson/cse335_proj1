@@ -25,6 +25,7 @@ using namespace Gdiplus;
 CControlPanel::CControlPanel(CGame* game)
 {
     mGame = game;
+    mLevel = 0;
 }
 
 /**
@@ -39,35 +40,50 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
    // string minutes = to_string(mMinutes);
     wstring seconds = to_wstring(mSeconds);
 
+    // Font family for control panel (at the moment)
     FontFamily fontFamily(L"Arial");
-    Gdiplus::Font font(&fontFamily, 24);
+
+    // Font for "Get Ready!"
+    Gdiplus::Font getReadyFont(&fontFamily, 16);
+
+    // Font for timer
+    Gdiplus::Font timerFont(&fontFamily, 22);
+
+    // Brush for timer and get ready
+    SolidBrush white(Color(248, 242, 218));
 
     // The amount of time to display the level icon for
     const double displayLevelTime = 3.0; // Seconds
 
-    // If the total elapsed time is less than this number, draw the level
+    // If the total elapsed time is less than this number, draw "Get ready!"
     if (mTime < displayLevelTime)
     {
-        SolidBrush green(Color(144, 238, 144));
-        graphics->DrawString(L"Level 1", -1,
-            &font, PointF(1024, 2), &green);
+        graphics->DrawString(L"Get Ready!", -1,
+            &getReadyFont, PointF(1024, 2), &white);
     }
     else
     {
-        SolidBrush green(Color(144, 238, 144));
 
         // Minutes
         graphics->DrawString(L"00", -1,
-            &font, PointF(1024, 2), &green);
+            &timerFont, PointF(1024, 2), &white);
 
         // Minutes
         graphics->DrawString(L":", -1,
-            &font, PointF(1060, 2), &green);
+            &timerFont, PointF(1060, 2), &white);
 
         // Seconds
         graphics->DrawString(L"00", -1,
-            &font, PointF(1070, 2), &green);
+            &timerFont, PointF(1070, 2), &white);
     }
+
+    // Font for level
+    Gdiplus::Font font(&fontFamily, 24);
+
+    // Draw the level number
+    SolidBrush green(Color(144, 238, 144));
+    graphics->DrawString(L"Level 1", -1,
+        &font, PointF(1024, 40), &green);
 
 
     // Draw the Cargo
@@ -75,13 +91,13 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
 
     graphics->DrawString(L"Fox", -1,
-        &font, PointF(1024, 40), &orange);
+        &font, PointF(1024, 90), &orange);
 
     graphics->DrawString(L"Goose", -1,
-        &font, PointF(1024, 80), &orange);
+        &font, PointF(1024, 130), &orange);
 
     graphics->DrawString(L"Grain", -1,
-        &font, PointF(1024, 120), &orange);
+        &font, PointF(1024, 170), &orange);
 
 
 }

@@ -29,19 +29,31 @@ public:
 	//Function to constantly update timer
 	void Update(double elapsed);
 
+	/**
+	* Set the level this control panel belongs to
+	* \param level The level this control panel belongs to
+	*/
+	void SetLevel(std::shared_ptr<CLevel> level, const int levelNumber) { mLevel = level, mLevelNumber = levelNumber; }
+
 
 private: 
 	
-	// The game this control panel belongs to
+	/// The game this control panel belongs to
 	CGame* mGame;
 
-	// Total time
+	/// The level this control panel is a part of
+	std::shared_ptr<CLevel> mLevel = nullptr;
+
+	/// The level number
+	int mLevelNumber = 0;
+
+	/// Total time
 	double mTime = 0;
 
-	// Minutes
+	/// Minutes
 	int mMinutes = 0;
 
-	// Seconds
+	/// Seconds
 	int mSeconds = 0;
 	
 };

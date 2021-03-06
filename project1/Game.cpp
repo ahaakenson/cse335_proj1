@@ -230,7 +230,6 @@ void CGame::Load(const std::wstring& filename)
 
         }
 
-
     }
     catch (CXmlNode::Exception ex)
     {
@@ -357,7 +356,13 @@ void CGame::Load(const int level)
     Clear();
     mItems = mLevels[level]->GetItems();
     mHero = mLevels[level]->GetHero();
-    mHero->SetLocation(512, 928);
+
+    // Set the location of the hero
+    mHero->SetLocation(480, 928);
+
+    // Set this control panel to the level
+    mControlPanel->SetLevel(mLevels[level], level);
+
     return;
 }
 
