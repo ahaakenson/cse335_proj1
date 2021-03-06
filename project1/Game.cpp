@@ -92,7 +92,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
 std::pair<double, double> CGame::ScaleCoords(int x, int y)
 {
     double oX = (x - mXOffset) / mScale;
-    double oY = (x - mYOffset) / mScale;
+    double oY = (y - mYOffset) / mScale;
 
     return std::make_pair(oX, oY);
 }
