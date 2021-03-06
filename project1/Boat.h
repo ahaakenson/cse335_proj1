@@ -18,12 +18,17 @@ public:
     /// Default constructor (disabled)
     CBoat() = delete;
 
-    /// Copy constructor (disabled)
-    CBoat(const CBoat&) = delete;
+    /// Copy constructor
+    CBoat(const CBoat&);
 
     CBoat::CBoat(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos, int width);
 
     virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
+
+    /** Clones a boat by invoking the copy constructor, returns an item pointer
+    * \return pointer to a copied item
+    */
+    virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CBoat>(*this); }
 
 
 private:

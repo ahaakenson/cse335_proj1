@@ -26,7 +26,7 @@ public:
 	CCargo() = delete;
 
 	/// Copy constructor (disabled)
-	CCargo(const CCargo&) = delete;
+	CCargo(const CCargo&);
 
 	CCargo(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 
@@ -51,6 +51,11 @@ public:
 	/** Accept a visitor
 	 * \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitCargo(this); }
+
+	/** Clones a cargo item by invoking the copy constructor, returns an item pointer
+	* \return pointer to a copied item
+	*/
+	virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CCargo>(*this); }
 
 private:
 

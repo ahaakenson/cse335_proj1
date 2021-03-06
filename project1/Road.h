@@ -21,7 +21,7 @@ public:
 	CRoad() = delete;
 
 	/// Copy constructor (disabled)
-	CRoad(const CRoad&) = delete;
+	//CRoad(const CRoad&) = delete;
 
 	void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 

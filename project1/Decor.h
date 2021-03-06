@@ -21,8 +21,8 @@ public:
 	/// Default contructor (disabled)
 	CDecor() = delete;
 
-	/// Copy constructor (disabled)
-	CDecor(const CDecor&) = delete;
+	/// Copy constructor
+	CDecor(const CDecor&);
 
 	CDecor(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 	CDecor(CGame* game);
@@ -42,6 +42,11 @@ public:
 	/** Accept a visitor
 	 * \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) override { visitor->VisitDecor(this); }
+
+	/** Clones a decor item by invoking the copy constructor, returns an item pointer
+	* \return pointer to a copied item
+	*/
+	virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CDecor>(*this); }
 
 private:
 	/// How many times decor repeats in x direction

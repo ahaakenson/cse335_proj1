@@ -20,8 +20,8 @@ public:
     /// Default constructor (disabled)
     CHero() = delete;
 
-    /// Copy constructor (disabled)
-    CHero(const CHero&) = delete;
+    /// Copy constructor
+    CHero(const CHero&);
 
     //CHero::CHero(CGame* game);
     CHero::CHero(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
@@ -43,6 +43,15 @@ public:
 
     virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
+    /** Clones a hero by invoking the copy constructor, returns an item pointer
+    * \return pointer to a copied object
+    */
+    virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CHero>(*this); }
+
+    /** Clones a hero by invoking the copy constructor, returns a hero pointer
+    * \return pointer to a copied hero
+    */
+    std::shared_ptr<CHero> cloneHero() const { return std::make_shared<CHero>(*this); }
 
 private:
 

@@ -30,6 +30,16 @@ CDecor::CDecor(CGame* game) :
 }
 
 /**
+ * Copy constructor
+ * \param decor Decor being copied
+ */
+CDecor::CDecor(const CDecor& decor) : CItem(decor)
+{
+	mRepeatX = decor.mRepeatX;
+	mRepeatY = decor.mRepeatY;
+}
+
+/**
  * Draws a decor object onto the screen
  *
  * \param graphics Graphics device to draw on

@@ -21,13 +21,18 @@ public:
 	CRectangle() = delete;
 
 	/// Copy constructor (disabled)
-	CRectangle(const CRectangle&) = delete;
+	CRectangle(const CRectangle&);
 
 	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
 	CRectangle(CGame* game);
 
 	virtual void Draw(Gdiplus::Graphics* graphics);
+
+	/** Clones a rectangle by invoking the copy constructor, returns an item pointer
+	* \return pointer to a copied object
+	*/
+	virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CRectangle>(*this); }
 
 private:
 	/// Vector representing RGB colors of rectangle

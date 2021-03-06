@@ -44,6 +44,14 @@ CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) : CItem
 {
 }
 
+/**
+ * Copy constructor
+ * \param vehicle Vehicle being copied.
+ */
+CVehicle::CVehicle(const CVehicle& vehicle) : CItem(vehicle)
+{
+    mSpeed = vehicle.mSpeed;
+}
 
 /**
  * Update function for vehicle. Checks if a vehicle needs to be reset 

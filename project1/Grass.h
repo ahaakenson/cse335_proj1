@@ -21,7 +21,7 @@ public:
 	CGrass() = delete;
 
 	/// Copy constructor (disabled)
-	CGrass(const CGrass&) = delete;
+	//CGrass(const CGrass&) = delete;
 
 	~CGrass();
 

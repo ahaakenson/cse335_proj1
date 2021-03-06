@@ -20,14 +20,19 @@ public:
     /// Default contructor (disabled)
     CCar() = delete;
 
-    /// Copy constructor (disabled)
-    CCar(const CCar&) = delete;
+    /// Copy constructor
+    CCar(const CCar&);
 
     CCar::CCar(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap1, std::shared_ptr<Gdiplus::Bitmap> bitmap2, double speed, int yPos, int xPos, int width);
 
     virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
 
     virtual void Update(double elapsed) override;
+
+    /** Clones a car by invoking the copy constructor, returns an item pointer
+    * \return pointer to a copied item
+    */
+    virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CCar>(*this); }
 
 
 private:
