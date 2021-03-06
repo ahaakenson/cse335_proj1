@@ -13,7 +13,7 @@
 #include "pch.h"
 #include "ControlPanel.h"
 #include <string>
-#include <wchar.h>
+#include <vector>
 
 using namespace std;
 using namespace Gdiplus;
@@ -42,7 +42,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     wstring seconds = to_wstring(mSeconds);
 
     // Font family for control panel (at the moment)
-    FontFamily fontFamily(L"Arial");
+    FontFamily fontFamily(L"Verdana");
 
     // Font for "Get Ready!"
     Gdiplus::Font getReadyFont(&fontFamily, 16);
@@ -94,17 +94,21 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     else
     {
 
-        // Minutes
-        graphics->DrawString(L"00", -1,
-            &timerFont, PointF(1024, 2), &white);
+        const WCHAR* minute = minutes.c_str();
+
+        graphics->DrawString(minute, -1,
+            &timerFont, PointF(1030, 2), &white);
+
+        const WCHAR* second = seconds.c_str();
+
+        graphics->DrawString(second, -1,
+            &timerFont, PointF(1080, 2), &white);
 
         // Minutes
         graphics->DrawString(L":", -1,
             &timerFont, PointF(1060, 2), &white);
 
-        // Seconds
-        graphics->DrawString(L"00", -1,
-            &timerFont, PointF(1070, 2), &white);
+
     }
 
     // Font for level
@@ -162,15 +166,18 @@ void CControlPanel::Update(double elapsed)
     // mTime accumulates time since last draw
     mTime += elapsed;
 
+    double test = floor(mTime);
+
     // Convert to minutes
     int minutes = mTime / 60;
-    int seconds = (int)(mTime-minutes) % 60;
+    int seconds = ((int)mTime) % 60;
 
     // Set minutes and seconds
     mMinutes = minutes;
     mSeconds = seconds;
 
 }
+
 
 //Need a drawsstring function, still unsure on how to 
 //convert double to string
