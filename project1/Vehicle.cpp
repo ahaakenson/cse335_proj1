@@ -68,10 +68,10 @@ void CVehicle::Update(double elapsed)
     int laneWidth = mLaneWidth * 64;
 
     // If going off the left of the screen
-    if (GetX() + maxVehicleWidth <= 0 && mSpeed < 0)
+    if (GetX() + (GetWidth() / 2) <= 0 && mSpeed < 0)
     {
         // Set the vehicle to the right boundary
-        SetLocation(GetX() + laneWidth + maxVehicleWidth, GetY());
+        SetLocation(GetX() + laneWidth, GetY());
     }
 
     // If going off the right of the screen
