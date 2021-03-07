@@ -4,6 +4,8 @@
 #include "Item.h"
 #include "Game.h"
 #include "Level.h"
+#include "Vehicle.h"
+#include "Decor.h"
 #include <string>
 #include <memory>
 
@@ -58,6 +60,28 @@ namespace Testing
 			// Test GetWidth and GetHeight
 			Assert::AreEqual(image->GetWidth(), item.GetWidth(), 0.0001);
 			Assert::AreEqual(image->GetHeight(), item.GetHeight(), 0.0001);
+		}
+
+		TEST_METHOD(TestCItemClone)
+		{
+			shared_ptr<Bitmap> bitmap = shared_ptr<Bitmap>(Bitmap::FromFile(filename.c_str()));
+			// Construct a game
+			CGame game;
+
+			// Add one of each object
+			auto cargo = make_shared<CCargo>(&game, bitmap);
+			auto vehicle = make_shared<CVehicle>(&game, bitmap);
+			auto decor = make_shared<CDecor>(&game, bitmap);
+
+			// Clone each object
+			auto cargoClone = cargo->clone();
+			auto vehicleClone = vehicle->clone();
+			auto decorClone = decor->clone();
+
+			// Check that the clones are not just nullptrs
+			Assert::IsNotNull(cargoClone.get());
+			Assert::IsNotNull(vehicleClone.get());
+			Assert::IsNotNull(decorClone.get());
 		}
 
 	};
