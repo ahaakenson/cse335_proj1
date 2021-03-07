@@ -570,3 +570,20 @@ void CGame::BoatTest()
     mHero->SetSpeed(0.0);
     mHero->SetOnBoat(false);
 }
+
+
+void CGame::CheckWinState()
+{
+    mGameWon = true;
+
+    for (auto i = mItems.rbegin(); i != mItems.rend(); i++)
+    {
+        CIsCargoVisitor visitor;
+        (*i)->Accept(&visitor);
+
+        if (visitor.IsCargo() && visitor.Cargo()->GetY() > 64)
+        {
+            mGameWon = false;
+        }
+    }
+}

@@ -79,6 +79,11 @@ public:
 	void BoatTest();
 
 	bool GameState() { return mGameOver; }
+	void CheckWinState();
+
+	bool GameLost() { return mGameOver; }
+
+	bool GameWon() { return mGameWon; }
 
 	bool GetRoadCheatState() { return mRoadCheatEnabled; }
 
@@ -122,8 +127,11 @@ private:
 	/// Pointer for control panel
 	std::shared_ptr<CControlPanel> mControlPanel;
 
-	// Bool to store if the game is over
+	/// Bool to store if the game is over
 	bool mGameOver = false;
+
+	/// Bool to store if the game is won
+	bool mGameWon = false;
 
 	/// River Cheat
 	bool mRiverCheatEnabled = false;
