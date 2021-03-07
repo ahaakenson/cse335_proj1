@@ -95,18 +95,18 @@ void CDecor::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 bool CDecor::HitTest(int x, int y)
 {
 
-    double wid = GetImage()->GetWidth();
-    double hit = GetImage()->GetHeight();
+    //double wid = GetImage()->GetWidth();
+    double hit = GetImage()->GetHeight() * GetRepeatY();
 
     // Make x and y relative to the top-left corner of the bitmap image.
     // Subtracting the center makes x, y relative to the center of
     // the image. Adding half the size makes x, y relative to the top
     // corner of the image.
-    double testX = x - GetX() + wid / 2;
-    double testY = y - GetY() + hit / 2;
+    //double testX = x - GetX() + wid / 2;
+    double testY = y - GetY();
 
     // Test to see if x, y are in the image
-    if (testX < 0 || testY < 0 || testX >= wid || testY >= hit)
+    if (testY < 0 || testY >= hit)
     {
         // We are outside the image
         return false;

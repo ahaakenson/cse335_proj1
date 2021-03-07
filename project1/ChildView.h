@@ -61,5 +61,7 @@ public:
 	afx_msg void OnLevelmenuLevel2();
 	afx_msg void OnLevelmenuLevel3();
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	afx_msg void OnCheatmenuRoadcheat();
+	afx_msg void OnCheatmenuRivercheat();
 };
 

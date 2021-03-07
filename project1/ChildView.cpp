@@ -49,6 +49,8 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_COMMAND(ID_LEVELMENU_LEVEL2, &CChildView::OnLevelmenuLevel2)
 	ON_COMMAND(ID_LEVELMENU_LEVEL3, &CChildView::OnLevelmenuLevel3)
 	ON_WM_TIMER()
+	ON_COMMAND(ID_CHEATMENU_ROADCHEAT, &CChildView::OnCheatmenuRoadcheat)
+	ON_COMMAND(ID_CHEATMENU_RIVERCHEAT, &CChildView::OnCheatmenuRivercheat)
 END_MESSAGE_MAP()
 
 
@@ -246,4 +248,36 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
 {
 	Invalidate();
 	CWnd::OnTimer(nIDEvent);
+}
+
+
+/**
+ * Road Cheat event handler
+ */
+void CChildView::OnCheatmenuRoadcheat()
+{
+	if (mGame.GetRoadCheatState())
+	{
+		mGame.SetRoadCheatState(false);
+	}
+	else
+	{
+		mGame.SetRoadCheatState(true);
+	}
+}
+
+
+/**
+ * River cheat event handler
+ */
+void CChildView::OnCheatmenuRivercheat()
+{
+	if (mGame.GetRiverCheatState())
+	{
+		mGame.SetRiverCheatState(false);
+	}
+	else
+	{
+		mGame.SetRiverCheatState(true);
+	}
 }

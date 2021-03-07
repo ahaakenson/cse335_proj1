@@ -78,6 +78,14 @@ public:
 
 	bool GameState() { return mGameOver; }
 
+	bool GetRoadCheatState() { return mRoadCheatEnabled; }
+
+	bool GetRiverCheatState() { return mRiverCheatEnabled; }
+
+	void SetRoadCheatState(bool state) { mRoadCheatEnabled = state; }
+
+	void SetRiverCheatState(bool state) { mRiverCheatEnabled = state; }
+
 private:
 	// game playing area constants:
 	// leftmost 1024 x 1024 is the game grid
@@ -114,6 +122,12 @@ private:
 
 	// Bool to store if the game is over
 	bool mGameOver = false;
+
+	/// River Cheat
+	bool mRiverCheatEnabled = false;
+
+	/// Road cheat
+	bool mRoadCheatEnabled = false;
 
 };
 

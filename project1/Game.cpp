@@ -253,6 +253,9 @@ void CGame::Clear()
 
     // Clear the control panel
     mControlPanel->Clear();
+
+    // Reset the game loss state
+    mGameOver = false;
 }
 
 
@@ -505,17 +508,17 @@ void CGame::CollisionTest(int x, int y)
     {
         (*i)->Accept(&visitor);
 
-        if (visitor.IsVehicle() && visitor.Vehicle()->HitTest(x, y))
+        if (visitor.IsVehicle() && visitor.Vehicle()->HitTest(x, y) && (GetRoadCheatState() == false))
         {
 
-            //mGameOver = true;
+            mGameOver = true;
 
         }
 
         (*i)->Accept(&decorVisitor);
 
         // Check if we are colliding with a river
-        if (decorVisitor.ReturnId() == L"r001" && decorVisitor.Decor()->HitTest(x, y))
+        if (decorVisitor.ReturnId() == L"r001" && decorVisitor.Decor()->HitTest(x, y) && (GetRiverCheatState() == false))
         {
 
             mGameOver = true;
