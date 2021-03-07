@@ -20,7 +20,7 @@ using namespace Gdiplus;
 CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos, int width) : mSpeed(speed),
 	mLaneWidth(width), CItem(game, bitmap, yPos, xPos)
 {
-
+    mLaneWidth = width;
 
 }
 
@@ -51,6 +51,7 @@ CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) : CItem
 CVehicle::CVehicle(const CVehicle& vehicle) : CItem(vehicle)
 {
     mSpeed = vehicle.mSpeed;
+    mLaneWidth = vehicle.mLaneWidth;
 }
 
 /**
