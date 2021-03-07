@@ -137,3 +137,13 @@ void CHero::moveRight()
     this->SetLocation(currentX + 64, currentY);
 
 }
+
+/**
+ * Update function for vehicle. Checks if a vehicle needs to be reset
+ * to the other side of the screen.
+ * \param elapsed Time elapsed
+ */
+void CHero::Update(double elapsed)
+{
+    SetLocation(GetX() + mSpeed * elapsed, GetY());
+}

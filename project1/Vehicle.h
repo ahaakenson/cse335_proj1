@@ -36,6 +36,11 @@ public:
     /// \param speed Speed
     void SetSpeed(double speed) { mSpeed = speed; }
 
+    /** Get the speed
+    * \return speed of vehicle
+    */
+    double GetSpeed() { return mSpeed; }
+
     virtual void Update(double elapsed);
 
     virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);

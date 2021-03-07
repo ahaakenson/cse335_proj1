@@ -13,6 +13,7 @@ class CCargo;
 class CVehicle;
 class CHero;
 class CDecor;
+class CBoat;
 
 /** Item visitor base class */
 class CItemVisitor
@@ -35,5 +36,11 @@ public:
 	/** Visit a CDecor object
 	 * \param decor Decor we are visiting */
 	virtual void VisitDecor(CDecor* decor) {}
+
+	/** Visit a CBoat object
+	 * \param boat Boat we are visiting */
+	virtual void VisitBoat(CBoat* boat) {}
+
+
 };
 

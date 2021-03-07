@@ -38,5 +38,12 @@ void CBoat::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 
 }
 
+/** Accept a visitor
+ * \param visitor The visitor we accept */
+void CBoat::Accept(CItemVisitor* visitor) 
+{ 
+    visitor->VisitBoat(this); 
+    visitor->VisitVehicle(this);
+}
 
 

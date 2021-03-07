@@ -30,6 +30,8 @@ public:
     */
     virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CBoat>(*this); }
 
+    virtual void Accept(CItemVisitor* visitor) override;
+
 
 private:
     /// Image swap time for boat

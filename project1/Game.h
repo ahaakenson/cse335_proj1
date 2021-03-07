@@ -76,6 +76,8 @@ public:
 
 	void CollisionTest(int x, int y);
 
+	void BoatTest();
+
 	bool GameState() { return mGameOver; }
 
 	bool GetRoadCheatState() { return mRoadCheatEnabled; }

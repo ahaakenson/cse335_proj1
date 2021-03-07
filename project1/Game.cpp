@@ -19,6 +19,7 @@
 #include "Car.h"
 #include "IsCargoVisitor.h"
 #include "IsVehicleVisitor.h"
+#include "IsBoatVisitor.h"
 #include "ControlPanel.h"
 #include "DecorTypeVisitor.h"
 
@@ -266,7 +267,7 @@ void CGame::Clear()
  */
 void CGame::moveHero(UINT nChar)
 {
-
+    bool validKeyPress = false;
     // This works but I don't like that it uses a number not the char
 
     // Call the appropriate move function based on what key was hit
@@ -277,26 +278,36 @@ void CGame::moveHero(UINT nChar)
     case 68:
     case 40:
         mHero->moveBackward();
+        validKeyPress = true;
         break;
 
     // Move hero forward 
     case 69:
     case 38:
         mHero->moveForward();
+        validKeyPress = true;
         break;
 
     // Move the hero right
     case 70:
     case 39:
         mHero->moveRight();
+        validKeyPress = true;
         break;
     
     // Move the hero left
     case 83:
     case 37:
         mHero->moveLeft();
+        validKeyPress = true;
         break;
 
+    }
+
+    // Key press actually moved hero, check if he stepped on a boat
+    if (validKeyPress)
+    {
+        BoatTest();
     }
 
 }
@@ -361,8 +372,15 @@ void CGame::Update(double elapsed)
             cargoVisitor.Cargo()->Update(elapsed, mHero);
         }
     }
+    // Update the hero in case he's on a boat
+    mHero->Update(elapsed);
 
-    CollisionTest(mHero->GetX(), mHero->GetY());
+    // Don't need to check for car/river collisions when on a boat
+    if (!mHero->GetOnBoat()) 
+    {
+        CollisionTest(mHero->GetX(), mHero->GetY());
+    }
+    
 
 }
 
@@ -524,7 +542,31 @@ void CGame::CollisionTest(int x, int y)
             mGameOver = true;
 
         }
-
     }
 
+}
+
+/** Tests whether hero stepped onto a boat, then locks his position with boat
+ */
+void CGame::BoatTest()
+{
+    CIsBoatVisitor visitor;
+
+    for (auto& item : mItems)
+    {
+        item->Accept(&visitor);
+
+        // Item is a boat and same tile as hero
+        if (visitor.IsBoat() && visitor.Boat()->HitTest(mHero->GetX(), mHero->GetY()))
+        {
+            CBoat* boat = visitor.Boat();
+            // Set speed and location, then return since we're done searching
+            mHero->SetSpeed(boat->GetSpeed());
+            mHero->SetOnBoat(true);
+            mHero->SetLocation(boat->GetX(), boat->GetY());
+            return;
+        }
+    }
+    mHero->SetSpeed(0.0);
+    mHero->SetOnBoat(false);
 }

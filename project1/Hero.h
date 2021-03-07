@@ -53,9 +53,28 @@ public:
     */
     std::shared_ptr<CHero> cloneHero() const { return std::make_shared<CHero>(*this); }
 
+    /** Gets whether hero is on boat
+    * \return whether hero is on a boat.
+    */
+    bool GetOnBoat() { return mOnBoat; }
+
+    /** Sets whether hero is on boat
+    * \param onBoat whether hero is on a boat.
+    */
+    void SetOnBoat(bool onBoat) { mOnBoat = onBoat; }
+
+    /** Sets speed of hero
+    * \param speed Speed of hero
+    */
+    void SetSpeed(double speed) { mSpeed = speed; }
+
+    void Update(double elapsed);
 private:
-
+    /// Name of hero
     std::wstring mName;
-
+    /// Speed of hero (non zero when on boat)
+    double mSpeed = 0.0;
+    /// Whether the hero is floating on a boat
+    bool mOnBoat = false;
 };
 
