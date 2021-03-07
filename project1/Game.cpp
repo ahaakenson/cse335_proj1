@@ -508,17 +508,14 @@ void CGame::CollisionTest(int x, int y)
         if (visitor.IsVehicle() && visitor.Vehicle()->HitTest(x, y))
         {
 
-            mGameOver = true;
+            //mGameOver = true;
 
         }
 
         (*i)->Accept(&decorVisitor);
 
-        //auto test = decorVisitor.ReturnId();
-        //auto te
-        // decorVisitor.ReturnId()[0] == 'r'
-
-        if (decorVisitor.ReturnId()[0] == 'r' && decorVisitor.Decor()->HitTest(x, y))
+        // Check if we are colliding with a river
+        if (decorVisitor.ReturnId() == L"r001" && decorVisitor.Decor()->HitTest(x, y))
         {
 
             mGameOver = true;

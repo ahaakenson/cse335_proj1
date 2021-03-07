@@ -15,6 +15,7 @@
 void CDecorTypeVisitor::VisitDecor(CDecor* decor)
 {
 
+    mDecor = decor;
     mDecorId = decor->GetId();
 
 }

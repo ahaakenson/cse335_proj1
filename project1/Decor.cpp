@@ -35,7 +35,7 @@ CDecor::CDecor(CGame* game) :
  */
 CDecor::CDecor(const CDecor& decor) : CItem(decor)
 {
-    mId = L"T001";
+    mId = decor.mId;
 	mRepeatX = decor.mRepeatX;
 	mRepeatY = decor.mRepeatY;
 }

@@ -58,7 +58,7 @@ public:
 private:
 	
 	/// The id of the decor
-	std::wstring mId = L"T001";
+	std::wstring mId;
 
 	/// How many times decor repeats in x direction
 	int mRepeatX = 1;
