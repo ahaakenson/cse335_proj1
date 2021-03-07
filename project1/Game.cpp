@@ -249,6 +249,9 @@ void CGame::Clear()
     // Removes the contents of the current level
     // (used when a level is completed and we want to load in the items of the next level)
     mItems.erase(mItems.begin(), mItems.end());
+
+    // Clear the control panel
+    mControlPanel->Clear();
 }
 
 
@@ -378,6 +381,28 @@ void CGame::Load(const int level)
     {
         auto item = cargoItem->clone();
         Add(item);
+
+    }
+
+    // number of cargo
+    int cargoNumber = 0;
+
+    CIsCargoVisitor visitor;
+    // Load the names of the cargo into the control panel
+    for (auto i = mItems.rbegin(); i != mItems.rend(); i++) // Iterate through the items and detemrine if they are cargo
+    {
+        // Accept the visitor
+        (*i)->Accept(&visitor);
+
+        // If the item is cargo
+        if (visitor.IsCargo() && cargoNumber < 3)
+        {
+
+            // Push back the cargo item name
+            mControlPanel->SetCargoItem(visitor.Cargo()->GetName());
+            cargoNumber++;
+
+        }
     }
 
     // Set the location of the hero

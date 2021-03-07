@@ -57,6 +57,8 @@ public:
 	*/
 	virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CCargo>(*this); }
 
+	std::wstring GetName() { return mName; }
+
 private:
 
 	/// Flag for if the cargo is currently being held by the hero

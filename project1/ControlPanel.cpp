@@ -14,6 +14,8 @@
 #include "ControlPanel.h"
 #include <string>
 #include <vector>
+#include <algorithm>
+#include "IsCargoVisitor.h";
 
 using namespace std;
 using namespace Gdiplus;
@@ -35,11 +37,6 @@ CControlPanel::CControlPanel(CGame* game)
  */
 void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 {
-
-    wstring minutes = to_wstring(mMinutes);
-
-   // string minutes = to_string(mMinutes);
-    wstring seconds = to_wstring(mSeconds);
 
     // Font family for control panel (at the moment)
     FontFamily fontFamily(L"Verdana");
@@ -93,20 +90,39 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     // Draw the timer
     else
     {
+        // Convert to wstring
+        wstring minutes = to_wstring(mMinutes); // minutes
 
-        const WCHAR* minute = minutes.c_str();
+        wstring seconds = to_wstring(mSeconds); // seconds
 
+        // Convert to WCHAR*
+        const WCHAR* minute = minutes.c_str(); // minutes
+
+        const WCHAR* second = seconds.c_str(); // seconds
+
+
+        // Draw timer
         graphics->DrawString(minute, -1,
-            &timerFont, PointF(1030, 2), &white);
+            &timerFont, PointF(1060, 2), &white); // minutes
 
-        const WCHAR* second = seconds.c_str();
+        // If the time is less than 10 seconds, draw a leading zero
+        if (mSeconds < 10)
+        {
+            // Draw a leading zero
+            graphics->DrawString(L"0", -1,
+                &timerFont, PointF(1090, 2), &white); // seconds
+            graphics->DrawString(second, -1,
+                &timerFont, PointF(1110, 2), &white); // seconds
+        }
+        // else draw the whole double digit
+        else
+        {
+            graphics->DrawString(second, -1,
+                &timerFont, PointF(1090, 2), &white); // seconds
+        }
 
-        graphics->DrawString(second, -1,
-            &timerFont, PointF(1080, 2), &white);
-
-        // Minutes
         graphics->DrawString(L":", -1,
-            &timerFont, PointF(1060, 2), &white);
+            &timerFont, PointF(1075, 2), &white); // colon
 
 
     }
@@ -143,15 +159,18 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
     // Draw the Cargo
 
-    graphics->DrawString(L"Fox", -1,
-        &font, PointF(1024, 90), &pink);
+    int i = 90;
+    for (auto name : mCargoNames)
+    {
 
-    graphics->DrawString(L"Goose", -1,
-        &font, PointF(1024, 130), &pink);
+        // Convert to WCHAR*
+        const WCHAR* cargoName = name.c_str(); // minutes
+        graphics->DrawString(cargoName, -1,
+            &font, PointF(1024, i), &pink);
 
-    graphics->DrawString(L"Grain", -1,
-        &font, PointF(1024, 170), &pink);
+        i += 40;
 
+    }
 
 }
 
@@ -166,8 +185,6 @@ void CControlPanel::Update(double elapsed)
     // mTime accumulates time since last draw
     mTime += elapsed;
 
-    double test = floor(mTime);
-
     // Convert to minutes
     int minutes = mTime / 60;
     int seconds = ((int)mTime) % 60;
@@ -175,6 +192,17 @@ void CControlPanel::Update(double elapsed)
     // Set minutes and seconds
     mMinutes = minutes;
     mSeconds = seconds;
+
+}
+
+
+/**
+ * Clear the cargo names
+ */
+void CControlPanel::Clear()
+{
+
+    mCargoNames.erase(mCargoNames.begin(), mCargoNames.end());
 
 }
 

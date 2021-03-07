@@ -35,6 +35,10 @@ public:
 	*/
 	void SetLevel(std::shared_ptr<CLevel> level, const int levelNumber) { mLevel = level, mLevelNumber = levelNumber; }
 
+	void SetCargoItem(std::wstring cargoName) { mCargoNames.push_back(cargoName); }
+
+	void Clear();
+
 
 private: 
 	
@@ -43,6 +47,9 @@ private:
 
 	/// The level this control panel is a part of
 	std::shared_ptr<CLevel> mLevel = nullptr;
+
+	/// Names of the cargo items
+	std::vector<std::wstring> mCargoNames;
 
 	/// The level number
 	int mLevelNumber = 0;
