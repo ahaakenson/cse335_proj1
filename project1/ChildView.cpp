@@ -112,7 +112,7 @@ void CChildView::OnPaint()
 			mGame.Add(levelPtr);
 		}
 		// Load level 0 from level vector
-		mGame.Load(0);
+		mGame.Load(1);
 		Invalidate();
 	}
 
@@ -185,9 +185,17 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	// Initiate movement checks
+	// Move the hero
 	mGame.moveHero(nChar);
-	//Invalidate();
+
+	// Get the hero's x and y
+	//auto hero = mGame.GetHero();
+
+	//auto heroX = hero->GetX(); // Hero x position
+	//auto heroY = hero->GetY(); // Hero y position
+
+	// Collision test the hero's movement
+	//mGame.CollisionTest(heroX, heroY);
 
 }
 

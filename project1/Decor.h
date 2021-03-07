@@ -37,6 +37,8 @@ public:
 
 	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
+	bool HitTest(int x, int y);
+
 	virtual void Draw(Gdiplus::Graphics* graphics);
 
 	/** Accept a visitor
@@ -48,9 +50,19 @@ public:
 	*/
 	virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CDecor>(*this); }
 
+	/** Get the decor's id
+	* \return mId
+	*/
+	std::wstring GetId() { return mId; }
+
 private:
+	
+	/// The id of the decor
+	std::wstring mId = L"T001";
+
 	/// How many times decor repeats in x direction
 	int mRepeatX = 1;
+
 	/// How many times decor repeats in y direction
 	int mRepeatY = 1;
 

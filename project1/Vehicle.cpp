@@ -155,3 +155,26 @@ void CVehicle::Draw(Gdiplus::Graphics* graphics)
     }
 
 }
+
+bool CVehicle::HitTest(int x, int y)
+{
+
+    double wid = GetImage()->GetWidth();
+    double hit = GetImage()->GetHeight();
+
+    // Make x and y relative to the top-left corner of the bitmap image.
+    // Subtracting the center makes x, y relative to the center of
+    // the image. Adding half the size makes x, y relative to the top
+    // corner of the image.
+    double testX = x - GetX() + wid / 2;
+    double testY = y - GetY() + hit / 2;
+
+    // Test to see if x, y are in the image
+    if (testX < 0 || testY < 0 || testX >= wid || testY >= hit)
+    {
+        // We are outside the image
+        return false;
+    }
+    else return true;
+
+}

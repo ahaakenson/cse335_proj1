@@ -176,6 +176,21 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
     }
 
+    // IF the game was lost, draw game over
+    if (mGame->GameState())
+    {
+
+        // Font family for control panel (at the moment)
+        FontFamily fontFamily(L"Verdana");
+
+        // Font for "Get Ready!"
+        Gdiplus::Font getReadyFont(&fontFamily, 20);
+
+        graphics->DrawString(L"Game Over", -1,
+            &font, PointF(350, 480), &orange);
+
+    }
+
 }
 
 /**

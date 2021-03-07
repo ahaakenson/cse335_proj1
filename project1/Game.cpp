@@ -20,6 +20,7 @@
 #include "IsCargoVisitor.h"
 #include "IsVehicleVisitor.h"
 #include "ControlPanel.h"
+#include "DecorTypeVisitor.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -339,6 +340,8 @@ void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
  */
 void CGame::Update(double elapsed)
 {
+
+
     for (auto item : mItems)
     {
         CIsVehicleVisitor vehicleVisitor;
@@ -355,6 +358,9 @@ void CGame::Update(double elapsed)
             cargoVisitor.Cargo()->Update(elapsed, mHero);
         }
     }
+
+    CollisionTest(mHero->GetX(), mHero->GetY());
+
 }
 
 /**
@@ -481,5 +487,44 @@ void CGame::DrawControlPanel(Gdiplus::Graphics* graphics)
 {
 
     mControlPanel->Draw(graphics);
+
+}
+
+
+/**
+ * Collision test for Hero
+ * \param x The x coordinate for the hero
+ * \param y The y coordinate for the hero
+ */
+void CGame::CollisionTest(int x, int y)
+{
+    CDecorTypeVisitor decorVisitor;
+    CIsVehicleVisitor visitor;
+
+    for (auto i = mItems.rbegin(); i != mItems.rend(); i++)
+    {
+        (*i)->Accept(&visitor);
+
+        if (visitor.IsVehicle() && visitor.Vehicle()->HitTest(x, y))
+        {
+
+            mGameOver = true;
+
+        }
+
+        (*i)->Accept(&decorVisitor);
+
+        //auto test = decorVisitor.ReturnId();
+        //auto te
+        // decorVisitor.ReturnId()[0] == 'r'
+
+        if (decorVisitor.ReturnId()[0] == 'r' && decorVisitor.Decor()->HitTest(x, y))
+        {
+
+            mGameOver = true;
+
+        }
+
+    }
 
 }

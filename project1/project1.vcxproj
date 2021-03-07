@@ -193,6 +193,7 @@
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="ControlPanel.h" />
     <ClInclude Include="Decor.h" />
+    <ClInclude Include="DecorTypeVisitor.h" />
     <ClInclude Include="DoubleBufferDC.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
@@ -221,6 +222,7 @@
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="Decor.cpp" />
+    <ClCompile Include="DecorTypeVisitor.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Grass.cpp" />
     <ClCompile Include="Hero.cpp" />

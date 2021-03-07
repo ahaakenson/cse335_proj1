@@ -35,6 +35,7 @@ CDecor::CDecor(CGame* game) :
  */
 CDecor::CDecor(const CDecor& decor) : CItem(decor)
 {
+    mId = L"T001";
 	mRepeatX = decor.mRepeatX;
 	mRepeatY = decor.mRepeatY;
 }
@@ -77,6 +78,39 @@ void CDecor::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 	// Save repeats in each direction
 	int repeatX = node->GetAttributeIntValue(L"repeat-x", 1);
 	int repeatY = node->GetAttributeIntValue(L"repeat-y", 1);
+	std::wstring id = node->GetAttributeValue(L"id", L"");
+
+	mId = id;
 	mRepeatX = repeatX;
 	mRepeatY = repeatY;
+}
+
+
+/**
+ * Hittest for decor tile
+ * \param x 
+ * \param y 
+ * \returns 
+ */
+bool CDecor::HitTest(int x, int y)
+{
+
+    double wid = GetImage()->GetWidth();
+    double hit = GetImage()->GetHeight();
+
+    // Make x and y relative to the top-left corner of the bitmap image.
+    // Subtracting the center makes x, y relative to the center of
+    // the image. Adding half the size makes x, y relative to the top
+    // corner of the image.
+    double testX = x - GetX() + wid / 2;
+    double testY = y - GetY() + hit / 2;
+
+    // Test to see if x, y are in the image
+    if (testX < 0 || testY < 0 || testX >= wid || testY >= hit)
+    {
+        // We are outside the image
+        return false;
+    }
+    else return true;
+
 }

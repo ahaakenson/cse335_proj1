@@ -74,7 +74,9 @@ public:
 
 	void DrawControlPanel(Gdiplus::Graphics* graphics);
 
-	//void CollisionTest(int x, int y);
+	void CollisionTest(int x, int y);
+
+	bool GameState() { return mGameOver; }
 
 private:
 	// game playing area constants:
@@ -109,6 +111,9 @@ private:
 
 	/// Pointer for control panel
 	std::shared_ptr<CControlPanel> mControlPanel;
+
+	// Bool to store if the game is over
+	bool mGameOver = false;
 
 };
 

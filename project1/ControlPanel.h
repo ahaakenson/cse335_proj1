@@ -39,7 +39,6 @@ public:
 
 	void Clear();
 
-
 private: 
 	
 	/// The game this control panel belongs to
