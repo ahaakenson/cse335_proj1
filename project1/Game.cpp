@@ -387,7 +387,9 @@ void CGame::Load(const int level)
     // number of cargo
     int cargoNumber = 0;
 
+    // Cargo Visitor 
     CIsCargoVisitor visitor;
+
     // Load the names of the cargo into the control panel
     for (auto i = mItems.rbegin(); i != mItems.rend(); i++) // Iterate through the items and detemrine if they are cargo
     {

@@ -1,13 +1,7 @@
 /**
  * \file ControlPanel.cpp
  *
- * \author Michael Dittman
- */
-
-/**
- * \file ControlPanel.cpp
- *
- * \author Matthew Norris
+ * \author(s), Matthew Norris, Michael Dittman
  */
 
 #include "pch.h"
@@ -42,7 +36,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     FontFamily fontFamily(L"Verdana");
 
     // Font for "Get Ready!"
-    Gdiplus::Font getReadyFont(&fontFamily, 16);
+    Gdiplus::Font getReadyFont(&fontFamily, 20);
 
     // Font for timer
     Gdiplus::Font timerFont(&fontFamily, 22);
@@ -51,7 +45,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     SolidBrush orange(Color(255, 111, 1));
 
     // Font for "Level x begin"
-    Gdiplus::Font levelBeginFont(&fontFamily, 44);
+    Gdiplus::Font levelBeginFont(&fontFamily, 44, FontStyleBold);
 
     // Brush for "Get ready!"
     SolidBrush white(Color(248, 242, 218));
@@ -70,19 +64,19 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
         {
         case 0:
             graphics->DrawString(L"Level 0 Begin", -1,
-                &levelBeginFont, PointF(350,512), &orange);
+                &levelBeginFont, PointF(350,480), &orange);
             break;
         case 1:
             graphics->DrawString(L"Level 1 Begin", -1,
-                &levelBeginFont, PointF(350, 512), &orange);
+                &levelBeginFont, PointF(350, 480), &orange);
             break;
         case 2:
             graphics->DrawString(L"Level 2 Begin", -1,
-                &levelBeginFont, PointF(350, 512), &orange);
+                &levelBeginFont, PointF(350, 480), &orange);
             break;
         case 3:
             graphics->DrawString(L"Level 3 Begin", -1,
-                &levelBeginFont, PointF(350, 512), &orange);
+                &levelBeginFont, PointF(350, 480), &orange);
             break;
         }
 
@@ -100,10 +94,20 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
         const WCHAR* second = seconds.c_str(); // seconds
 
+        // If we are going to draw double digit time
+        if (mMinutes > 9)
+        {
+            // Draw timer
+            graphics->DrawString(minute, -1,
+                &timerFont, PointF(1040, 2), &white); // minutes
+        }
+        else
+        {
+            // Draw timer
+            graphics->DrawString(minute, -1,
+                &timerFont, PointF(1060, 2), &white); // minutes
+        }
 
-        // Draw timer
-        graphics->DrawString(minute, -1,
-            &timerFont, PointF(1060, 2), &white); // minutes
 
         // If the time is less than 10 seconds, draw a leading zero
         if (mSeconds < 10)
@@ -164,17 +168,15 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     {
 
         // Convert to WCHAR*
-        const WCHAR* cargoName = name.c_str(); // minutes
-        graphics->DrawString(cargoName, -1,
-            &font, PointF(1024, i), &pink);
+        const WCHAR* cargoName = name.c_str(); // name
+        graphics->DrawString(cargoName, -1, 
+            &font, PointF(1024, i), &pink); // draw
 
         i += 40;
 
     }
 
 }
-
-
 
 /**
  * Function that will update the timer, every second
@@ -195,17 +197,15 @@ void CControlPanel::Update(double elapsed)
 
 }
 
-
 /**
  * Clear the cargo names
  */
 void CControlPanel::Clear()
 {
+    // Set time to zero
+    mTime = 0.0;
 
+    // Clear cargo names
     mCargoNames.erase(mCargoNames.begin(), mCargoNames.end());
-
 }
 
-
-//Need a drawsstring function, still unsure on how to 
-//convert double to string

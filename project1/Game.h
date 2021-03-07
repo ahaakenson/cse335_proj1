@@ -74,6 +74,8 @@ public:
 
 	void DrawControlPanel(Gdiplus::Graphics* graphics);
 
+	//void CollisionTest(int x, int y);
+
 private:
 	// game playing area constants:
 	// leftmost 1024 x 1024 is the game grid
