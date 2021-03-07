@@ -177,7 +177,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     }
 
     // IF the game was lost, draw game over
-    if (mGame->GameState())
+    if (mGame->GameLost())
     {
 
         // Font family for control panel (at the moment)
@@ -189,6 +189,11 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
         graphics->DrawString(L"Game Over", -1,
             &font, PointF(350, 480), &orange);
 
+    }
+
+    if (mGame->GameWon())
+    {
+        
     }
 
 }

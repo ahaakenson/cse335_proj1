@@ -6,6 +6,7 @@
 
 #include "pch.h"
 #include "Cargo.h"
+#include "Game.h"
 
 /**
  * Constructor for CCargo
@@ -87,7 +88,8 @@ void CCargo::Release()
 	{
 		mCarriedImage = mImage;
 	}
-	///
+	
+	GetGame()->CheckWinState();
 }
 
 

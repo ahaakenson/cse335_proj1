@@ -528,3 +528,20 @@ void CGame::CollisionTest(int x, int y)
     }
 
 }
+
+
+void CGame::CheckWinState()
+{
+    mGameWon = true;
+
+    for (auto i = mItems.rbegin(); i != mItems.rend(); i++)
+    {
+        CIsCargoVisitor visitor;
+        (*i)->Accept(&visitor);
+
+        if (visitor.IsCargo() && visitor.Cargo()->GetY() > 64)
+        {
+            mGameWon = false;
+        }
+    }
+}
