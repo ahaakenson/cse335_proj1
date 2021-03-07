@@ -12,6 +12,10 @@
  * Constructor
  * \param game Game that boat is in
  * \param bitmap Image of boat
+ * \param speed Speed of boat
+ * \param yPos y position of boat
+ * \param xPos x position of boat
+ * \param width width of the river
  */
 CBoat::CBoat(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos, int width) : 
     CVehicle(game, bitmap, speed, yPos, xPos, width)

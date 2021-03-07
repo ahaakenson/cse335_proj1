@@ -335,6 +335,40 @@ namespace Testing
 
 		}
 
+		TEST_METHOD(TestCHeroGettersSetters)
+		{
+
+			// Create a new game
+			CGame game;
+
+			// Create a new hero
+			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
+
+			// Set its location (irrelevant, but processes for hero creation recorded regardless)
+			hero->SetLocation(0, 0);
+
+			// Add the hero item to the game list
+			game.Add(hero);
+
+			// Set the games hero to this hero
+			game.SetHero(hero);
+
+			hero->SetOnBoat(false);
+
+			Assert::IsFalse(hero->GetOnBoat());
+		}
+
+		TEST_METHOD(TestCHeroClone)
+		{
+			// Create a new game
+			CGame game;
+
+			// Create a new hero
+			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
+
+			auto heroClone = hero->cloneHero();
+			Assert::IsNotNull(heroClone.get());
+		}
 
 	};
 }
