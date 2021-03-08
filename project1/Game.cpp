@@ -271,43 +271,49 @@ void CGame::moveHero(UINT nChar)
     // This works but I don't like that it uses a number not the char
 
     // Call the appropriate move function based on what key was hit
-    switch (nChar)
+
+    if (!mGameOver)
     {
-    
-    // Move hero backward
-    case 68:
-    case 40:
-        mHero->moveBackward();
-        validKeyPress = true;
-        break;
+        
+        switch (nChar)
+        {
 
-    // Move hero forward 
-    case 69:
-    case 38:
-        mHero->moveForward();
-        validKeyPress = true;
-        break;
+            // Move hero backward
+        case 68:
+        case 40:
+            mHero->moveBackward();
+            validKeyPress = true;
+            break;
 
-    // Move the hero right
-    case 70:
-    case 39:
-        mHero->moveRight();
-        validKeyPress = true;
-        break;
-    
-    // Move the hero left
-    case 83:
-    case 37:
-        mHero->moveLeft();
-        validKeyPress = true;
-        break;
+            // Move hero forward 
+        case 69:
+        case 38:
+            mHero->moveForward();
+            validKeyPress = true;
+            break;
 
-    }
+            // Move the hero right
+        case 70:
+        case 39:
+            mHero->moveRight();
+            validKeyPress = true;
+            break;
 
-    // Key press actually moved hero, check if he stepped on a boat
-    if (validKeyPress)
-    {
-        BoatTest();
+            // Move the hero left
+        case 83:
+        case 37:
+            mHero->moveLeft();
+            validKeyPress = true;
+            break;
+
+        }
+
+        // Key press actually moved hero, check if he stepped on a boat
+        if (validKeyPress)
+        {
+            BoatTest();
+        }
+
     }
 
 }

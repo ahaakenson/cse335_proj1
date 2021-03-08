@@ -64,19 +64,19 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
         {
         case 0:
             graphics->DrawString(L"Level 0 Begin", -1,
-                &levelBeginFont, PointF(350,480), &orange);
+                &levelBeginFont, PointF(300,480), &orange);
             break;
         case 1:
             graphics->DrawString(L"Level 1 Begin", -1,
-                &levelBeginFont, PointF(350, 480), &orange);
+                &levelBeginFont, PointF(300, 480), &orange);
             break;
         case 2:
             graphics->DrawString(L"Level 2 Begin", -1,
-                &levelBeginFont, PointF(350, 480), &orange);
+                &levelBeginFont, PointF(300, 480), &orange);
             break;
         case 3:
             graphics->DrawString(L"Level 3 Begin", -1,
-                &levelBeginFont, PointF(350, 480), &orange);
+                &levelBeginFont, PointF(300, 480), &orange);
             break;
         }
 
