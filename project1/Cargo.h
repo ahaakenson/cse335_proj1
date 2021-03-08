@@ -57,6 +57,9 @@ public:
 	*/
 	virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CCargo>(*this); }
 
+	/** Gets name of cargo
+	* \return name of cargo
+	*/
 	std::wstring GetName() { return mName; }
 
 private:

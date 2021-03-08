@@ -16,6 +16,7 @@ using namespace Gdiplus;
  * \param speed Speed of the boat
  * \param yPos Y position
  * \param xPos X position
+ * \param width Width of the river or road
  */
 CVehicle::CVehicle(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos, int width) : mSpeed(speed),
 	mLaneWidth(width), CItem(game, bitmap, yPos, xPos)

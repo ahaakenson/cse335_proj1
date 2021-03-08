@@ -38,6 +38,9 @@ CCargo::CCargo(const CCargo& cargo) : CItem(cargo)
 	mCarriedImage = cargo.mCarriedImage;
 }
 
+/** Draws a cargo object
+ * \param graphics Pointer to where to draw cargo
+ */
 void CCargo::Draw(Gdiplus::Graphics* graphics)
 {
 
@@ -48,7 +51,6 @@ void CCargo::Draw(Gdiplus::Graphics* graphics)
 
 
 }
-
 
 /**
  * Load the attributes that are universal to Cargo
@@ -67,7 +69,8 @@ void CCargo::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 	mCarriedImage = node->GetAttributeValue(L"carried-image", L"");
 }
 
-
+/** Picks up cargo by hero
+ */
 void CCargo::PickUp()
 {
 	mCarriedByHero = true;
@@ -81,7 +84,8 @@ void CCargo::PickUp()
 	/// Will we have to implement an image swap similar to the cars? Confused on this
 }
 
-
+/** Releases cargo.
+ */
 void CCargo::Release()
 {
 	if (mCarriedByHero = false)
@@ -92,7 +96,11 @@ void CCargo::Release()
 	GetGame()->CheckWinState();
 }
 
-
+/** Checks if this cargo was hit by a mouse click.
+ * \param x X coordinate of mouse click
+ * \param y Y coordinate of mouse click
+ * \return True if cargo was clicked by mouse, false otherwise
+ */
 bool CCargo::HitTest(int x, int y)
 {
 	
@@ -119,6 +127,7 @@ bool CCargo::HitTest(int x, int y)
 /**
  * Update function for vehicle
  * \param elapsed Time elapsed
+ * \param hero Pointer to the hero
  */
 void CCargo::Update(double elapsed, std::shared_ptr<CHero> hero)
 {

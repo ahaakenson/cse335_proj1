@@ -23,7 +23,6 @@ public:
     /// Copy constructor
     CHero(const CHero&);
 
-    //CHero::CHero(CGame* game);
     CHero::CHero(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
 
     virtual std::shared_ptr<xmlnode::CXmlNode> 

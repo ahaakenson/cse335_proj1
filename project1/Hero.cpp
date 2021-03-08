@@ -11,17 +11,8 @@
 /// The upper border of the screen
 const int topBorder = 128;
 
+/// The lower border of the screen
 const int lowerBorder = 896;
-
-/**
- * Constructor for the Hero
- * \param game The game this Hero is a part of
- */
-/*
-CHero::CHero(CGame* game) : CItem(game, HeroImageName)
-{
-
-}*/
 
 /**
  * Constructor for the Hero

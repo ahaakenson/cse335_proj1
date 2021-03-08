@@ -184,6 +184,7 @@ void CLevel::Load(const std::wstring& filename)
 * \param node Pointer to XML node we are handling
 * \param speed Speed of vehicles on road or river, default value of 0.0
 * \param width Width of river or road, default value of 0
+* \param yPos y position of the item, default value of 0
 */
 void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const double speed, const int width, const int yPos)
 {
