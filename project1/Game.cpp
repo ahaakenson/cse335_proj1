@@ -22,6 +22,7 @@
 #include "IsBoatVisitor.h"
 #include "ControlPanel.h"
 #include "DecorTypeVisitor.h"
+#include "CargoEatenVisitor.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -382,11 +383,17 @@ void CGame::Update(double elapsed)
     mHero->Update(elapsed);
 
     // Don't need to check for car/river collisions when on a boat
-    if (!mHero->GetOnBoat()) 
+    if (!mHero->GetOnBoat())
     {
         CollisionTest(mHero->GetX(), mHero->GetY());
     }
-    
+
+    CCargoEatenVisitor eatenVisitor(mHero);
+    Accept(&eatenVisitor);
+    if (eatenVisitor.SmallEaten() || eatenVisitor.MediumEaten())
+    {
+        mGameOver = true;
+    }
 
 }
 
