@@ -276,7 +276,7 @@ void CGame::moveHero(UINT nChar)
 
     // Call the appropriate move function based on what key was hit
 
-    if (!mGameOver)
+    if (!mGameOver && !mGameWon)
     {
         
         switch (nChar)
