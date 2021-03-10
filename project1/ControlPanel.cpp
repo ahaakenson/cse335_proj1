@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include "IsCargoVisitor.h";
+#include "IsCargoVisitor.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -170,7 +170,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
         // Convert to WCHAR*
         const WCHAR* cargoName = name.c_str(); // name
         graphics->DrawString(cargoName, -1, 
-            &font, PointF(1024, i), &pink); // draw
+            &font, PointF((Gdiplus::REAL)1024, (Gdiplus::REAL)i), &pink); // draw
 
         i += 40;
 
@@ -195,6 +195,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
     // Font for "Level x begin"
     Gdiplus::Font levelLossFont(&fontFamily, 44, FontStyleBold);
+
 
     switch (mGame->GameLossCondition())
     {
@@ -235,7 +236,7 @@ void CControlPanel::Update(double elapsed)
     mTime += elapsed;
 
     // Convert to minutes
-    int minutes = mTime / 60;
+    int minutes = (int)(mTime / 60);
     int seconds = ((int)mTime) % 60;
 
     // Set minutes and seconds
