@@ -93,6 +93,8 @@ public:
 
 	void SetRiverCheatState(bool state) { mRiverCheatEnabled = state; }
 
+	int GameLossCondition() { return mGameLossCondition; }
+
 private:
 	// game playing area constants:
 	// leftmost 1024 x 1024 is the game grid
@@ -138,6 +140,9 @@ private:
 
 	/// Road cheat
 	bool mRoadCheatEnabled = false;
+
+	/// Game loss condition
+	int mGameLossCondition = -1;
 
 };
 

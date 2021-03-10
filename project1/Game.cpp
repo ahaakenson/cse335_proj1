@@ -256,6 +256,9 @@ void CGame::Clear()
     // Clear the control panel
     mControlPanel->Clear();
 
+    // Set condition
+    mGameLossCondition = -1;
+
     // Reset the game loss state
     mGameOver = false;
 }
@@ -393,6 +396,9 @@ void CGame::Update(double elapsed)
     if (eatenVisitor.SmallEaten() || eatenVisitor.MediumEaten())
     {
         mGameOver = true;
+
+        // Temporary
+        mGameLossCondition = 3;
     }
 
 }
@@ -541,8 +547,11 @@ void CGame::CollisionTest(int x, int y)
 
         if (visitor.IsVehicle() && visitor.Vehicle()->HitTest(x, y) && (GetRoadCheatState() == false))
         {
-
+            // Lost because a vehicle hit hero
             mGameOver = true;
+
+            // 1 for getting hit by car
+            mGameLossCondition = 1;
 
         }
 
@@ -551,8 +560,11 @@ void CGame::CollisionTest(int x, int y)
         // Check if we are colliding with a river
         if (decorVisitor.ReturnId() == L"r001" && decorVisitor.Decor()->HitTest(x, y) && (GetRiverCheatState() == false))
         {
-
+            // Lost because hero fell in river 
             mGameOver = true;
+
+            // 2 for falling in river
+            mGameLossCondition = 2;
 
         }
     }

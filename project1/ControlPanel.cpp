@@ -177,17 +177,40 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     }
 
     // IF the game was lost, draw game over
-    if (mGame->GameLost())
-    {
+    //if (mGame->GameLost())
+  //  {
 
-        // Font family for control panel (at the moment)
-        FontFamily fontFamily(L"Verdana");
+       // Font family for control panel (at the moment)
+       // FontFamily fontFamily(L"Verdana");
 
         // Font for "Get Ready!"
-        Gdiplus::Font getReadyFont(&fontFamily, 20);
+        //Gdiplus::Font getReadyFont(&fontFamily, 20);
 
-        graphics->DrawString(L"Game Over", -1,
-            &font, PointF(350, 480), &orange);
+        //graphics->DrawString(L"Game Over", -1,
+           // &font, PointF(350, 480), &orange);
+
+   // }
+
+    //wstring heroName = to_wstring(mHeroName); // minutes
+
+    switch (mGame->GameLossCondition())
+    {
+    // Sparty hit a car
+    case 1:
+        // Convert to WCHAR*
+        //const WCHAR * heroName = name.c_str(); // name
+        graphics->DrawString(L"Sparty was hit by car", -1,
+            &font, PointF(350, 480), &orange); // draw
+        break;
+    // Sparty fell in river
+    case 2:
+        graphics->DrawString(L"Sparty fell into the river", -1,
+            &font, PointF(350, 480), &orange); // draw
+        break;
+    case 3:
+        graphics->DrawString(L"Someone ate something", -1,
+            &font, PointF(350, 480), &orange); // draw
+        break;
 
     }
 
