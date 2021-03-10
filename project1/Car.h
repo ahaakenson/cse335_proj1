@@ -36,6 +36,7 @@ public:
 
     bool GetHitStatus() { return mHitCar; }
 
+
 private:
     /// Image swap time
     double mSwapTime = 0.5;

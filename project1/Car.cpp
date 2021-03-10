@@ -7,6 +7,9 @@
 #include "pch.h"
 #include "Car.h"
 
+
+using namespace Gdiplus;
+
  /**
  * Constructor
  * \param game Game that car is in
@@ -20,8 +23,9 @@
 CCar::CCar(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap1, std::shared_ptr<Gdiplus::Bitmap> bitmap2, double speed, int yPos, int xPos, int width)
     : CVehicle(game, bitmap1, speed, yPos, xPos, width)
 {
-    mSwappedImage = bitmap2;
+    
     mImage = bitmap1;
+    mSwappedImage = bitmap2;
 }
 
 /**
@@ -45,6 +49,7 @@ void CCar::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
     double swapTime = node->GetAttributeDoubleValue(L"swap-time", 0);
     mSwapTime = swapTime;
 	CVehicle::XmlLoad(node);
+
 }
 
 
@@ -55,8 +60,15 @@ void CCar::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 void CCar::Update(double elapsed)
 {
     // some logic to swap every time swap-time has passed
-
+    if (elapsed == mSwapTime)
+    {
+        mSwappedImage;
+    }
+ 
+    
     CVehicle::Update(elapsed);
 
 }
+
+
 
