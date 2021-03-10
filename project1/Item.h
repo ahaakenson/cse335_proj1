@@ -64,6 +64,8 @@ public:
 
 	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
+	double Distance(std::shared_ptr<CItem> other);
+
 	/** Accept a visitor
 	 * \param visitor The visitor we accept */
 	virtual void Accept(CItemVisitor* visitor) {};

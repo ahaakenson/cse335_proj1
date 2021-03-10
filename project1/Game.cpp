@@ -1,7 +1,7 @@
 /**
  * \file Game.cpp
  *
- * \author(s) Ethan Strain, Michael Dittman, 
+ * \author(s) Ethan Strain, Michael Dittman, Matthew Norris
  */
 
 

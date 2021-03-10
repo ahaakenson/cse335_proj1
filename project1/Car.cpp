@@ -1,7 +1,7 @@
 /**
  * \file Car.cpp
  *
- * \author Michael Dittman
+ * \author Michael Dittman, Matthew Norris
  */
 
 #include "pch.h"

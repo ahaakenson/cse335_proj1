@@ -8,6 +8,7 @@
 #include "Cargo.h"
 #include "Game.h"
 
+
 /**
  * Constructor for CCargo
  * 
@@ -88,12 +89,10 @@ void CCargo::PickUp()
  */
 void CCargo::Release()
 {
-	if (mCarriedByHero = false)
-	{
-		mCarriedImage = mImage;
-	}
+	mCarriedByHero = false;
+	//mLevel->GetImage([])
 	
-	GetGame()->CheckWinState();
+	//GetGame()->CheckWinState();
 }
 
 /** Checks if this cargo was hit by a mouse click.
@@ -135,4 +134,6 @@ void CCargo::Update(double elapsed, std::shared_ptr<CHero> hero)
 	{
 		SetLocation(hero->GetX(), hero->GetY());
 	}
+
+	
 }
