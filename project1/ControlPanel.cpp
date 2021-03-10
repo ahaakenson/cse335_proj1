@@ -193,6 +193,9 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
     //wstring heroName = to_wstring(mHeroName); // minutes
 
+    // Font for "Level x begin"
+    Gdiplus::Font levelLossFont(&fontFamily, 44, FontStyleBold);
+
     switch (mGame->GameLossCondition())
     {
     // Sparty hit a car
@@ -200,16 +203,16 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
         // Convert to WCHAR*
         //const WCHAR * heroName = name.c_str(); // name
         graphics->DrawString(L"Sparty was hit by car", -1,
-            &font, PointF(350, 480), &orange); // draw
+            &levelLossFont, PointF(350, 480), &orange); // draw
         break;
     // Sparty fell in river
     case 2:
-        graphics->DrawString(L"Sparty fell into the river", -1,
-            &font, PointF(350, 480), &orange); // draw
+        graphics->DrawString(L"      Sparty\n has fallen into\n     the river", -1,
+            &levelLossFont, PointF(250, 400), &orange); // draw
         break;
     case 3:
         graphics->DrawString(L"Someone ate something", -1,
-            &font, PointF(350, 480), &orange); // draw
+            &levelLossFont, PointF(350, 480), &orange); // draw
         break;
 
     }
