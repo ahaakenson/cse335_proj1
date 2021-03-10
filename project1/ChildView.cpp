@@ -175,17 +175,12 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 		if (mClickedCargo->GetCarryStatus())
 		{
 				mClickedCargo->Release();
-			}
+		}
 		else if (mGame.GetHero()->GetY() - mClickedCargo->GetY() <= 65 &&
 			mGame.GetHero()->GetY() - mClickedCargo->GetY() >= -65)
 			{
 				mClickedCargo->PickUp();
 			}
-		else if (mGame.GetHero()->GetY() - mClickedCargo->GetY() <= 65 &&
-			mGame.GetHero()->GetY() - mClickedCargo->GetY() >= -65)
-		{
-			mClickedCargo->Release();
-		}
 
 		}
 	}
