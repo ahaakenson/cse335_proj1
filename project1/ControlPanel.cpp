@@ -202,8 +202,8 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     case 1:
         // Convert to WCHAR*
         //const WCHAR * heroName = name.c_str(); // name
-        graphics->DrawString(L"Sparty was hit by car", -1,
-            &levelLossFont, PointF(350, 480), &orange); // draw
+        graphics->DrawString(L"    Sparty\n was hit by\n       car", -1,
+            &levelLossFont, PointF(350, 400), &orange); // draw
         break;
     // Sparty fell in river
     case 2:
