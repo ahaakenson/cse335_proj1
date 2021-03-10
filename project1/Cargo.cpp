@@ -133,7 +133,7 @@ void CCargo::Update(double elapsed, std::shared_ptr<CHero> hero)
 	if (mCarriedByHero)
 	{
 		SetLocation(hero->GetX(), hero->GetY());
-	}
+	} 
 
 	
 }

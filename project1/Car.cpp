@@ -21,6 +21,7 @@ CCar::CCar(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap1, std::shared_pt
     : CVehicle(game, bitmap1, speed, yPos, xPos, width)
 {
     mSwappedImage = bitmap2;
+    mImage = bitmap1;
 }
 
 /**
@@ -30,6 +31,7 @@ CCar::CCar(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap1, std::shared_pt
 CCar::CCar(const CCar& car) : CVehicle(car)
 {
     mSwappedImage = car.mSwappedImage;
+    mImage = car.mImage;
     mSwapTime = car.mSwapTime;
 }
 
@@ -53,7 +55,6 @@ void CCar::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 void CCar::Update(double elapsed)
 {
     // some logic to swap every time swap-time has passed
-
 
     CVehicle::Update(elapsed);
 
