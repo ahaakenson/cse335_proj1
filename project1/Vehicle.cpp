@@ -161,7 +161,7 @@ void CVehicle::Draw(Gdiplus::Graphics* graphics)
  * \param y Y location of the Hero
  * \returns True if Hero was hit, False otherwise
  */
-bool CVehicle::HitTest(int x, int y)
+bool CVehicle::HitTest(double x, double y)
 {
 
     double wid = GetImage()->GetWidth();

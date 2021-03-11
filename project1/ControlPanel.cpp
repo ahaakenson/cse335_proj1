@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include "IsCargoVisitor.h";
+#include "IsCargoVisitor.h"
 #include "Vehicle.h"
 
 using namespace std;
@@ -243,7 +243,7 @@ void CControlPanel::Update(double elapsed)
         mTimerTime += elapsed;
 
         // Convert to minutes
-        int minutes = mTimerTime / 60;
+        int minutes = (int)mTimerTime / 60;
         int seconds = ((int)mTimerTime) % 60;
 
         // Set minutes and seconds

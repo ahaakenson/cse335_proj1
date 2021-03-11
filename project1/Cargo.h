@@ -44,7 +44,7 @@ public:
 
 	void Release();
 
-	bool HitTest(int x, int y);
+	bool HitTest(double x, double y);
 
 	void Update(double elapsed, std::shared_ptr<CHero> hero);
 

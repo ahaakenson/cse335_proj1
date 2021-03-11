@@ -29,7 +29,7 @@ public:
 private:
 
     /// The pointer to the visited decor tile
-    CDecor* mDecor;
+    CDecor* mDecor = nullptr;
 
     /// The id of the visited decor tile
     std::wstring mDecorId;

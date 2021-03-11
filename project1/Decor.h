@@ -37,7 +37,7 @@ public:
 
 	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);
 
-	bool HitTest(int x, int y);
+	bool HitTest(double x, double y);
 
 	virtual void Draw(Gdiplus::Graphics* graphics);
 

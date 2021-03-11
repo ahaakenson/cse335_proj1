@@ -31,6 +31,6 @@ private:
     bool mIsBoat = false;
 
     /// The vehicle that was visited.
-    CBoat* mBoat;
+    CBoat* mBoat = nullptr;
 };
 

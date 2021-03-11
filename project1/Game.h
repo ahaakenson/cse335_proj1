@@ -56,7 +56,7 @@ public:
 
 	void Accept(CItemVisitor* visitor);
 
-	CCargo* HitTest(int x, int y);
+	CCargo* HitTest(double x, double y);
 
 	/// Get the width of the game window
 	/// \returns Game window width
@@ -74,7 +74,7 @@ public:
 
 	void DrawControlPanel(Gdiplus::Graphics* graphics);
 
-	void CollisionTest(int x, int y);
+	void CollisionTest(double x, double y);
 
 	void BoatTest();
 

@@ -503,7 +503,7 @@ void CGame::Accept(CItemVisitor* visitor)
 * \param y Y location
 * \returns Pointer to cargo item we clicked on or nullptr if none.
 */
-CCargo* CGame::HitTest(int x, int y)
+CCargo* CGame::HitTest(double x, double y)
 {
     CIsCargoVisitor visitor;
 
@@ -549,7 +549,7 @@ void CGame::DrawControlPanel(Gdiplus::Graphics* graphics)
  * \param x The x coordinate for the hero
  * \param y The y coordinate for the hero
  */
-void CGame::CollisionTest(int x, int y)
+void CGame::CollisionTest(double x, double y)
 {
     CDecorTypeVisitor decorVisitor;
     CIsVehicleVisitor visitor;

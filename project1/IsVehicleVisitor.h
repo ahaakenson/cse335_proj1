@@ -36,7 +36,7 @@ private:
     bool mIsVehicle = false;
 
     /// The vehicle that was visited.
-    CVehicle* mVehicle;
+    CVehicle* mVehicle = nullptr;
 
     /// The id of the Vehicle
     std::wstring mVehicleId;

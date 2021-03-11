@@ -31,6 +31,6 @@ private:
     bool mIsCargo = false;
 
     /// The cargo that was visited.
-    CCargo* mCargo;
+    CCargo* mCargo = nullptr;
 };
 

@@ -92,11 +92,11 @@ void CDecor::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
  * \param y 
  * \returns 
  */
-bool CDecor::HitTest(int x, int y)
+bool CDecor::HitTest(double x, double y)
 {
 
     //double wid = GetImage()->GetWidth();
-    double hit = GetImage()->GetHeight() * GetRepeatY();
+    double hit = GetImage()->GetHeight() * (double)GetRepeatY();
 
     // Make x and y relative to the top-left corner of the bitmap image.
     // Subtracting the center makes x, y relative to the center of

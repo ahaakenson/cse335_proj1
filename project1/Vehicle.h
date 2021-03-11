@@ -51,7 +51,7 @@ public:
 
     virtual void Draw(Gdiplus::Graphics* graphics) override;
 
-    bool HitTest(int x, int y);
+    bool HitTest(double x, double y);
 
     /** Clones a vehicle by invoking the copy constructor, returns an item pointer
     * \return pointer to a copied object

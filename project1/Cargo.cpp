@@ -100,7 +100,7 @@ void CCargo::Release()
  * \param y Y coordinate of mouse click
  * \return True if cargo was clicked by mouse, false otherwise
  */
-bool CCargo::HitTest(int x, int y)
+bool CCargo::HitTest(double x, double y)
 {
 	
 	double wid = GetImage()->GetWidth();
