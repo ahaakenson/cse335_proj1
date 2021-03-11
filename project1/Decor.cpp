@@ -8,6 +8,9 @@
 #include "Decor.h"
 #include "Game.h"
 
+/// Number of pixels wide and tall a tile is.
+const double TileToPixels = 64;
+
 /**
  * Constructor for CDecor.
  * 
@@ -60,7 +63,7 @@ void CDecor::Draw(Gdiplus::Graphics* graphics)
 			// Multiplies coordinates by 64 until we have a concrete virtual pixel solution
 			// EDIT: Ethan - moved conversion of mX and mY to pixels into CItem XmlLoad()
 			graphics->DrawImage(itemImage,
-				float(GetX() + x * 64.0), float(GetY() + y * 64.0),
+				float(GetX() + x * TileToPixels), float(GetY() + y * TileToPixels),
 				(float)itemImage->GetWidth() + 1, (float)itemImage->GetHeight() + 1);
 		}
 	}

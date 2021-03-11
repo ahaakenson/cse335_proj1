@@ -9,6 +9,8 @@
 #include "Cargo.h"
 #include <cmath>
 
+/// Number of pixels wide and tall a tile is.
+const double TileToPixels = 64;
 
  /**
   * Visit a Cargo object
@@ -28,12 +30,12 @@ void CCargoEatenVisitor::VisitCargo(CCargo* cargo)
 	{
 		mLargeCargo = cargo;
 		if (mSmallCargo->GetY() == mMediumCargo->GetY() &&
-			abs(mSmallCargo->GetY() - mHero->GetY()) > 64)
+			abs(mSmallCargo->GetY() - mHero->GetY()) > TileToPixels)
 		{
 			mSmallEaten = true;
 		}
 		if (mMediumCargo->GetY() == mLargeCargo->GetY() &&
-			abs(mMediumCargo->GetY() - mHero->GetY()) > 64)
+			abs(mMediumCargo->GetY() - mHero->GetY()) > TileToPixels)
 		{
 			mMediumEaten = true;
 		}

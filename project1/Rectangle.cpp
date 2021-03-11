@@ -11,6 +11,9 @@
 using namespace Gdiplus;
 using namespace std;
 
+/// Number of pixels wide and tall a tile is.
+const int TileToPixels = 64;
+
 /**
  * Constructor for CRectangle.
  *
@@ -48,7 +51,9 @@ void CRectangle::Draw(Gdiplus::Graphics* graphics)
 		for (int y = 0; y < GetRepeatY(); y++)
 		{
 			// Draws a filled rectangle
-			graphics->FillRectangle(&brush, (int)xCoordinate + x * 64, (int)yCoordinate + y * 64, mWidth * 64 + 1, mHeight * 64 + 1);
+			graphics->FillRectangle(&brush, 
+				(int)xCoordinate + x * TileToPixels, (int)yCoordinate + y * TileToPixels, 
+				mWidth * TileToPixels + 1, mHeight * TileToPixels + 1);
 		}
 	}
 }
