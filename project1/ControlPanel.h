@@ -44,7 +44,18 @@ public:
 	*/
 	double TimerTime() { return mTimerTime; }
 
+	/**
+	* Set the name of the hero
+	* \param hero The name of the hero
+	*/
 	void SetHeroName(std::wstring hero) { mHeroName = hero; }
+
+
+	/**
+	* Set the name of the car that hit sparty
+	* \param car The name of the car
+	*/
+	void SetSpartyCar(std::wstring car) { mSpartyCar = car; }
 
 private: 
 	
@@ -74,6 +85,9 @@ private:
 	
 	// The hero's name
 	std::wstring mHeroName = L"Sparty";
+
+	/// The vehicle that hit sparty
+	std::wstring mSpartyCar = L"Vehicle";
 	
 };
 

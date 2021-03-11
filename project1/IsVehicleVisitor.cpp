@@ -6,6 +6,7 @@
 
 #include "pch.h"
 #include "IsVehicleVisitor.h"
+#include "Vehicle.h"
 
 
  /**
@@ -16,4 +17,5 @@ void CIsVehicleVisitor::VisitVehicle(CVehicle* vehicle)
 {
 	mIsVehicle = true;
 	mVehicle = vehicle;
+    mVehicleId = vehicle->GetId();
 }

@@ -8,6 +8,7 @@
 
 #pragma once
 #include "ItemVisitor.h"
+#include <string>
 
 
  /**
@@ -26,11 +27,18 @@ public:
     * \returns The vehicle that was visited. */
     CVehicle* Vehicle() { return mVehicle; }
 
+    /** Returns Vehicle ID.
+    * \returns The ID of the Vehicle that was visited. */
+    std::wstring ReturnId() { return mVehicleId; }
+
 private:
     /// Whether or not the item is a Vehicle.
     bool mIsVehicle = false;
 
     /// The vehicle that was visited.
     CVehicle* mVehicle;
+
+    /// The id of the Vehicle
+    std::wstring mVehicleId;
 };
 

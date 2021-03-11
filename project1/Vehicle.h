@@ -61,7 +61,7 @@ public:
     /** Get car name
     * \return Name
     */
-    std::wstring VehicleName() { return mName; }
+    std::wstring GetId() { return mId; }
 
 private:
     /// Vehicle speed
@@ -71,6 +71,6 @@ private:
     int mLaneWidth = 0;
 
     /// Name
-    std::wstring mName;
+    std::wstring mId;
 };
 

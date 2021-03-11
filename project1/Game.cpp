@@ -558,7 +558,7 @@ void CGame::CollisionTest(int x, int y)
             // 1 for getting hit by car
             mGameLossCondition = 1;
 
-            mVehicle = visitor.Vehicle()->VehicleName();
+            mControlPanel->SetSpartyCar(visitor.ReturnId());
 
         }
 

@@ -181,7 +181,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     Gdiplus::Font levelLossFont(&fontFamily, 44, FontStyleBold);
 
     // Get the name of the vehicle that hit sparty
-    wstring vehicleName = mGame->SpartyVehicle();
+    wstring vehicleName = mSpartyCar;
     const WCHAR* vehicleNameChar = vehicleName.c_str();
 
     const WCHAR* heroName = mHeroName.c_str();
@@ -200,13 +200,19 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
             &levelLossFont, PointF(300, 430), &orange); // draw
 
         graphics->DrawString(vehicleNameChar, -1,
-            &levelLossFont, PointF(390, 520), &orange); // draw
+            &levelLossFont, PointF(390, 500), &orange); // draw
         break;
+
     // Sparty fell in river
     case 2:
-        graphics->DrawString(L"      Sparty\n has fallen into\n     the river", -1,
-            &levelLossFont, PointF(350, 400), &orange); // draw
+        // Draw the hero name
+        graphics->DrawString(heroName, -1,
+            &levelLossFont, PointF(390, 370), &orange); // draw
+        graphics->DrawString(L"has fallen into\n     the river", -1,
+            &levelLossFont, PointF(300, 430), &orange); // draw
         break;
+
+    // Cargo ate something
     case 3:
         graphics->DrawString(L"Someone ate something", -1,
             &levelLossFont, PointF(350, 480), &orange); // draw

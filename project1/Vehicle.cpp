@@ -97,8 +97,8 @@ void CVehicle::Update(double elapsed)
 void CVehicle::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
 
-    std::wstring name = L"An actual name";
-    mName = name;
+    std::wstring name = node->GetAttributeValue(L"id", L"Vehicle");
+    mId = name;
 
 }
 
