@@ -200,7 +200,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
             &levelLossFont, PointF(300, 430), &orange); // draw
 
         graphics->DrawString(vehicleNameChar, -1,
-            &levelLossFont, PointF(390, 500), &orange); // draw
+            &levelLossFont, PointF(410, 500), &orange); // draw
         break;
 
     // Sparty fell in river
