@@ -303,15 +303,23 @@ void CGame::moveHero(UINT nChar)
             // Move the hero right
         case 70:
         case 39:
-            mHero->moveRight();
-            validKeyPress = true;
+            // Hero can't move right when on boats
+            if (!mHero->GetOnBoat())
+            {
+                mHero->moveRight();
+                validKeyPress = true;
+            }
             break;
 
             // Move the hero left
         case 83:
         case 37:
-            mHero->moveLeft();
-            validKeyPress = true;
+            // Hero can't move left when on boats
+            if (!mHero->GetOnBoat())
+            {
+                mHero->moveLeft();
+                validKeyPress = true;
+            }
             break;
 
         }
