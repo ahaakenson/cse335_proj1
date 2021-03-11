@@ -105,8 +105,8 @@ void CChildView::OnPaint()
 		mTimeFreq = double(freq.QuadPart);
 
 		wstring pathName = L".\\levels\\level";
-		// Loads levels 0-2 and adds them to levels vector
-		for (int i = 0; i < 3; i++)
+		// Loads levels 0-3 and adds them to levels vector
+		for (int i = 0; i < 4; i++)
 		{
 			wstring filename = pathName + to_wstring(i) + L".xml";
 			shared_ptr<CLevel> levelPtr = make_shared<CLevel>(&mGame);
