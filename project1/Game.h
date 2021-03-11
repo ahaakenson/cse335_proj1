@@ -108,6 +108,10 @@ public:
 	/// \returns int representing condition of game's loss.
 	int GameLossCondition() { return mGameLossCondition; }
 
+	/// Gets the game's get ready state
+	/// \returns bool of get ready state
+	bool GetReady() { return mGetReady; }
+
 private:
 	// game playing area constants:
 	// leftmost 1024 x 1024 is the game grid
@@ -156,6 +160,9 @@ private:
 
 	/// Game loss condition
 	int mGameLossCondition = -1;
+
+	/// Are we still in the get ready stage?
+	bool mGetReady = true;
 
 };
 

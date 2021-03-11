@@ -170,7 +170,7 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 
 	mClickedCargo = mGame.HitTest(coords.first, coords.second);
 
-	if (mClickedCargo != nullptr)
+	if ((mClickedCargo != nullptr) && !mGame.GetReady())
 	{
 		if (mClickedCargo->GetCarryStatus())
 		{
@@ -196,15 +196,6 @@ void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	// Move the hero
 	mGame.moveHero(nChar);
-
-	// Get the hero's x and y
-	//auto hero = mGame.GetHero();
-
-	//auto heroX = hero->GetX(); // Hero x position
-	//auto heroY = hero->GetY(); // Hero y position
-
-	// Collision test the hero's movement
-	//mGame.CollisionTest(heroX, heroY);
 
 }
 

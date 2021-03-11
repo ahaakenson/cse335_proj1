@@ -262,6 +262,9 @@ void CGame::Clear()
 
     // Reset the game loss state
     mGameOver = false;
+
+    // Set get ready condition
+    mGetReady = true;
 }
 
 
@@ -400,6 +403,11 @@ void CGame::Update(double elapsed)
 
         // Temporary
         mGameLossCondition = 3;
+    }
+
+    if (mControlPanel->TimerTime() > 0)
+    {
+        mGetReady = false;
     }
 
 }
