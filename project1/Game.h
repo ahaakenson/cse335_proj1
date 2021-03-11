@@ -50,6 +50,8 @@ public:
 	 */
 	void SetHero(std::shared_ptr<CHero> hero) { mHero = hero; }
 
+	void SetTime(double time);
+
 	void moveHero(UINT nChar);
 
 	void Update(double elapsed);

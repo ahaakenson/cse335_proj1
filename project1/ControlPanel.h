@@ -10,6 +10,7 @@
 
 #include "Game.h"
 
+class CGame;
 class CControlPanel
 {
 public: 
@@ -43,6 +44,12 @@ public:
 	* \return mTimerTime The time on the timer
 	*/
 	double TimerTime() { return mTimerTime; }
+
+	/**
+	* Set the time on the timer
+	* \param time Time to set timer time to
+	*/
+	void SetTimerTime(double time) { mTimerTime = time; }
 
 	/**
 	* Set the name of the hero

@@ -191,7 +191,9 @@ namespace Testing
 
 			// Create a new game
 			CGame game;
-			
+			// Set timer time to nonzero so hero can move
+			game.SetTime(5.0);
+
 			// Create a new hero
 			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
 
@@ -230,6 +232,8 @@ namespace Testing
 
 			// Create a new game
 			CGame game;
+			// Set timer time to nonzero so hero can move
+			game.SetTime(5.0);
 
 			// Create a new hero
 			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
@@ -272,6 +276,8 @@ namespace Testing
 
 			// Create a new game
 			CGame game;
+			// Set timer time to nonzero so hero can move
+			game.SetTime(5.0);
 
 			// Create a new hero
 			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
@@ -306,6 +312,8 @@ namespace Testing
 
 			// Create a new game
 			CGame game;
+			// Set timer time to nonzero so hero can move
+			game.SetTime(5.0);
 
 			// Create a new hero
 			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);

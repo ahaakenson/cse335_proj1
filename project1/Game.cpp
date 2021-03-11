@@ -42,6 +42,14 @@ CGame::CGame()
 
 }
 
+/** Setter for timer time
+* \param time Time to set timer to
+*/
+void CGame::SetTime(double time)
+{ 
+    mControlPanel->SetTimerTime(time); 
+}
+
 /**
  * Draw the game area
  * \param graphics The GDI+ graphics context to draw on
@@ -637,4 +645,6 @@ void CGame::CheckWinState()
             mGameWon = false;
         }
     }
+
+
 }
