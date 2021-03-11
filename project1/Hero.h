@@ -72,7 +72,7 @@ public:
     /** Return hero name
     * \return mName Name of the hero
     */
-    std::wstring HeroName() { return mName; }
+    std::wstring GetHeroName() { return mName; }
 
 private:
     /// Name of hero

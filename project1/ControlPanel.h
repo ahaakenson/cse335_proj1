@@ -50,7 +50,7 @@ public:
 	* Return the time on the timer
 	* \return mTimerTime The time on the timer
 	*/
-	double TimerTime() { return mTimerTime; }
+	double GetTimerTime() { return mTimerTime; }
 
 	/**
 	* Set the time on the timer

@@ -84,11 +84,11 @@ public:
 
 	/// Get if the game has been lost.
 	/// \returns True if game has been lost, False otherwise.
-	bool GameLost() { return mGameOver; }
+	bool GetGameLost() { return mGameOver; }
 
 	/// Get if the game has been won.
 	/// \returns True if game has been won, False otherwise.
-	bool GameWon() { return mGameWon; }
+	bool GetGameWon() { return mGameWon; }
 
 	/// Get if the Road Cheat is enabled.
 	/// \returns True if Road Cheat enabled, False otherwise.

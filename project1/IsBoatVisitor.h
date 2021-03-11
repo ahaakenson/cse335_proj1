@@ -20,11 +20,11 @@ public:
 
     /** Returns whether or not the item is a boat.
     * \returns True if item is a boat, False otherwise. */
-    bool IsBoat() { return mIsBoat; }
+    bool GetIsBoat() { return mIsBoat; }
 
     /** Returns Vehicle.
     * \returns The vehicle that was visited. */
-    CBoat* Boat() { return mBoat; }
+    CBoat* GetBoat() { return mBoat; }
 
 private:
     /// Whether or not the item is a Vehicle.

@@ -20,11 +20,11 @@ public:
 
     /** Returns whether or not the item is Cargo.
     * \returns True if item is Cargo, False otherwise. */
-    bool IsCargo() { return mIsCargo; }
+    bool GetIsCargo() { return mIsCargo; }
 
     /** Returns cargo.
     * \returns The cargo that was visited. */
-    CCargo* Cargo() { return mCargo; }
+    CCargo* GetCargo() { return mCargo; }
 
 private:
     /// Whether or not the item is Cargo.

@@ -21,15 +21,15 @@ public:
 
     /** Returns whether or not the item is a Vehicle.
     * \returns True if item is a Vehicle, False otherwise. */
-    bool IsVehicle() { return mIsVehicle; }
+    bool GetIsVehicle() { return mIsVehicle; }
 
     /** Returns Vehicle.
     * \returns The vehicle that was visited. */
-    CVehicle* Vehicle() { return mVehicle; }
+    CVehicle* GetVehicle() { return mVehicle; }
 
     /** Returns Vehicle ID.
     * \returns The ID of the Vehicle that was visited. */
-    std::wstring ReturnId() { return mVehicleId; }
+    std::wstring GetId() { return mVehicleId; }
 
 private:
     /// Whether or not the item is a Vehicle.

@@ -239,7 +239,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
     }
 
-    if (mGame->GameWon())
+    if (mGame->GetGameWon())
     {
         graphics->DrawString(L"Level Complete!", -1,
             &font, PointF(350, 480), &orange);

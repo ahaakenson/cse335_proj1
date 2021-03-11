@@ -224,10 +224,15 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
         item = make_shared<CBoat>(mGame, mImageMap[id][0], speed * TileToPixels, 
             32 + yPos * TileToPixels, xPos * TileToPixels, width);
     }
+    else if (type == L"sketchy")
+    {
+        // uncomment this once sketchy boat class is done
+        //item = make_shared<CSketchyBoat>(mGame, mImageMap[id][0]);
+    }
     /* Format of hero vector in map:
     * [0]- default image
     * [1]- hit image
-    * [2]- mask- PLEASE NOTE THAT LEVEL 2 DOES NOT HAVE A MASK
+    * [2]- mask
     */
     else if (type == L"hero")
     {

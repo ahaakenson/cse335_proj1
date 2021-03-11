@@ -24,7 +24,7 @@ public:
 
     /** Returns Decor ID.
     * \returns The ID of the Decor that was visited. */
-    std::wstring ReturnId() { return mDecorId; }
+    std::wstring GetId() { return mDecorId; }
 
 private:
 

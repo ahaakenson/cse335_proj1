@@ -26,11 +26,11 @@ public:
 
     /** Returns whether or not the small Cargo has been eaten.
     * \returns True if small Cargo eaten, False otherwise. */
-    bool SmallEaten() { return mSmallEaten; }
+    bool GetSmallEaten() { return mSmallEaten; }
 
     /** Returns whether or not the small Cargo has been eaten.
     * \returns True if small Cargo eaten, False otherwise. */
-    bool MediumEaten() { return mMediumEaten; }
+    bool GetMediumEaten() { return mMediumEaten; }
 
 private:
     /// Whether or not the small Cargo has been eaten.

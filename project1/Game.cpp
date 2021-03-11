@@ -297,7 +297,7 @@ void CGame::moveHero(UINT nChar)
 
     // Call the appropriate move function based on what key was hit
 
-    if (!mGameOver && !mGameWon && (mControlPanel->TimerTime() > 0))
+    if (!mGameOver && !mGameWon && (mControlPanel->GetTimerTime() > 0))
     {
         
         switch (nChar)
@@ -399,16 +399,16 @@ void CGame::Update(double elapsed)
     {
         CIsVehicleVisitor vehicleVisitor;
         item->Accept(&vehicleVisitor);
-        if (vehicleVisitor.IsVehicle())
+        if (vehicleVisitor.GetIsVehicle())
         {
-            vehicleVisitor.Vehicle()->Update(elapsed);
+            vehicleVisitor.GetVehicle()->Update(elapsed);
         }
 
         CIsCargoVisitor cargoVisitor;
         item->Accept(&cargoVisitor);
-        if (cargoVisitor.IsCargo())
+        if (cargoVisitor.GetIsCargo())
         {
-            cargoVisitor.Cargo()->Update(elapsed, mHero);
+            cargoVisitor.GetCargo()->Update(elapsed, mHero);
         }
     }
     // Update the hero in case he's on a boat
@@ -422,7 +422,7 @@ void CGame::Update(double elapsed)
 
     CCargoEatenVisitor eatenVisitor(mHero);
     Accept(&eatenVisitor);
-    if (eatenVisitor.SmallEaten() || eatenVisitor.MediumEaten())
+    if (eatenVisitor.GetSmallEaten() || eatenVisitor.GetMediumEaten())
     {
         mGameOver = true;
 
@@ -430,7 +430,7 @@ void CGame::Update(double elapsed)
         mGameLossCondition = 3;
     }
 
-    if (mControlPanel->TimerTime() > 0)
+    if (mControlPanel->GetTimerTime() > 0)
     {
         mGetReady = false;
     }
@@ -498,17 +498,17 @@ void CGame::Load(const int level)
         (*i)->Accept(&visitor);
 
         // If the item is cargo
-        if (visitor.IsCargo() && cargoNumber < 3)
+        if (visitor.GetIsCargo() && cargoNumber < 3)
         {
 
             // Push back the cargo item name
-            mControlPanel->SetCargoItem(visitor.Cargo()->GetName());
+            mControlPanel->SetCargoItem(visitor.GetCargo()->GetName());
             cargoNumber++;
 
         }
     }
     // Load the name of the hero into the control panel
-    mControlPanel->SetHeroName(mHero->HeroName());
+    mControlPanel->SetHeroName(mHero->GetHeroName());
 
     // Set the location of the hero
     mHero->SetLocation(480, 928);
@@ -556,9 +556,9 @@ CCargo* CGame::HitTest(double x, double y)
     for (auto i = mItems.rbegin(); i != mItems.rend(); i++)
     {
         (*i)->Accept(&visitor);
-        if (visitor.IsCargo() && visitor.Cargo()->HitTest(x, y))
+        if (visitor.GetIsCargo() && visitor.GetCargo()->HitTest(x, y))
         {
-            return visitor.Cargo();
+            return visitor.GetCargo();
         }
     }
 
@@ -604,7 +604,7 @@ void CGame::CollisionTest(double x, double y)
     {
         (*i)->Accept(&visitor);
 
-        if (visitor.IsVehicle() && visitor.Vehicle()->HitTest(x, y) && !mRoadCheatEnabled)
+        if (visitor.GetIsVehicle() && visitor.GetVehicle()->HitTest(x, y) && !mRoadCheatEnabled)
         {
             // Lost because a vehicle hit hero
             mGameOver = true;
@@ -612,14 +612,14 @@ void CGame::CollisionTest(double x, double y)
             // 1 for getting hit by car
             mGameLossCondition = 1;
 
-            mControlPanel->SetSpartyCar(visitor.ReturnId());
+            mControlPanel->SetSpartyCar(visitor.GetId());
 
         }
 
         (*i)->Accept(&decorVisitor);
 
         // Check if we are colliding with a river
-        if (decorVisitor.ReturnId() == L"r001" && decorVisitor.Decor()->HitTest(x, y) && !mRiverCheatEnabled)
+        if (decorVisitor.GetId() == L"r001" && decorVisitor.Decor()->HitTest(x, y) && !mRiverCheatEnabled)
         {
             // Lost because hero fell in river 
             mGameOver = true;
@@ -643,9 +643,9 @@ void CGame::BoatTest()
         item->Accept(&visitor);
 
         // Item is a boat and same tile as hero
-        if (visitor.IsBoat() && visitor.Boat()->HitTest(mHero->GetX(), mHero->GetY()) && !mRiverCheatEnabled)
+        if (visitor.GetIsBoat() && visitor.GetBoat()->HitTest(mHero->GetX(), mHero->GetY()) && !mRiverCheatEnabled)
         {
-            CBoat* boat = visitor.Boat();
+            CBoat* boat = visitor.GetBoat();
             // Set speed and location, then return since we're done searching
             mHero->SetSpeed(boat->GetSpeed());
             mHero->SetOnBoat(true);
@@ -670,7 +670,7 @@ void CGame::CheckWinState()
         CIsCargoVisitor visitor;
         (*i)->Accept(&visitor);
 
-        if (visitor.IsCargo() && visitor.Cargo()->GetY() > TileToPixels)
+        if (visitor.GetIsCargo() && visitor.GetCargo()->GetY() > TileToPixels)
         {
             mGameWon = false;
         }
