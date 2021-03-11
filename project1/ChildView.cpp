@@ -254,13 +254,21 @@ void CChildView::OnTimer(UINT_PTR nIDEvent)
  */
 void CChildView::OnCheatmenuRoadcheat()
 {
+	CWnd* pParent = GetParent();
+	CMenu* pMenu = pParent->GetMenu();
+
+	// IF the cheat is on
 	if (mGame.GetRoadCheatState())
 	{
+		// turn it off
 		mGame.SetRoadCheatState(false);
+		pMenu->CheckMenuItem(ID_CHEATMENU_ROADCHEAT, MF_UNCHECKED);
 	}
 	else
 	{
+		// turn it on
 		mGame.SetRoadCheatState(true);
+		pMenu->CheckMenuItem(ID_CHEATMENU_ROADCHEAT, MF_CHECKED);
 	}
 }
 
@@ -270,12 +278,21 @@ void CChildView::OnCheatmenuRoadcheat()
  */
 void CChildView::OnCheatmenuRivercheat()
 {
+
+	CWnd* pParent = GetParent();
+	CMenu* pMenu = pParent->GetMenu();
+
+	// if the cheat is on
 	if (mGame.GetRiverCheatState())
 	{
+		// turn it off
 		mGame.SetRiverCheatState(false);
+		pMenu->CheckMenuItem(ID_CHEATMENU_RIVERCHEAT, MF_UNCHECKED);
 	}
 	else
 	{
+		// turn it on
 		mGame.SetRiverCheatState(true);
+		pMenu->CheckMenuItem(ID_CHEATMENU_RIVERCHEAT, MF_CHECKED);
 	}
 }

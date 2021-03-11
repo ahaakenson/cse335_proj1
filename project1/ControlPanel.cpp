@@ -225,7 +225,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
         // Draw the hero name
         graphics->DrawString(heroName, -1,
             &levelLossFont, PointF(390, 370), &orange); // draw
-        graphics->DrawString(L"has fallen into\n     the river", -1,
+        graphics->DrawString(L"has fallen into\n   the river", -1,
             &levelLossFont, PointF(300, 430), &orange); // draw
         break;
 
