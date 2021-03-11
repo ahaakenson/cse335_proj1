@@ -171,7 +171,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
         // Convert to WCHAR*
         const WCHAR* cargoName = name.c_str(); // name
         graphics->DrawString(cargoName, -1, 
-            &font, PointF(1024, i), &pink); // draw
+            &font, PointF((Gdiplus::REAL)1024, (Gdiplus::REAL)i), &pink); // draw
 
         i += 40;
 
