@@ -9,6 +9,9 @@
 
 using namespace Gdiplus;
 
+/// Number of pixels wide and tall a tile is.
+const double TileToPixels = 64;
+
 /**
  * Constructor
  * \param game Pointer to the game this decor is a part of
@@ -67,7 +70,7 @@ void CVehicle::Update(double elapsed)
     const int maxVehicleWidth = 256;
 
     // Width of the lane (in pixels)
-    int laneWidth = mLaneWidth * 64;
+    int laneWidth = mLaneWidth * TileToPixels;
 
     // If going off the left of the screen
     if (GetX() + (GetWidth() / 2) <= 0 && mSpeed < 0)

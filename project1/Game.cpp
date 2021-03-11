@@ -32,6 +32,9 @@ using namespace xmlnode;
 /// TODO: change this so that images are only loaded once
 map<wstring, wstring> imageMap; //< Map holding the image names associated with IDs
 
+/// Number of pixels wide and tall a tile is.
+const double TileToPixels = 64;
+
 /**
  * Game constructor
  */
@@ -632,7 +635,7 @@ void CGame::CheckWinState()
         CIsCargoVisitor visitor;
         (*i)->Accept(&visitor);
 
-        if (visitor.IsCargo() && visitor.Cargo()->GetY() > 64)
+        if (visitor.IsCargo() && visitor.Cargo()->GetY() > TileToPixels)
         {
             mGameWon = false;
         }
