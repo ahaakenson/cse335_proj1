@@ -56,6 +56,7 @@ CVehicle::CVehicle(const CVehicle& vehicle) : CItem(vehicle)
 {
     mSpeed = vehicle.mSpeed;
     mLaneWidth = vehicle.mLaneWidth;
+    mId = vehicle.mId;
 }
 
 /**
