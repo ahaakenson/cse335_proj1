@@ -56,7 +56,7 @@ public:
     /** Clones a vehicle by invoking the copy constructor, returns an item pointer
     * \return pointer to a copied object
     */
-    virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CVehicle>(*this); }
+    virtual std::shared_ptr<CItem> Clone() const { return std::make_shared<CVehicle>(*this); }
 
 private:
     /// Vehicle speed

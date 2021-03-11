@@ -3,7 +3,7 @@
  *
  * \author Matthew Norris
  *
- * 
+ * Class that describes the UI elements of the game.
  */
 
 #pragma once
@@ -11,6 +11,9 @@
 #include "Game.h"
 
 
+/**
+ * Class that describes the UI elements of the game.
+ */
 class CControlPanel
 {
 public: 
@@ -32,9 +35,14 @@ public:
 	/**
 	* Set the level this control panel belongs to
 	* \param level The level this control panel belongs to
+	* \param levelNumber The number of the level this control panel belongs to
 	*/
 	void SetLevel(std::shared_ptr<CLevel> level, const int levelNumber) { mLevel = level, mLevelNumber = levelNumber; }
 
+	/**
+	* Add a cargo item to list of Cargo names.
+	* \param cargoName Cargo item to be added.
+	*/
 	void SetCargoItem(std::wstring cargoName) { mCargoNames.push_back(cargoName); }
 
 	void Clear();

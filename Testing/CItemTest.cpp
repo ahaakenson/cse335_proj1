@@ -28,7 +28,7 @@ namespace Testing
 		* \param visitor The visitor we accept */
 		virtual void Accept(CItemVisitor* visitor) override { }
 
-		virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CItemMock>(*this); }
+		virtual std::shared_ptr<CItem> Clone() const { return std::make_shared<CItemMock>(*this); }
 	};
 	TEST_CLASS(CItemTest)
 	{
@@ -74,9 +74,9 @@ namespace Testing
 			auto decor = make_shared<CDecor>(&game, bitmap);
 
 			// Clone each object
-			auto cargoClone = cargo->clone();
-			auto vehicleClone = vehicle->clone();
-			auto decorClone = decor->clone();
+			auto cargoClone = cargo->Clone();
+			auto vehicleClone = vehicle->Clone();
+			auto decorClone = decor->Clone();
 
 			// Check that the clones are not just nullptrs
 			Assert::IsNotNull(cargoClone.get());

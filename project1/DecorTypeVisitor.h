@@ -18,8 +18,12 @@ class CDecorTypeVisitor : public CItemVisitor
 public:
     virtual void VisitDecor(CDecor* decor) override;
 
+    /** Returns Decor.
+    * \returns The Decor that was visited. */
     CDecor* Decor() { return mDecor; }
 
+    /** Returns Decor ID.
+    * \returns The ID of the Decor that was visited. */
     std::wstring ReturnId() { return mDecorId; }
 
 private:

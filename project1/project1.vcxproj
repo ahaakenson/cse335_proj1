@@ -198,7 +198,6 @@
     <ClInclude Include="DoubleBufferDC.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Grass.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="IsBoatVisitor.h" />
     <ClInclude Include="IsCargoVisitor.h" />
@@ -211,8 +210,6 @@
     <ClInclude Include="project1.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="River.h" />
-    <ClInclude Include="Road.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Vehicle.h" />
     <ClInclude Include="XmlNode.h" />
@@ -227,7 +224,6 @@
     <ClCompile Include="Decor.cpp" />
     <ClCompile Include="DecorTypeVisitor.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Grass.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="IsBoatVisitor.cpp" />
     <ClCompile Include="IsCargoVisitor.cpp" />
@@ -244,8 +240,6 @@
     </ClCompile>
     <ClCompile Include="project1.cpp" />
     <ClCompile Include="Rectangle.cpp" />
-    <ClCompile Include="River.cpp" />
-    <ClCompile Include="Road.cpp" />
     <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="XmlNode.cpp" />
   </ItemGroup>

@@ -92,6 +92,7 @@ void CGame::OnDraw(Gdiplus::Graphics* graphics, int width, int height)
  * Scales the coordinates into virtual pixels.
  * \param x X location clicked on
  * \param y Y location clicked on
+ * \returns Pair of doubles representing input coordinates converted to virtual pixels
  */
 std::pair<double, double> CGame::ScaleCoords(int x, int y)
 {
@@ -414,18 +415,18 @@ void CGame::Load(const int level)
     // Add Decor and vehicle copies to items vector
     for (auto& levelItem : mLevels[level]->GetItems())
     {
-        auto item = levelItem->clone();
+        auto item = levelItem->Clone();
         Add(item);
     }
 
     // Make a clone of hero and set pointer to that
-    mHero = mLevels[level]->GetHero()->cloneHero();
+    mHero = mLevels[level]->GetHero()->CloneHero();
     Add(mHero);
 
     // Add cargo copies to items vector
     for (auto& cargoItem : mLevels[level]->GetCargo())
     {
-        auto item = cargoItem->clone();
+        auto item = cargoItem->Clone();
         Add(item);
 
     }
@@ -511,6 +512,7 @@ CCargo* CGame::HitTest(int x, int y)
 
 /**
  * Update the control panel
+ * \param elapsed The time since the last update.
  */
 void CGame::UpdateControlPanel(double elapsed)
 {
@@ -522,6 +524,7 @@ void CGame::UpdateControlPanel(double elapsed)
 
 /**
  * Draw the control panel
+ * \param graphics The GDI+ graphics context to draw on
  */
 void CGame::DrawControlPanel(Gdiplus::Graphics* graphics)
 {
@@ -545,7 +548,7 @@ void CGame::CollisionTest(int x, int y)
     {
         (*i)->Accept(&visitor);
 
-        if (visitor.IsVehicle() && visitor.Vehicle()->HitTest(x, y) && (GetRoadCheatState() == false))
+        if (visitor.IsVehicle() && visitor.Vehicle()->HitTest(x, y) && !mRoadCheatEnabled)
         {
             // Lost because a vehicle hit hero
             mGameOver = true;
@@ -558,7 +561,7 @@ void CGame::CollisionTest(int x, int y)
         (*i)->Accept(&decorVisitor);
 
         // Check if we are colliding with a river
-        if (decorVisitor.ReturnId() == L"r001" && decorVisitor.Decor()->HitTest(x, y) && (GetRiverCheatState() == false))
+        if (decorVisitor.ReturnId() == L"r001" && decorVisitor.Decor()->HitTest(x, y) && !mRiverCheatEnabled)
         {
             // Lost because hero fell in river 
             mGameOver = true;
@@ -582,7 +585,7 @@ void CGame::BoatTest()
         item->Accept(&visitor);
 
         // Item is a boat and same tile as hero
-        if (visitor.IsBoat() && visitor.Boat()->HitTest(mHero->GetX(), mHero->GetY()))
+        if (visitor.IsBoat() && visitor.Boat()->HitTest(mHero->GetX(), mHero->GetY()) && !mRiverCheatEnabled)
         {
             CBoat* boat = visitor.Boat();
             // Set speed and location, then return since we're done searching
@@ -597,6 +600,9 @@ void CGame::BoatTest()
 }
 
 
+/**
+ * Checks if the game has been won (if all Cargo objects are on the top row).
+ */
 void CGame::CheckWinState()
 {
     mGameWon = true;

@@ -78,21 +78,34 @@ public:
 
 	void BoatTest();
 
-	bool GameState() { return mGameOver; }
 	void CheckWinState();
 
+	/// Get if the game has been lost.
+	/// \returns True if game has been lost, False otherwise.
 	bool GameLost() { return mGameOver; }
 
+	/// Get if the game has been won.
+	/// \returns True if game has been won, False otherwise.
 	bool GameWon() { return mGameWon; }
 
+	/// Get if the Road Cheat is enabled.
+	/// \returns True if Road Cheat enabled, False otherwise.
 	bool GetRoadCheatState() { return mRoadCheatEnabled; }
 
+	/// Get if the River Cheat is enabled.
+	/// \returns True if River Cheat enabled, False otherwise.
 	bool GetRiverCheatState() { return mRiverCheatEnabled; }
 
+	/// Sets the Road Cheat state
+	/// \param state State to set the Road Cheat to.
 	void SetRoadCheatState(bool state) { mRoadCheatEnabled = state; }
 
+	/// Sets the River Cheat state
+	/// \param state State to set the River Cheat to.
 	void SetRiverCheatState(bool state) { mRiverCheatEnabled = state; }
 
+	/// Gets the condition of the game's loss
+	/// \returns int representing condition of game's loss.
 	int GameLossCondition() { return mGameLossCondition; }
 
 private:

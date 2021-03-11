@@ -366,7 +366,7 @@ namespace Testing
 			// Create a new hero
 			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
 
-			auto heroClone = hero->cloneHero();
+			auto heroClone = hero->CloneHero();
 			Assert::IsNotNull(heroClone.get());
 		}
 
