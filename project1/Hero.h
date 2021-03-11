@@ -45,12 +45,12 @@ public:
     /** Clones a hero by invoking the copy constructor, returns an item pointer
     * \return pointer to a copied object
     */
-    virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CHero>(*this); }
+    virtual std::shared_ptr<CItem> Clone() const { return std::make_shared<CHero>(*this); }
 
     /** Clones a hero by invoking the copy constructor, returns a hero pointer
     * \return pointer to a copied hero
     */
-    std::shared_ptr<CHero> cloneHero() const { return std::make_shared<CHero>(*this); }
+    std::shared_ptr<CHero> CloneHero() const { return std::make_shared<CHero>(*this); }
 
     /** Gets whether hero is on boat
     * \return whether hero is on a boat.

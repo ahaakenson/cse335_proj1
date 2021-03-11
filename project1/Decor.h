@@ -48,7 +48,7 @@ public:
 	/** Clones a decor item by invoking the copy constructor, returns an item pointer
 	* \return pointer to a copied item
 	*/
-	virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CDecor>(*this); }
+	virtual std::shared_ptr<CItem> Clone() const { return std::make_shared<CDecor>(*this); }
 
 	/** Get the decor's id
 	* \return mId

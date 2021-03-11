@@ -155,6 +155,12 @@ void CVehicle::Draw(Gdiplus::Graphics* graphics)
 
 }
 
+/**
+ * Checks to see if this Car hit the Hero.
+ * \param x X location of the Hero
+ * \param y Y location of the Hero
+ * \returns True if Hero was hit, False otherwise
+ */
 bool CVehicle::HitTest(int x, int y)
 {
 

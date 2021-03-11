@@ -73,7 +73,7 @@ public:
 	/** Pure virtual function which clones an item by invoking copy constructor
 	* \return pointer to a copied item
 	*/
-	virtual std::shared_ptr<CItem> clone() const = 0;
+	virtual std::shared_ptr<CItem> Clone() const = 0;
 
 protected:
 	CItem(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, int yPos, int xPos);

@@ -29,15 +29,18 @@ public:
 
     virtual void Update(double elapsed) override;
 
-    /** Clones a car by invoking the copy constructor, returns an item pointer
+    /** 
+    * Clones a car by invoking the copy constructor, returns an item pointer
     * \return pointer to a copied item
     */
-    virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CCar>(*this); }
+    virtual std::shared_ptr<CItem> Clone() const { return std::make_shared<CCar>(*this); }
 
-    /** Get Hit Status
-    * \return Hit Car
+    /**
+    * Gets hit status
+    * \returns Hit status
     */
     bool GetHitStatus() { return mHitCar; }
+
 
 private:
     /// Image swap time
@@ -46,11 +49,12 @@ private:
     /// Swapped image
     std::shared_ptr<Gdiplus::Bitmap> mSwappedImage;
 
-    /// normal image
+    /// Normal image
     std::shared_ptr<Gdiplus::Bitmap> mImage;
 
     /// Flag if Sparty hit a car
     bool mHitCar = false;
+
 
 };
 

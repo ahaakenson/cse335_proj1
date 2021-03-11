@@ -40,7 +40,7 @@
     <rect color="0, 0, 0" x="0" y="4" height="0.0625" width="16"/>
     <rect color="0, 0, 0" x="0" y="9" height="0.0625" width="16"/>
   </background>
-  <hero image="sparty.png" name="Sparty" hit-image="sparty-hit.png"/>
+  <hero image="sparty.png" name="Sparty" hit-image="sparty-hit.png" mask="sparty-mask.png"/>
   <cargo id="buckeye" x="7.5" name="Buckeye" image="buckeye.png" carried-image="buckeye-carried.png"/>
   <cargo id="gopher" x="10.5" name="Gopher" image="gopher.png" carried-image="gopher-carried.png" eats="buckeye"/>
   <cargo id="badger" x="4.5" name="Badger" image="badger.png" carried-image="badger-carried.png" eats="gopher"/>

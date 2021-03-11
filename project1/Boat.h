@@ -28,7 +28,7 @@ public:
     /** Clones a boat by invoking the copy constructor, returns an item pointer
     * \return pointer to a copied item
     */
-    virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CBoat>(*this); }
+    virtual std::shared_ptr<CItem> Clone() const { return std::make_shared<CBoat>(*this); }
 
     virtual void Accept(CItemVisitor* visitor) override;
 

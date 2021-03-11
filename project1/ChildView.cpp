@@ -186,6 +186,12 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 }
 
 
+/**
+ * Handle a key press.
+ * \param nChar Character that was pressed
+ * \param nRepCnt Repeat count
+ * \param nFlags Flags
+ */
 void CChildView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	// Move the hero

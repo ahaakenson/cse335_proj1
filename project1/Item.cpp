@@ -12,6 +12,7 @@
 using namespace Gdiplus;
 using namespace std;
 
+/// Number of pixels wide and tall a tile is.
 const double tileToPixels = 64;
 
 

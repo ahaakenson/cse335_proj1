@@ -55,7 +55,7 @@ public:
 	/** Clones a cargo item by invoking the copy constructor, returns an item pointer
 	* \return pointer to a copied item
 	*/
-	virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CCargo>(*this); }
+	virtual std::shared_ptr<CItem> Clone() const { return std::make_shared<CCargo>(*this); }
 
 	/** Gets name of cargo
 	* \return name of cargo

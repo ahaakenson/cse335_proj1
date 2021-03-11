@@ -9,8 +9,8 @@
 #include "Decor.h"
 
 /**
- * 
- * \param decor 
+ * Visit a Decor object.
+ * \param decor Decor object we are visiting.
  */
 void CDecorTypeVisitor::VisitDecor(CDecor* decor)
 {

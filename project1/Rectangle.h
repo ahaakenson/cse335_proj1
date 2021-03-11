@@ -32,7 +32,7 @@ public:
 	/** Clones a rectangle by invoking the copy constructor, returns an item pointer
 	* \return pointer to a copied object
 	*/
-	virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CRectangle>(*this); }
+	virtual std::shared_ptr<CItem> Clone() const { return std::make_shared<CRectangle>(*this); }
 
 private:
 	/// Vector representing RGB colors of rectangle
