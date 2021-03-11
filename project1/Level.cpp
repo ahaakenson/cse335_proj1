@@ -228,6 +228,7 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     {
         shared_ptr<CHero> hero = make_shared<CHero>(mGame, mImageMap[id][0]);
         mHero = hero;
+        hero->XmlLoad(node);
         // Hero isn't added to any vector so just return
         return;
     }

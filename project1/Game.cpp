@@ -276,7 +276,7 @@ void CGame::moveHero(UINT nChar)
 
     // Call the appropriate move function based on what key was hit
 
-    if (!mGameOver && !mGameWon)
+    if (!mGameOver && !mGameWon && (mControlPanel->TimerTime() > 0))
     {
         
         switch (nChar)
@@ -452,6 +452,8 @@ void CGame::Load(const int level)
 
         }
     }
+    // Load the name of the hero into the control panel
+    mControlPanel->SetHeroName(mHero->HeroName());
 
     // Set the location of the hero
     mHero->SetLocation(480, 928);
@@ -552,6 +554,8 @@ void CGame::CollisionTest(int x, int y)
 
             // 1 for getting hit by car
             mGameLossCondition = 1;
+
+            mVehicle = visitor.Vehicle()->VehicleName();
 
         }
 

@@ -46,9 +46,10 @@ CCar::CCar(const CCar& car) : CVehicle(car)
 void CCar::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
 
+    CVehicle::XmlLoad(node);
+
     double swapTime = node->GetAttributeDoubleValue(L"swap-time", 0);
     mSwapTime = swapTime;
-	CVehicle::XmlLoad(node);
 
 }
 

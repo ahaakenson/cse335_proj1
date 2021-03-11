@@ -10,6 +10,7 @@
 #include <vector>
 #include <algorithm>
 #include "IsCargoVisitor.h";
+#include "Vehicle.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -176,39 +177,35 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
     }
 
-    // IF the game was lost, draw game over
-    //if (mGame->GameLost())
-  //  {
-
-       // Font family for control panel (at the moment)
-       // FontFamily fontFamily(L"Verdana");
-
-        // Font for "Get Ready!"
-        //Gdiplus::Font getReadyFont(&fontFamily, 20);
-
-        //graphics->DrawString(L"Game Over", -1,
-           // &font, PointF(350, 480), &orange);
-
-   // }
-
-    //wstring heroName = to_wstring(mHeroName); // minutes
-
-    // Font for "Level x begin"
+    // Font for level loss
     Gdiplus::Font levelLossFont(&fontFamily, 44, FontStyleBold);
+
+    // Get the name of the vehicle that hit sparty
+    wstring vehicleName = mGame->SpartyVehicle();
+    const WCHAR* vehicleNameChar = vehicleName.c_str();
+
+    const WCHAR* heroName = mHeroName.c_str();
+
 
     switch (mGame->GameLossCondition())
     {
     // Sparty hit a car
     case 1:
-        // Convert to WCHAR*
-        //const WCHAR * heroName = name.c_str(); // name
-        graphics->DrawString(L"    Sparty\n was hit by\n       car", -1,
-            &levelLossFont, PointF(350, 400), &orange); // draw
+
+        // Draw the hero name
+        graphics->DrawString(heroName, -1,
+            &levelLossFont, PointF(390, 370), &orange); // draw
+
+        graphics->DrawString(L"  was hit by\n      ", -1,
+            &levelLossFont, PointF(300, 430), &orange); // draw
+
+        graphics->DrawString(vehicleNameChar, -1,
+            &levelLossFont, PointF(390, 520), &orange); // draw
         break;
     // Sparty fell in river
     case 2:
         graphics->DrawString(L"      Sparty\n has fallen into\n     the river", -1,
-            &levelLossFont, PointF(250, 400), &orange); // draw
+            &levelLossFont, PointF(350, 400), &orange); // draw
         break;
     case 3:
         graphics->DrawString(L"Someone ate something", -1,
@@ -234,13 +231,19 @@ void CControlPanel::Update(double elapsed)
     // mTime accumulates time since last draw
     mTime += elapsed;
 
-    // Convert to minutes
-    int minutes = mTime / 60;
-    int seconds = ((int)mTime) % 60;
+    if (mTime > 3)
+    {
 
-    // Set minutes and seconds
-    mMinutes = minutes;
-    mSeconds = seconds;
+        mTimerTime += elapsed;
+
+        // Convert to minutes
+        int minutes = mTimerTime / 60;
+        int seconds = ((int)mTimerTime) % 60;
+
+        // Set minutes and seconds
+        mMinutes = minutes;
+        mSeconds = seconds;
+    }
 
 }
 
@@ -251,6 +254,9 @@ void CControlPanel::Clear()
 {
     // Set time to zero
     mTime = 0.0;
+
+    // mTimer to zero
+    mTimerTime = 0.0;
 
     // Clear cargo names
     mCargoNames.erase(mCargoNames.begin(), mCargoNames.end());

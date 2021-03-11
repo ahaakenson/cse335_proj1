@@ -10,7 +10,6 @@
 
 #include "Game.h"
 
-
 class CControlPanel
 {
 public: 
@@ -39,6 +38,14 @@ public:
 
 	void Clear();
 
+	/**
+	* Return the time on the timer
+	* \return mTimerTime The time on the timer
+	*/
+	double TimerTime() { return mTimerTime; }
+
+	void SetHeroName(std::wstring hero) { mHeroName = hero; }
+
 private: 
 	
 	/// The game this control panel belongs to
@@ -61,6 +68,12 @@ private:
 
 	/// Seconds
 	int mSeconds = 0;
+
+	/// Time on the timer
+	double mTimerTime = 0;
+	
+	// The hero's name
+	std::wstring mHeroName = L"Sparty";
 	
 };
 

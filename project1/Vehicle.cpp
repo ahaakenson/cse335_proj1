@@ -96,11 +96,9 @@ void CVehicle::Update(double elapsed)
  */
 void CVehicle::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
-	//this->SetLocation(node->GetAttributeDoubleValue(L"x", 0), GetY());
 
-	//mSpeed = node->GetAttributeDoubleValue(L"speed", 0);
-
-    //CItem::XmlLoad(node);
+    std::wstring name = L"An actual name";
+    mName = name;
 
 }
 

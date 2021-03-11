@@ -58,11 +58,19 @@ public:
     */
     virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CVehicle>(*this); }
 
+    /** Get car name
+    * \return Name
+    */
+    std::wstring VehicleName() { return mName; }
+
 private:
     /// Vehicle speed
     double mSpeed = 1;
 
     /// Width of the lane this vehicle travels on
     int mLaneWidth = 0;
+
+    /// Name
+    std::wstring mName;
 };
 

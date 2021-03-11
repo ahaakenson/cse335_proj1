@@ -34,8 +34,10 @@ public:
     */
     virtual std::shared_ptr<CItem> clone() const { return std::make_shared<CCar>(*this); }
 
+    /** Get Hit Status
+    * \return Hit Car
+    */
     bool GetHitStatus() { return mHitCar; }
-
 
 private:
     /// Image swap time
@@ -44,12 +46,11 @@ private:
     /// Swapped image
     std::shared_ptr<Gdiplus::Bitmap> mSwappedImage;
 
-    //normal image
+    /// normal image
     std::shared_ptr<Gdiplus::Bitmap> mImage;
 
-    //Flag if Sparty hit a car
+    /// Flag if Sparty hit a car
     bool mHitCar = false;
-
 
 };
 

@@ -41,7 +41,7 @@ CHero::CHero(const CHero& hero) : CItem(hero)
  */
 void CHero::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
-    CItem::XmlLoad(node);
+    //CItem::XmlLoad(node);
 
     // Save repeats in each direction
     std::wstring name = node->GetAttributeValue(L"name", L"Sparty");

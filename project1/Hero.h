@@ -68,6 +68,12 @@ public:
     void SetSpeed(double speed) { mSpeed = speed; }
 
     void Update(double elapsed);
+
+    /** Return hero name
+    * \return mName Name of the hero
+    */
+    std::wstring HeroName() { return mName; }
+
 private:
     /// Name of hero
     std::wstring mName;

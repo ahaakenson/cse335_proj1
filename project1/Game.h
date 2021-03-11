@@ -95,6 +95,8 @@ public:
 
 	int GameLossCondition() { return mGameLossCondition; }
 
+	std::wstring SpartyVehicle() { return mVehicle; }
+
 private:
 	// game playing area constants:
 	// leftmost 1024 x 1024 is the game grid
@@ -143,6 +145,9 @@ private:
 
 	/// Game loss condition
 	int mGameLossCondition = -1;
+
+	/// Vehicle that hit sparty
+	std::wstring mVehicle = L"Vehicle";
 
 };
 
