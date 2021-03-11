@@ -276,6 +276,9 @@ void CGame::Clear()
 
     // Set get ready condition
     mGetReady = true;
+
+    // Reset timer once game over to load a level
+    mTimeToSwitchLevel = 3.0;
 }
 
 
@@ -429,6 +432,27 @@ void CGame::Update(double elapsed)
         mGetReady = false;
     }
 
+    // Game is over, start using up time until a new level loaded
+    if (mGameWon || mGameOver)
+    {
+        mTimeToSwitchLevel -= elapsed;
+        // Time has been used up, load new level
+        if (mTimeToSwitchLevel <= 0.0)
+        {
+            int levelNumber = mControlPanel->GetLevelNumber();
+            // Level won, increment to next level
+            if (mGameWon)
+            {
+                levelNumber++;
+                // Level 3 won, just load level 3 again
+                if (levelNumber > 3)
+                {
+                    levelNumber = 3;
+                }
+            }
+            Load(levelNumber);
+        }
+    }
 }
 
 /**

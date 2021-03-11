@@ -166,5 +166,8 @@ private:
 	/// Are we still in the get ready stage?
 	bool mGetReady = true;
 
+	/// Seconds until a new level is loaded or reloaded
+	double mTimeToSwitchLevel = 3.0;
+
 };
 

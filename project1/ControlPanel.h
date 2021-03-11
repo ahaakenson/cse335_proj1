@@ -52,6 +52,12 @@ public:
 	void SetTimerTime(double time) { mTimerTime = time; }
 
 	/**
+	* Gets current level number
+	* \return current level number
+	*/
+	int GetLevelNumber() { return mLevelNumber; }
+
+	/**
 	* Set the name of the hero
 	* \param hero The name of the hero
 	*/
