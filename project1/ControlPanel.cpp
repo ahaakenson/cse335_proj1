@@ -236,7 +236,17 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
         graphics->DrawString(L"Someone ate something", -1,
             &levelLossFont, PointF(350, 480), &orange); // draw
         break;
+    // Sparty drifted out of bounds
+    case 4:
+        graphics->DrawString(heroName, -1,
+            &levelLossFont, PointF(390, 370), &orange); // draw
 
+        graphics->DrawString(L"has drifted\n", -1,
+            &levelLossFont, PointF(320, 430), &orange); // draw
+
+        graphics->DrawString(L"out of bounds", -1,
+            &levelLossFont, PointF(280, 490), &orange); // draw
+        break;
     }
 
     if (mGame->GetGameWon())

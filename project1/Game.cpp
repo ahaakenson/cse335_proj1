@@ -630,6 +630,15 @@ void CGame::CollisionTest(double x, double y)
         }
     }
 
+    // Check if we have collided with the edge of the playing area
+    if (mHero->GetX() > Width - 264.0 || mHero->GetX() < 0)
+    {
+        // lost because hero drifted off of game bounds
+        mGameOver = true;
+
+        // 4 for drifting off screen
+        mGameLossCondition = 4;
+    }
 }
 
 /** Tests whether hero stepped onto a boat, then locks his position with boat
