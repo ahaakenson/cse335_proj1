@@ -11,6 +11,8 @@
 #include "Game.h"
 
 class CGame;
+
+/// Class describing control panel within a game
 class CControlPanel
 {
 public: 
@@ -32,9 +34,14 @@ public:
 	/**
 	* Set the level this control panel belongs to
 	* \param level The level this control panel belongs to
+	* \param levelNumber number of level this control panel belongs to
 	*/
 	void SetLevel(std::shared_ptr<CLevel> level, const int levelNumber) { mLevel = level, mLevelNumber = levelNumber; }
 
+	/**
+	* Adds a cargo name to the cargo name vector
+	* \param cargoName name of cargo to add
+	*/
 	void SetCargoItem(std::wstring cargoName) { mCargoNames.push_back(cargoName); }
 
 	void Clear();
@@ -96,7 +103,7 @@ private:
 	/// Time on the timer
 	double mTimerTime = 0;
 	
-	// The hero's name
+	/// The hero's name
 	std::wstring mHeroName = L"Sparty";
 
 	/// The vehicle that hit sparty

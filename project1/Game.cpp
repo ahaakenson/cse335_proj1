@@ -35,6 +35,9 @@ map<wstring, wstring> imageMap; //< Map holding the image names associated with 
 /// Number of pixels wide and tall a tile is.
 const double TileToPixels = 64;
 
+/// Max level of game
+const int MaxLevel = 3;
+
 /**
  * Game constructor
  */
@@ -445,9 +448,9 @@ void CGame::Update(double elapsed)
             {
                 levelNumber++;
                 // Level 3 won, just load level 3 again
-                if (levelNumber > 3)
+                if (levelNumber > MaxLevel)
                 {
-                    levelNumber = 3;
+                    levelNumber = MaxLevel;
                 }
             }
             Load(levelNumber);

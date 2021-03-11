@@ -11,7 +11,7 @@
 
 #include <memory>
 
-// CChildView window
+/// CChildView window
 
 class CChildView : public CWnd
 {

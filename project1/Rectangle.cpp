@@ -53,7 +53,7 @@ void CRectangle::Draw(Gdiplus::Graphics* graphics)
 			// Draws a filled rectangle
 			graphics->FillRectangle(&brush, 
 				(int)xCoordinate + x * TileToPixels, (int)yCoordinate + y * TileToPixels, 
-				mWidth * TileToPixels + 1, mHeight * TileToPixels + 1);
+				(int)(mWidth * (double)TileToPixels) + 1, (int)(mHeight * (double)TileToPixels) + 1);
 		}
 	}
 }
