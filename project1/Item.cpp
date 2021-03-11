@@ -13,7 +13,7 @@ using namespace Gdiplus;
 using namespace std;
 
 /// Number of pixels wide and tall a tile is.
-const double tileToPixels = 64;
+const double TileToPixels = 64;
 
 
 /**
@@ -109,8 +109,8 @@ void CItem::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
     y = node->GetAttributeDoubleValue(L"y", 15.5);
 
     // tile values multiplied by 64 to convert to pixels
-    mX = x * tileToPixels;
-    mY = y * tileToPixels;
+    mX = x * TileToPixels;
+    mY = y * TileToPixels;
 
 }
 

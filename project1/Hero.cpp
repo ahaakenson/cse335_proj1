@@ -14,6 +14,9 @@ const int topBorder = 128;
 /// The lower border of the screen
 const int lowerBorder = 896;
 
+/// Number of pixels wide and tall a tile is.
+const double TileToPixels = 64;
+
 /**
  * Constructor for the Hero
  * \param game The game this Hero is a part of
@@ -77,7 +80,7 @@ void CHero::moveForward()
     // Move the hero forward, unless at top of the screen
     if (currentY > topBorder)
     {
-        this->SetLocation(currentX, currentY - 64);
+        this->SetLocation(currentX, currentY - TileToPixels);
     }
 }
 
@@ -95,7 +98,7 @@ void CHero::moveBackward()
     // Move the hero forward, unless at bottom of the screen
     if (currentY < lowerBorder)
     {
-        this->SetLocation(currentX, currentY + 64);
+        this->SetLocation(currentX, currentY + TileToPixels);
     }
 }
 
@@ -110,7 +113,7 @@ void CHero::moveLeft()
     double currentX = this->GetX();
 
     // Move the hero forward, this may have to be changed w/ Virtual pixels
-    this->SetLocation(currentX - 64, currentY);
+    this->SetLocation(currentX - TileToPixels, currentY);
 
 }
 
@@ -125,7 +128,7 @@ void CHero::moveRight()
     double currentX = this->GetX();
 
     // Move the hero forward, this may have to be changed w/ Virtual pixels
-    this->SetLocation(currentX + 64, currentY);
+    this->SetLocation(currentX + TileToPixels, currentY);
 
 }
 

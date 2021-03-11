@@ -8,6 +8,8 @@
 #include "Cargo.h"
 #include "Game.h"
 
+/// Number of pixels wide and tall a tile is.
+const double TileToPixels = 64;
 
 /**
  * Constructor for CCargo
@@ -74,7 +76,11 @@ void CCargo::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
  */
 void CCargo::PickUp()
 {
-	mCarriedByHero = true;
+	if (GetGame()->GetHero()->GetY() - GetY() <= TileToPixels &&
+		GetGame()->GetHero()->GetY() - GetY() >= -TileToPixels)
+	{
+		mCarriedByHero = true;
+	}
 
 	//mLevel->GetImage([])
 
