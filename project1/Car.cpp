@@ -61,14 +61,69 @@ void CCar::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 void CCar::Update(double elapsed)
 {
     // some logic to swap every time swap-time has passed
-    if (elapsed == mSwapTime)
-    {
-        mSwappedImage;
-    }
- 
-    
+
     CVehicle::Update(elapsed);
 
+}
+
+/**
+* Draw this item
+* \param graphics Graphics device to draw on
+*/
+void CCar::Draw(Gdiplus::Graphics* graphics)
+{
+
+    // Get the image item
+    Gdiplus::Bitmap* itemImage = this->GetImage();
+    // Height and Width of Image
+    double wid = itemImage->GetWidth();
+    double hit = itemImage->GetHeight();
+
+    // Width of the window
+    const double Width = 1024.0;
+
+    // If the vehcile is starting to pass the left boundary
+    if (GetX() - GetWidth() / 2 < 0)
+    {
+        // Draw the vehiclke
+        CItem::Draw(graphics);
+
+        // Create a solid black brush
+        SolidBrush black(Color(0, 0, 0));
+
+        // Fill a rectangle starting off the screen and going to the edge of the boundary
+        graphics->FillRectangle(&black, float(-600), float(GetY() - hit / 2),
+            (float)600, (float)800);
+
+    }
+    // If the vehicle is over the right boundary
+    else if (GetWidth() / 2 + GetX() > Width)
+    {
+
+        // Draw the vehicle
+        CItem::Draw(graphics);
+
+        // Create a solid black brush
+        SolidBrush black(Color(0, 0, 0));
+
+        // Fill a recntangle starting at the width of the boundary to off screen
+        graphics->FillRectangle(&black, float(Width), float(GetY() - hit / 2),
+            (float)800, (float)800);
+    }
+    else if (mSwapTime++)
+    {
+        
+        double wid = mSwappedImage->GetWidth();
+        double hit = mSwappedImage->GetHeight();
+        graphics->DrawImage(mSwappedImage.get(),
+            float(GetX() - wid / 2), float(GetY() - hit / 2),
+            (float)wid, (float)hit);
+        
+    }
+    else
+    {
+        CItem::Draw(graphics);
+    }
 }
 
 
