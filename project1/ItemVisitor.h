@@ -14,6 +14,7 @@ class CVehicle;
 class CHero;
 class CDecor;
 class CBoat;
+class CSketchyBoat;
 
 /** Item visitor base class */
 class CItemVisitor
@@ -41,6 +42,6 @@ public:
 	 * \param boat Boat we are visiting */
 	virtual void VisitBoat(CBoat* boat) {}
 
-
+	virtual void VisitSketchy(CSketchyBoat* boat) {}
 };
 

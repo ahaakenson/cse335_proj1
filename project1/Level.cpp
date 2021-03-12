@@ -66,7 +66,7 @@ shared_ptr<Bitmap> LoadImage(wstring& filename)
  */
 void CLevel::Load(const std::wstring& filename)
 {
-
+    
     // We surround with a try/catch to handle errors
     try
     {

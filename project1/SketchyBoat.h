@@ -27,6 +27,10 @@ public:
 
     CSketchyBoat::CSketchyBoat(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos, int width);
 
+    virtual void Draw(Gdiplus::Graphics* graphics) override;
+
+    virtual void Update(double elapsed) override;
+
     /** Clones a SketchyBoat by invoking the copy constructor, returns an item pointer
     * \return pointer to a copied item
     */
@@ -34,8 +38,17 @@ public:
 
     virtual void Accept(CItemVisitor* visitor) override;
 
+    double GetTimeRidden() const { return mTimeRidden; }
+
+    void SetIsRidden(bool rid) { mIsRidden = rid; }
+
 private:
     /// If the boat is occupied by the hero
     bool mIsRidden = false;
+
+    double mTimeRidden = 0;
+
+    /// The swapped image of this item
+    std::shared_ptr<Gdiplus::Bitmap> mBrokenItemImage;
 };
 

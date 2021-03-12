@@ -63,6 +63,10 @@ public:
     */
     void SetOnBoat(bool onBoat) { mOnBoat = onBoat; }
 
+    void SetOnSketchy(bool onSketchy) { mOnSketchy = onSketchy; }
+
+    bool GetOnSketchy() const { return mOnSketchy; }
+
     /** Gets whether hero is carrying something.
     * \returns Whether hero is carrying something.
     */
@@ -96,6 +100,9 @@ private:
 
     /// Whether the hero is floating on a boat
     bool mOnBoat = false;
+
+    /// Whether the hero is floating on a sketchy boat
+    bool mOnSketchy = false;
 
     /// Whether or not hero is carrying Cargo
     bool mIsCarrying = false;

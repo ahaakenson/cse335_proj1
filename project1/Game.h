@@ -86,6 +86,8 @@ public:
 	/// \returns True if game has been lost, False otherwise.
 	bool GetGameLost() { return mGameOver; }
 
+	void SetGameLost() { mGameOver = true; }
+
 	/// Get if the game has been won.
 	/// \returns True if game has been won, False otherwise.
 	bool GetGameWon() { return mGameWon; }
@@ -109,6 +111,8 @@ public:
 	/// Gets the condition of the game's loss
 	/// \returns int representing condition of game's loss.
 	int GameLossCondition() { return mGameLossCondition; }
+
+	void SetLossCondtion(int loss) { mGameLossCondition = loss; }
 
 	/// Gets the game's get ready state
 	/// \returns bool of get ready state

@@ -20,6 +20,7 @@
 #include "IsCargoVisitor.h"
 #include "IsVehicleVisitor.h"
 #include "IsBoatVisitor.h"
+#include "IsSketchyVisitor.h"
 #include "ControlPanel.h"
 #include "DecorTypeVisitor.h"
 #include "CargoEatenVisitor.h"
@@ -427,6 +428,12 @@ void CGame::Update(double elapsed)
     {
         CollisionTest(mHero->GetX(), mHero->GetY());
     }
+    else
+    {
+        // visit and find whatever boat the hero is on
+        // if its a sketchy boat, set mOnSketchy to true
+
+    }
 
     CCargoEatenVisitor eatenVisitor(mHero);
     Accept(&eatenVisitor);
@@ -646,6 +653,7 @@ void CGame::CollisionTest(double x, double y)
 void CGame::BoatTest()
 {
     CIsBoatVisitor visitor;
+    //shared_ptr<CSketchyBoat> sketchy = make_shared<CSketchyBoat>();
 
     for (auto& item : mItems)
     {
@@ -655,6 +663,17 @@ void CGame::BoatTest()
         if (visitor.GetIsBoat() && visitor.GetBoat()->HitTest(mHero->GetX(), mHero->GetY()) && !mRiverCheatEnabled)
         {
             CBoat* boat = visitor.GetBoat();
+
+            CIsSketchyVisitor sketchyVisitor;
+            boat->Accept(&sketchyVisitor);
+            // if the boat is a sketchy boat
+            if (sketchyVisitor.GetIsSketchy())
+            {
+                mHero->SetOnSketchy(true);
+                CSketchyBoat* sketchy = sketchyVisitor.GetSketchy();
+                //sketchy->SetIsRidden(true);
+            }
+
             // Set speed and location, then return since we're done searching
             mHero->SetSpeed(boat->GetSpeed());
             mHero->SetOnBoat(true);
@@ -664,6 +683,8 @@ void CGame::BoatTest()
     }
     mHero->SetSpeed(0.0);
     mHero->SetOnBoat(false);
+    mHero->SetOnSketchy(false);
+    
 }
 
 

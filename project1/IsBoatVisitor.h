@@ -18,6 +18,9 @@ class CIsBoatVisitor :
 public:
     virtual void VisitBoat(CBoat* boat) override;
 
+    // visit sketchy boat
+    //virtual void VisitSketchy(CSketchyBoat* boat) {}
+
     /** Returns whether or not the item is a boat.
     * \returns True if item is a boat, False otherwise. */
     bool GetIsBoat() { return mIsBoat; }
