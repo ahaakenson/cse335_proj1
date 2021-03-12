@@ -93,6 +93,9 @@
     <ClInclude Include="CargoEatenVisitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SketchyBoat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="project1.cpp">
@@ -159,6 +162,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CargoEatenVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SketchyBoat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

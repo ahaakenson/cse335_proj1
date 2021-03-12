@@ -20,7 +20,7 @@
     <boat id="b3r" width="3" image="red-raft.png"/>
     <boat id="duck1" width="1" image="mallard-drake.png"/>
     <boat id="duck2" width="1" image="mallard-hen.png"/>
-	<sketchy id="sketchy" width="2" image="green-raft.png"/>
+	<sketchy id="sketchy" width="2" image="sketchy-boat.png"/>
   </types>
   <background>
     <decor id="s001" x="0" y="0" repeat-x="16" repeat-y="2"/>

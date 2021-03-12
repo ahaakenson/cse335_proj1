@@ -13,6 +13,7 @@
 #include "Rectangle.h"
 #include "Cargo.h"
 #include "Boat.h"
+#include "SketchyBoat.h"
 #include "Car.h"
 #include <memory>
 #include <map>
@@ -85,8 +86,8 @@ void CLevel::Load(const std::wstring& filename)
                 // Go through each node in types section
                 for (auto node : section->GetChildren())
                 {
-                    // If the type was decor or boat
-                    if (node->GetType() == NODE_ELEMENT && (node->GetName() == L"decor" || node->GetName() == L"boat"))
+                    // If the type was decor or boat or sketchy boat
+                    if (node->GetType() == NODE_ELEMENT && (node->GetName() == L"decor" || node->GetName() == L"boat") || node->GetName() == L"sketchy")
                     {
                         wstring imageName = L".\\images\\" + node->GetAttributeValue(L"image", L"");
                         wstring id = node->GetAttributeValue(L"id", L"");
@@ -231,8 +232,9 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     }
     else if (type == L"sketchy")
     {
-        // uncomment this once sketchy boat class is done
-        //item = make_shared<CSketchyBoat>(mGame, mImageMap[id][0]);
+        int xPos = node->GetAttributeIntValue(L"x", 0);
+        item = make_shared<CSketchyBoat>(mGame, mImageMap[id][0], speed * TileToPixels,
+            32 + yPos * TileToPixels, xPos * TileToPixels, width);
     }
     /* Format of hero vector in map:
     * [0]- default image
