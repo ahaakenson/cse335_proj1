@@ -103,6 +103,7 @@ void CCargo::PickUp()
 void CCargo::Release()
 {
 	mCarriedByHero = false;
+	GetGame()->GetHero()->SetCarrying(false);
 	//mLevel->GetImage([])
 	
 	//GetGame()->CheckWinState();
