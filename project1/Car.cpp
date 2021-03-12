@@ -62,8 +62,6 @@ void CCar::Update(double elapsed)
 {
     // some logic to swap every time swap-time has passed
 
- 
-    
     CVehicle::Update(elapsed);
 
 }
@@ -114,19 +112,17 @@ void CCar::Draw(Gdiplus::Graphics* graphics)
     }
     else if (mSwapTime++)
     {
+        
         double wid = mSwappedImage->GetWidth();
         double hit = mSwappedImage->GetHeight();
         graphics->DrawImage(mSwappedImage.get(),
             float(GetX() - wid / 2), float(GetY() - hit / 2),
             (float)wid, (float)hit);
+        
     }
     else
     {
-        double wid = mImage->GetWidth();
-        double hit = mImage->GetHeight();
-        graphics->DrawImage(mImage.get(),
-            float(GetX() - wid / 2), float(GetY() - hit / 2),
-            (float)wid, (float)hit);
+        CItem::Draw(graphics);
     }
 }
 

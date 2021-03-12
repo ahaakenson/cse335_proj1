@@ -46,7 +46,7 @@ public:
 
 private:
     /// Image swap time
-    double mSwapTime = 0.5;
+    double mSwapTime = .5;
 
     /// Swapped image
     std::shared_ptr<Gdiplus::Bitmap> mSwappedImage;
