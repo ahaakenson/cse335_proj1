@@ -222,19 +222,19 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     {
         int xPos = node->GetAttributeIntValue(L"x", 0);
         item = make_shared<CCar>(mGame, mImageMap[id][0], mImageMap[id][1], speed * TileToPixels, 
-            32 + yPos * TileToPixels, xPos * TileToPixels, width);
+            (int)(32 + yPos * TileToPixels), (int)(xPos * TileToPixels), width);
     }
     else if (type == L"boat")
     {
         int xPos = node->GetAttributeIntValue(L"x", 0);
         item = make_shared<CBoat>(mGame, mImageMap[id][0], speed * TileToPixels, 
-            32 + yPos * TileToPixels, xPos * TileToPixels, width);
+            (int)(32 + yPos * TileToPixels), (int)(xPos * TileToPixels), width);
     }
     else if (type == L"sketchy")
     {
         int xPos = node->GetAttributeIntValue(L"x", 0);
         item = make_shared<CSketchyBoat>(mGame, mImageMap[id][0], speed * TileToPixels,
-            32 + yPos * TileToPixels, xPos * TileToPixels, width);
+            (int)(32 + yPos * TileToPixels), (int)(xPos * TileToPixels), width);
     }
     /* Format of hero vector in map:
     * [0]- default image
