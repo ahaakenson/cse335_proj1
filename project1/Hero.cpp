@@ -6,6 +6,8 @@
 
 #include "pch.h"
 #include "Hero.h"
+#include "Game.h"
+#include "Item.h"
 #include <iostream>
 
 /// The upper border of the screen
@@ -22,10 +24,11 @@ const double TileToPixels = 64;
  * \param game The game this Hero is a part of
  * \param bitmap Bitmap of the default image of hero
  */
-CHero::CHero(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
-    CItem(game, bitmap)
+CHero::CHero(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, std::shared_ptr<Gdiplus::Bitmap> swapped, 
+    std::shared_ptr<Gdiplus::Bitmap> mask) : CItem(game, bitmap)
 {
-
+    mSwappedItemImage = swapped;
+    mItemMask = mask;
 }
 
 /**
@@ -35,6 +38,8 @@ CHero::CHero(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
 CHero::CHero(const CHero& hero) : CItem(hero)
 {
     mName = hero.mName;
+    mSwappedItemImage = hero.mSwappedItemImage;
+    mItemMask = hero.mItemMask;
 }
 
 /**
@@ -140,4 +145,40 @@ void CHero::moveRight()
 void CHero::Update(double elapsed)
 {
     SetLocation(GetX() + mSpeed * elapsed, GetY());
+}
+
+
+/**
+ * Responsible for drawing the hero on the screen. 
+ * Overloaded from CItem. Handles what to do with hero 
+ * if loss conditions occur.
+ * \param graphics Graphics context to draw with
+ */
+void CHero::Draw(Gdiplus::Graphics* graphics)
+{
+    CGame* game = GetGame();
+
+    // If hero got shmucked by a car
+    if (game->GameLossCondition() == 1)
+    {
+        // draw the swapped image
+        SetImage(mSwappedItemImage);
+        CItem::Draw(graphics);
+    }
+    // If hero fell in the river
+    else if (game->GameLossCondition() == 2)
+    {
+        CItem::Draw(graphics);
+        // add the mask over the image
+    }
+    // If hero drifted off screen
+    else if (game->GameLossCondition() == 4)
+    {
+        // Don't draw hero for remainder of this run
+    }
+    else
+    {
+        // draw the image normally
+        CItem::Draw(graphics);
+    }
 }

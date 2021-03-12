@@ -393,7 +393,15 @@ void CGame::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node)
  */
 void CGame::Update(double elapsed)
 {
+    // Check if we have collided with the edge of the playing area
+    if (mHero->GetX() > Width - 264.0 || mHero->GetX() < 0)
+    {
+        // lost because hero drifted off of game bounds
+        mGameOver = true;
 
+        // 4 for drifting off screen
+        mGameLossCondition = 4;
+    }
 
     for (auto item : mItems)
     {
@@ -606,6 +614,7 @@ void CGame::CollisionTest(double x, double y)
 
         if (visitor.GetIsVehicle() && visitor.GetVehicle()->HitTest(x, y) && !mRoadCheatEnabled)
         {
+
             // Lost because a vehicle hit hero
             mGameOver = true;
 
@@ -630,15 +639,6 @@ void CGame::CollisionTest(double x, double y)
         }
     }
 
-    // Check if we have collided with the edge of the playing area
-    if (mHero->GetX() > Width - 264.0 || mHero->GetX() < 0)
-    {
-        // lost because hero drifted off of game bounds
-        mGameOver = true;
-
-        // 4 for drifting off screen
-        mGameLossCondition = 4;
-    }
 }
 
 /** Tests whether hero stepped onto a boat, then locks his position with boat

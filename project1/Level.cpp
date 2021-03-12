@@ -236,8 +236,9 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     */
     else if (type == L"hero")
     {
-        shared_ptr<CHero> hero = make_shared<CHero>(mGame, mImageMap[id][0]);
-        mHero = hero;
+        // FIX: masked image is currently not loaded to mImageMap
+        shared_ptr<CHero> hero = make_shared<CHero>(mGame, mImageMap[id][0], mImageMap[id][1], mImageMap[id][1]);
+        mHero = hero; 
         hero->XmlLoad(node);
         // Hero isn't added to any vector so just return
         return;

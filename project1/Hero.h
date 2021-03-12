@@ -23,7 +23,8 @@ public:
     /// Copy constructor
     CHero(const CHero&);
 
-    CHero::CHero(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
+    CHero::CHero(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, std::shared_ptr<Gdiplus::Bitmap> swapped,
+        std::shared_ptr<Gdiplus::Bitmap> mask);
 
     virtual std::shared_ptr<xmlnode::CXmlNode> 
         XmlSave(const std::shared_ptr<xmlnode::CXmlNode>& node) override;
@@ -74,6 +75,8 @@ public:
     */
     std::wstring GetHeroName() { return mName; }
 
+    virtual void Draw(Gdiplus::Graphics* graphics) override;
+
 private:
     /// Name of hero
     std::wstring mName;
@@ -81,5 +84,11 @@ private:
     double mSpeed = 0.0;
     /// Whether the hero is floating on a boat
     bool mOnBoat = false;
+
+    /// The swapped image of this item
+    std::shared_ptr<Gdiplus::Bitmap> mSwappedItemImage;
+
+    /// The mask for the hero when falling in river
+    std::shared_ptr<Gdiplus::Bitmap> mItemMask;
 };
 

@@ -148,7 +148,7 @@ namespace Testing
 			// Add one of each object
 			auto cargo = make_shared<CCargo>(&game, bitmap);
 			auto vehicle = make_shared<CVehicle>(&game, bitmap);
-			auto hero = make_shared<CHero>(&game, bitmap);
+			auto hero = make_shared<CHero>(&game, bitmap, bitmap, bitmap);
 			auto decor = make_shared<CDecor>(&game, bitmap);
 
 			game.Add(cargo);
@@ -178,7 +178,7 @@ namespace Testing
 			// Add one of each object
 			auto cargo = make_shared<CCargo>(&game, bitmap);
 			auto vehicle = make_shared<CVehicle>(&game, bitmap);
-			auto hero = make_shared<CHero>(&game, bitmap);
+			auto hero = make_shared<CHero>(&game, bitmap, bitmap, bitmap);
 			auto decor = make_shared<CDecor>(&game, bitmap);
 
 			game.Add(cargo);

@@ -49,6 +49,10 @@ public:
 	 * \returns height in pixels */
 	Gdiplus::Bitmap* GetImage() const { return mItemImage.get(); }
 
+	/// Sets the image to draw of the hero
+	/// \param image The bitmap pointer image to set
+	void SetImage(std::shared_ptr<Gdiplus::Bitmap> image) { mItemImage = image;}
+
 	/// Set the item location
 	/// \param x X location
 	/// \param y Y location

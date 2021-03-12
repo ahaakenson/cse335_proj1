@@ -19,7 +19,12 @@ using namespace std;
 using namespace Gdiplus;
 
 const std::wstring HeroImageName = L"images/sparty.png";
+const std::wstring HeroSwappedImageName = L"images/sparty-hit.png";
+const std::wstring HeroMaskName = L"images/sparty-mask.png";
+
 shared_ptr<Bitmap> heroBitmap = shared_ptr<Bitmap>(Bitmap::FromFile(HeroImageName.c_str()));
+shared_ptr<Bitmap> heroSwappedBitmap = shared_ptr<Bitmap>(Bitmap::FromFile(HeroSwappedImageName.c_str()));
+shared_ptr<Bitmap> heroMaskBitmap = shared_ptr<Bitmap>(Bitmap::FromFile(HeroMaskName.c_str()));
 
 namespace Testing
 {
@@ -84,7 +89,7 @@ namespace Testing
 		void PopulateHero(CGame* game)
 		{
 			// Create a new hero
-			shared_ptr<CHero> hero = make_shared<CHero>(game, heroBitmap);
+			shared_ptr<CHero> hero = make_shared<CHero>(game, heroBitmap, heroSwappedBitmap, heroMaskBitmap);
 			// Add the hero to the game
 			game->Add(hero);
 		}
@@ -195,7 +200,7 @@ namespace Testing
 			game.SetTime(5.0);
 
 			// Create a new hero
-			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
+			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap, heroSwappedBitmap, heroMaskBitmap);
 
 			// Set its location (irrelevant, but processes for hero creation recorded regardless)
 			hero->SetLocation(192, 192);
@@ -236,7 +241,7 @@ namespace Testing
 			game.SetTime(5.0);
 
 			// Create a new hero
-			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
+			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap, heroSwappedBitmap, heroMaskBitmap);
 
 			// Set its location (irrelevant, but processes for hero creation recorded regardless)
 			hero->SetLocation(0, 0);
@@ -280,7 +285,7 @@ namespace Testing
 			game.SetTime(5.0);
 
 			// Create a new hero
-			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
+			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap, heroSwappedBitmap, heroMaskBitmap);
 
 			// Set its location (irrelevant, but processes for hero creation recorded regardless)
 			hero->SetLocation(0, 0);
@@ -316,7 +321,7 @@ namespace Testing
 			game.SetTime(5.0);
 
 			// Create a new hero
-			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
+			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap, heroSwappedBitmap, heroMaskBitmap);
 
 			// Set its location (irrelevant, but processes for hero creation recorded regardless)
 			hero->SetLocation(0, 0);
@@ -350,7 +355,7 @@ namespace Testing
 			CGame game;
 
 			// Create a new hero
-			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
+			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap, heroSwappedBitmap, heroMaskBitmap);
 
 			// Set its location (irrelevant, but processes for hero creation recorded regardless)
 			hero->SetLocation(0, 0);
@@ -372,7 +377,7 @@ namespace Testing
 			CGame game;
 
 			// Create a new hero
-			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap);
+			shared_ptr<CHero> hero = make_shared<CHero>(&game, heroBitmap, heroSwappedBitmap, heroMaskBitmap);
 
 			auto heroClone = hero->CloneHero();
 			Assert::IsNotNull(heroClone.get());
