@@ -117,11 +117,12 @@ void CCar::Draw(Gdiplus::Graphics* graphics)
         double hit = mSwappedImage->GetHeight();
         graphics->DrawImage(mSwappedImage.get(),
             float(GetX() - wid / 2), float(GetY() - hit / 2),
-            (float)wid, (float)hit);
-        
+            (float)wid, (float)hit);    
+        mSwapTime = 0;
     }
-    else
+    else 
     {
+
         CItem::Draw(graphics);
     }
 }

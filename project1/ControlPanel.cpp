@@ -235,6 +235,10 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     case 3:
         graphics->DrawString(L"Someone ate something", -1,
             &levelLossFont, PointF(350, 480), &orange); // draw
+
+
+
+
         break;
     // Sparty drifted out of bounds
     case 4:
