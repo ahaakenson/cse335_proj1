@@ -17,9 +17,10 @@ const double TileToPixels = 64;
  * \param game Pointer to game object
  * \param bitmap Bitmap of item's image
  */
-CCargo::CCargo(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap) :
+CCargo::CCargo(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, std::shared_ptr<Gdiplus::Bitmap> carried) :
 	CItem(game, bitmap)
 {
+	mCarriedItemImage = carried;
 }
 
 /**
@@ -35,6 +36,7 @@ CCargo::CCargo(const CCargo& cargo) : CItem(cargo)
 {
 	mCarriedByHero = cargo.mCarriedByHero;
 	mEaten = cargo.mEaten;
+	mCarriedItemImage = cargo.mCarriedItemImage;
 	mName = cargo.mName;
 	mId = cargo.mId;
 	mImage = cargo.mImage;
@@ -48,15 +50,20 @@ void CCargo::Draw(Gdiplus::Graphics* graphics)
 {
 	CGame* game = GetGame();
 
-	// If mCarriedByHero is true, and no other objects are being carried,
-	// should be drawn on top of hero (should this be in derived classes?)
+	// if cargo is being carried, draw the cargo at the hero's position
+	if (mCarriedByHero && !(game->GetGameLost()))
+	{
+		double wid = mCarriedItemImage->GetWidth();
+		double hit = mCarriedItemImage->GetHeight();
 
-	// if a cargo object is being carried as the game is lost, don't draw it
-	if (!(mCarriedByHero && game->GetGameLost()))
+		graphics->DrawImage(mCarriedItemImage.get(),
+			float(game->GetHero()->GetX() - wid / 2), float(game->GetHero()->GetY() - hit / 2),
+			(float)mCarriedItemImage->GetWidth(), (float)mCarriedItemImage->GetHeight());
+	}
+	else if (!mCarriedByHero)
 	{
 		CItem::Draw(graphics);
 	}
-	
 
 }
 
@@ -82,18 +89,13 @@ void CCargo::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 void CCargo::PickUp()
 {
 	if (GetGame()->GetHero()->GetY() - GetY() <= TileToPixels &&
-		GetGame()->GetHero()->GetY() - GetY() >= -TileToPixels)
+		GetGame()->GetHero()->GetY() - GetY() >= -TileToPixels &&
+		!(GetGame()->GetHero()->GetCarrying()))
 	{
 		mCarriedByHero = true;
+		GetGame()->GetHero()->SetCarrying(true);
 	}
 
-	//mLevel->GetImage([])
-
-	//if (mCarriedByHero = true)
-	//{
-	//	mImage = mCarriedImage;
-	//}
-	/// Will we have to implement an image swap similar to the cars? Confused on this
 }
 
 /** Releases cargo.
@@ -101,6 +103,7 @@ void CCargo::PickUp()
 void CCargo::Release()
 {
 	mCarriedByHero = false;
+	GetGame()->GetHero()->SetCarrying(false);
 	//mLevel->GetImage([])
 	
 	//GetGame()->CheckWinState();

@@ -69,7 +69,7 @@ namespace Testing
 			CGame game;
 
 			// Add one of each object
-			auto cargo = make_shared<CCargo>(&game, bitmap);
+			auto cargo = make_shared<CCargo>(&game, bitmap, bitmap);
 			auto vehicle = make_shared<CVehicle>(&game, bitmap);
 			auto decor = make_shared<CDecor>(&game, bitmap);
 
