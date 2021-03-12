@@ -137,6 +137,11 @@ void CLevel::Load(const std::wstring& filename)
                     {
                         mImageMap[id].push_back(LoadImage(maskImageName));
                     }
+                    // Makes mask image the same as default hero image for level 0 to prevent crash
+                    else
+                    {
+                        mImageMap[id].push_back(LoadImage(imageName));
+                    }
 
                 }
                 // Load carried image for cargo
@@ -237,7 +242,7 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     else if (type == L"hero")
     {
         // FIX: masked image is currently not loaded to mImageMap
-        shared_ptr<CHero> hero = make_shared<CHero>(mGame, mImageMap[id][0], mImageMap[id][1], mImageMap[id][1]);
+        shared_ptr<CHero> hero = make_shared<CHero>(mGame, mImageMap[id][0], mImageMap[id][1], mImageMap[id][2]);
         mHero = hero; 
         hero->XmlLoad(node);
         // Hero isn't added to any vector so just return
