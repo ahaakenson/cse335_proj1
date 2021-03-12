@@ -28,7 +28,7 @@ public:
 	/// Copy constructor (disabled)
 	CCargo(const CCargo&);
 
-	CCargo(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap);
+	CCargo(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, std::shared_ptr<Gdiplus::Bitmap> mCarriedItemImage);
 
 	CCargo(CGame* game);
 
@@ -70,6 +70,9 @@ private:
 	/// Flag for if the cargo object has been left alone for too long
 	/// with the CCargo object that eats it
 	bool mEaten = false;
+
+	/// The carried image of this item
+	std::shared_ptr<Gdiplus::Bitmap> mCarriedItemImage;
 
 	/// name of the Cargo object that gets displayed on the Control Panel
 	std::wstring mName;

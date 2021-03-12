@@ -146,7 +146,7 @@ namespace Testing
 				L"Visitor number of decor objects");
 
 			// Add one of each object
-			auto cargo = make_shared<CCargo>(&game, bitmap);
+			auto cargo = make_shared<CCargo>(&game, bitmap, bitmap);
 			auto vehicle = make_shared<CVehicle>(&game, bitmap);
 			auto hero = make_shared<CHero>(&game, bitmap, bitmap, bitmap);
 			auto decor = make_shared<CDecor>(&game, bitmap);
@@ -176,7 +176,7 @@ namespace Testing
 			CGame game;
 
 			// Add one of each object
-			auto cargo = make_shared<CCargo>(&game, bitmap);
+			auto cargo = make_shared<CCargo>(&game, bitmap, bitmap);
 			auto vehicle = make_shared<CVehicle>(&game, bitmap);
 			auto hero = make_shared<CHero>(&game, bitmap, bitmap, bitmap);
 			auto decor = make_shared<CDecor>(&game, bitmap);

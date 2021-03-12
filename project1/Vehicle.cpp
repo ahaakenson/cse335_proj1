@@ -10,7 +10,7 @@
 using namespace Gdiplus;
 
 /// Number of pixels wide and tall a tile is.
-const double TileToPixels = 64;
+const int TileToPixels = 64;
 
 /**
  * Constructor

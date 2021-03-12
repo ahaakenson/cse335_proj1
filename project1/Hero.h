@@ -54,14 +54,24 @@ public:
     std::shared_ptr<CHero> CloneHero() const { return std::make_shared<CHero>(*this); }
 
     /** Gets whether hero is on boat
-    * \return whether hero is on a boat.
+    * \return Whether hero is on a boat.
     */
     bool GetOnBoat() { return mOnBoat; }
 
     /** Sets whether hero is on boat
-    * \param onBoat whether hero is on a boat.
+    * \param onBoat Whether hero is on a boat.
     */
     void SetOnBoat(bool onBoat) { mOnBoat = onBoat; }
+
+    /** Gets whether hero is carrying something.
+    * \returns Whether hero is carrying something.
+    */
+    bool GetCarrying() { return mIsCarrying; }
+
+    /** Sets whether hero is carrying something.
+    * \param carrying Whether hero is carrying something.
+    */
+    void SetCarrying(bool carrying) { mIsCarrying = carrying; }
 
     /** Sets speed of hero
     * \param speed Speed of hero
@@ -80,10 +90,15 @@ public:
 private:
     /// Name of hero
     std::wstring mName;
+
     /// Speed of hero (non zero when on boat)
     double mSpeed = 0.0;
+
     /// Whether the hero is floating on a boat
     bool mOnBoat = false;
+
+    /// Whether or not hero is carrying Cargo
+    bool mIsCarrying = false;
 
     /// The swapped image of this item
     std::shared_ptr<Gdiplus::Bitmap> mSwappedItemImage;

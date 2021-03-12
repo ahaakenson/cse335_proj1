@@ -255,7 +255,7 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     else if (type == L"cargo")
     {
         heroCargo = true;
-        item = make_shared<CCargo>(mGame, mImageMap[id][0]);
+        item = make_shared<CCargo>(mGame, mImageMap[id][0], mImageMap[id][1]);
     }
 
     // Item exists, add it to one of the vectors

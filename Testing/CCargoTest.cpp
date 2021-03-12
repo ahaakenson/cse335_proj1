@@ -29,7 +29,7 @@ namespace Testing
 			shared_ptr<Bitmap> cargoBitmap = shared_ptr<Bitmap>(Bitmap::FromFile(CargoImageName.c_str()));
 			// Create a cargo to test
 			CGame game;
-			CCargo cargo(&game, cargoBitmap);
+			CCargo cargo(&game, cargoBitmap, cargoBitmap);
 
 			// Give it a location
 			cargo.SetLocation(100, 200);
