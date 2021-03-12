@@ -46,12 +46,17 @@ CCargo::CCargo(const CCargo& cargo) : CItem(cargo)
  */
 void CCargo::Draw(Gdiplus::Graphics* graphics)
 {
+	CGame* game = GetGame();
 
 	// If mCarriedByHero is true, and no other objects are being carried,
 	// should be drawn on top of hero (should this be in derived classes?)
 
-	CItem::Draw(graphics);
-
+	// if a cargo object is being carried as the game is lost, don't draw it
+	if (!(mCarriedByHero && game->GetGameLost()))
+	{
+		CItem::Draw(graphics);
+	}
+	
 
 }
 

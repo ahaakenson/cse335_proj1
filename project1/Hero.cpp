@@ -169,7 +169,14 @@ void CHero::Draw(Gdiplus::Graphics* graphics)
     else if (game->GameLossCondition() == 2)
     {
         CItem::Draw(graphics);
-        // add the mask over the image
+
+        // add the mask over the hero image
+        double wid = mItemMask->GetWidth();
+        double hit = mItemMask->GetHeight();
+
+        graphics->DrawImage(mItemMask.get(),
+            float(GetX() - wid / 2), float(GetY() - hit / 2),
+            (float)mItemMask->GetWidth(), (float)mItemMask->GetHeight());
     }
     // If hero drifted off screen
     else if (game->GameLossCondition() == 4)
