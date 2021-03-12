@@ -29,6 +29,8 @@ public:
 
     virtual void Update(double elapsed) override;
 
+    virtual void Draw(Gdiplus::Graphics* graphics) override;
+
     /** 
     * Clones a car by invoking the copy constructor, returns an item pointer
     * \return pointer to a copied item
