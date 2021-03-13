@@ -77,6 +77,7 @@ public:
 	*/
 	void SetSpartyCar(std::wstring car) { mSpartyCar = car; }
 
+
 private: 
 	
 	/// The game this control panel belongs to
@@ -108,6 +109,8 @@ private:
 
 	/// The vehicle that hit sparty
 	std::wstring mSpartyCar = L"Vehicle";
+
+
 	
 };
 

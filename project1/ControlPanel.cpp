@@ -11,6 +11,7 @@
 #include <algorithm>
 #include "IsCargoVisitor.h"
 #include "Vehicle.h"
+#include "CargoEatenVisitor.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -233,11 +234,43 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
     // Cargo ate something
     case 3:
-        graphics->DrawString(L"Someone ate something", -1,
-            &levelLossFont, PointF(350, 480), &orange); // draw
+        for (auto name : mCargoNames)
+        {
+            graphics->DrawString(L"has eaten the\n", -1,
+                &levelLossFont, PointF(300, 430), &orange); // draw
 
-
-
+            if (name == L"Grain")
+            {
+                graphics->DrawString(L"Fox", -1,
+                    &levelLossFont, PointF(390, 370), &orange); // draw
+                graphics->DrawString(L"Goose", -1,
+                    &levelLossFont, PointF(370, 490), &orange); // draw
+                continue;
+            }
+            else if (name == L"Fox")
+            {
+                graphics->DrawString(L"Goose", -1,
+                    &levelLossFont, PointF(390, 370), &orange); // draw
+                graphics->DrawString(L"Grain", -1,
+                    &levelLossFont, PointF(370, 490), &orange); // draw
+            }
+            else if (name == L"Badger")
+            {
+                graphics->DrawString(L"Gopher", -1,
+                    &levelLossFont, PointF(390, 370), &orange); // draw
+                graphics->DrawString(L"Buckeye", -1,
+                    &levelLossFont, PointF(370, 490), &orange); // draw
+            }
+            else if (name == L"Buckeye")
+            {
+                graphics->DrawString(L"Badger", -1,
+                    &levelLossFont, PointF(390, 370), &orange); // draw
+                graphics->DrawString(L"Gopher", -1,
+                    &levelLossFont, PointF(370, 490), &orange); // draw
+            }
+            
+        }
+        
 
         break;
     // Sparty drifted out of bounds
