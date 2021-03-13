@@ -12,6 +12,7 @@
 #include "IsCargoVisitor.h"
 #include "Vehicle.h"
 #include "CargoEatenVisitor.h"
+#include <sstream>
 
 using namespace std;
 using namespace Gdiplus;
@@ -235,44 +236,33 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     // Cargo ate something
     case 3:
         for (auto name : mCargoNames)
-        {
-            graphics->DrawString(L"has eaten the\n", -1,
+        {   
+            
+            graphics->DrawString(L"has eaten\n", -1,
                 &levelLossFont, PointF(300, 430), &orange); // draw
-
+                      
             if (name == L"Grain")
-            {
-                graphics->DrawString(L"Fox", -1,
+            {      
+                
+                graphics->DrawString(L"The Fox", -1,
                     &levelLossFont, PointF(390, 370), &orange); // draw
-                graphics->DrawString(L"Goose", -1,
-                    &levelLossFont, PointF(370, 490), &orange); // draw
-                continue;
+                graphics->DrawString(L"The Goose", -1,
+                    &levelLossFont, PointF(370, 490), &orange); // draw    
+                
+
             }
             else if (name == L"Fox")
             {
-                graphics->DrawString(L"Goose", -1,
+                
+                graphics->DrawString(L"The Goose", -1,
                     &levelLossFont, PointF(390, 370), &orange); // draw
-                graphics->DrawString(L"Grain", -1,
+                graphics->DrawString(L"The Grain", -1,
                     &levelLossFont, PointF(370, 490), &orange); // draw
-            }
-            else if (name == L"Badger")
-            {
-                graphics->DrawString(L"Gopher", -1,
-                    &levelLossFont, PointF(390, 370), &orange); // draw
-                graphics->DrawString(L"Buckeye", -1,
-                    &levelLossFont, PointF(370, 490), &orange); // draw
-            }
-            else if (name == L"Buckeye")
-            {
-                graphics->DrawString(L"Badger", -1,
-                    &levelLossFont, PointF(390, 370), &orange); // draw
-                graphics->DrawString(L"Gopher", -1,
-                    &levelLossFont, PointF(370, 490), &orange); // draw
-            }
-            
+                break;
+            }          
         }
-        
-
         break;
+
     // Sparty drifted out of bounds
     case 4:
         graphics->DrawString(heroName, -1,
