@@ -23,6 +23,8 @@ const double TileToPixels = 64;
  * Constructor for the Hero
  * \param game The game this Hero is a part of
  * \param bitmap Bitmap of the default image of hero
+ * \param swapped Bitmap of image of hero hit by car
+ * \param mask Bitmap of hero's mask
  */
 CHero::CHero(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, std::shared_ptr<Gdiplus::Bitmap> swapped, 
     std::shared_ptr<Gdiplus::Bitmap> mask) : CItem(game, bitmap)

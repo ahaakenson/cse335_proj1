@@ -16,6 +16,7 @@ const double TileToPixels = 64;
  * 
  * \param game Pointer to game object
  * \param bitmap Bitmap of item's image
+ * \param carried Bitmap of item's carried image
  */
 CCargo::CCargo(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, std::shared_ptr<Gdiplus::Bitmap> carried) :
 	CItem(game, bitmap)
