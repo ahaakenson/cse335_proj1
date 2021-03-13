@@ -7,6 +7,7 @@
 #include "pch.h"
 #include "Cargo.h"
 #include "Game.h"
+#include "IsCargoVisitor.h"
 
 /// Number of pixels wide and tall a tile is.
 const double TileToPixels = 64;
@@ -21,6 +22,7 @@ CCargo::CCargo(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, std::shared
 	CItem(game, bitmap)
 {
 	mCarriedItemImage = carried;
+	mImageNormal = bitmap;
 }
 
 /**
@@ -39,7 +41,7 @@ CCargo::CCargo(const CCargo& cargo) : CItem(cargo)
 	mCarriedItemImage = cargo.mCarriedItemImage;
 	mName = cargo.mName;
 	mId = cargo.mId;
-	mImage = cargo.mImage;
+	mImageNormal = cargo.mImageNormal;
 	mCarriedImage = cargo.mCarriedImage;
 }
 
@@ -49,6 +51,7 @@ CCargo::CCargo(const CCargo& cargo) : CItem(cargo)
 void CCargo::Draw(Gdiplus::Graphics* graphics)
 {
 	CGame* game = GetGame();
+	
 
 	// if cargo is being carried, draw the cargo at the hero's position
 	if (mCarriedByHero && !(game->GetGameLost()))
@@ -62,7 +65,12 @@ void CCargo::Draw(Gdiplus::Graphics* graphics)
 	}
 	else if (!mCarriedByHero)
 	{
-		CItem::Draw(graphics);
+		double wid = mImageNormal->GetWidth();
+		double hit = mImageNormal->GetHeight();
+
+		graphics->DrawImage(mImageNormal.get(),
+			float(GetX() - wid / 2), float(GetY() - hit / 2),
+			(float)GetWidth(), (float)GetHeight());
 	}
 
 }
