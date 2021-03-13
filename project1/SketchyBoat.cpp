@@ -59,7 +59,7 @@ void CSketchyBoat::Update(double elapsed)
 {
     CGame* game = GetGame();
 
-    if (game->GetHero()->GetOnSketchy())
+    if (game->GetHero()->GetOnSketchy() && game->GetHero()->GetX() == GetX())
     {
         mTimeRidden += elapsed;
     }
