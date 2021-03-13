@@ -73,7 +73,8 @@ private:
 
 	/// The carried image of this item
 	std::shared_ptr<Gdiplus::Bitmap> mCarriedItemImage;
-
+	/// The normal image of this item
+	std::shared_ptr<Gdiplus::Bitmap> mImageNormal;
 	/// name of the Cargo object that gets displayed on the Control Panel
 	std::wstring mName;
 
