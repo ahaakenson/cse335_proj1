@@ -85,6 +85,9 @@ void CCargo::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
 {
 	CItem::XmlLoad(node);
 
+	// Set home x coordinate as starting x coordinate
+	mHomeX = GetX();
+
 	// load cargo specific xml info
 	mId = node->GetAttributeValue(L"cargo id", L"");
 	mName = node->GetAttributeValue(L"name", L"");

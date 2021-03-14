@@ -86,6 +86,7 @@ private:
 
 	/// Image filename when object is being carried
 	std::wstring mCarriedImage;
-
+	/// Home x coordinate, for when it's not carried
+	double mHomeX = 0.0;
 };
 
