@@ -220,6 +220,11 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
             graphics->DrawString(L"Iowa", -1,
                 &levelLossFont, PointF(420, 490), &orange); // draw
         }
+        else if (mSpartyCar == L"wisc")
+        {
+            graphics->DrawString(L"Wisconsin", -1,
+                &levelLossFont, PointF(350, 490), &orange); // draw
+        }
         break;
 
     // Sparty fell in river
