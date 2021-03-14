@@ -43,6 +43,10 @@ public:
     */
     bool GetHitStatus() { return mHitCar; }
 
+    /** Accept a visitor
+    * \param visitor The visitor we accept */
+    virtual void Accept(CItemVisitor* visitor) override;
+
 
 private:
     /// Image swap time
