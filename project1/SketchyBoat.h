@@ -25,9 +25,7 @@ public:
     /// Copy constructor
     CSketchyBoat(const CSketchyBoat&);
 
-    CSketchyBoat::CSketchyBoat(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos, int width);
-
-    virtual void Draw(Gdiplus::Graphics* graphics) override;
+    CSketchyBoat::CSketchyBoat(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, std::shared_ptr<Gdiplus::Bitmap> bitmap1, double speed, int yPos, int xPos, int width);
 
     virtual void Update(double elapsed) override;
 
@@ -37,6 +35,8 @@ public:
     virtual std::shared_ptr<CItem> Clone() const { return std::make_shared<CSketchyBoat>(*this); }
 
     virtual void Accept(CItemVisitor* visitor) override;
+
+    virtual void Draw(Gdiplus::Graphics* graphics) override;
 
     double GetTimeRidden() const { return mTimeRidden; }
 

@@ -19,9 +19,12 @@
  * \param xPos Where in the lane the object gets initally drawn
  * \param width Width of the river lane which dictates when the boat wraps around
  */
-CSketchyBoat::CSketchyBoat(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, double speed, int yPos, int xPos, int width) :
+CSketchyBoat::CSketchyBoat(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, std::shared_ptr<Gdiplus::Bitmap> bitmap1, double speed, int yPos, int xPos, int width) :
     CBoat(game, bitmap, speed, yPos, xPos, width)
 {
+
+    mBrokenItemImage = bitmap1;
+
 }
 
 
@@ -38,6 +41,14 @@ void CSketchyBoat::Draw(Gdiplus::Graphics* graphics)
         game->SetGameLost();
         // temorary loss condition
         game->SetLossCondtion(2);
+        
+        double wid = mBrokenItemImage->GetWidth();
+        double hit = mBrokenItemImage->GetHeight();
+
+        graphics->DrawImage(mBrokenItemImage.get(),
+            float(GetX() - wid / 2), float(GetY() - hit / 2),
+            (float)mBrokenItemImage->GetWidth(), (float)mBrokenItemImage->GetHeight());
+
     }
     else
     {
@@ -78,7 +89,7 @@ void CSketchyBoat::Update(double elapsed)
  */
 CSketchyBoat::CSketchyBoat(const CSketchyBoat& boat) : CBoat(boat)
 {
-    
+    mBrokenItemImage = boat.mBrokenItemImage;
 }
 
 /** Accept a visitor to a Sketchy Boat object
