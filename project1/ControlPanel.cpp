@@ -188,11 +188,12 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
     const WCHAR* heroName = mHeroName.c_str();
 
+    enum LossCondition { None, HitByCar, FellInRiver, CargoEaten, OutOfBounds };
 
     switch (mGame->GameLossCondition())
     {
     // Sparty hit a car
-    case 1:
+    case HitByCar:
 
         // Draw the hero name
         graphics->DrawString(heroName, -1,
@@ -228,7 +229,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
         break;
 
     // Sparty fell in river
-    case 2:
+    case FellInRiver:
         // Draw the hero name
         graphics->DrawString(heroName, -1,
             &levelLossFont, PointF(390, 370), &orange); // draw
@@ -239,7 +240,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
         break;
 
     // Cargo ate something
-    case 3:
+    case CargoEaten:
         for (auto name : mCargoNames)
         {   
             
@@ -269,7 +270,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
         break;
 
     // Sparty drifted out of bounds
-    case 4:
+    case OutOfBounds:
         graphics->DrawString(heroName, -1,
             &levelLossFont, PointF(390, 370), &orange); // draw
 
