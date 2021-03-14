@@ -1,3 +1,9 @@
+/**
+ * \file IsSketchyVisitor.cpp
+ *
+ * \author Ethan Strain
+ * Determines whether an item is a Sketchy boat
+ */
 
 #pragma once
 
@@ -5,7 +11,9 @@
 #include "IsBoatVisitor.h"
 #include "SketchyBoat.h"
 
-
+/**
+ * Visits an item and determines whether it is a SketchyBoat
+ */
 class CIsSketchyVisitor :
     public CItemVisitor
 {
@@ -21,8 +29,10 @@ public:
     CSketchyBoat* GetSketchy() { return mSketchyBoat; }
 
 private:
+    /// Whether this item is a SketchyBoat
     bool mIsSketchy = false;
 
-    CSketchyBoat* mSketchyBoat;
+    /// Pointer to SketchyBoat
+    CSketchyBoat* mSketchyBoat = nullptr;
 };
 

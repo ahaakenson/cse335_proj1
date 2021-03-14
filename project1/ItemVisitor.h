@@ -32,7 +32,7 @@ public:
 	virtual void VisitVehicle(CVehicle* vehicle) {}
 
 	/** Visit a CVehicle object
-	* \param vehicle Vehicle we are visiting */
+	* \param car car we are visiting */
 	virtual void VisitCar(CCar* car) {}
 
 	/** Visit a CHero object
@@ -47,6 +47,8 @@ public:
 	 * \param boat Boat we are visiting */
 	virtual void VisitBoat(CBoat* boat) {}
 
+	/** Visit a CSketchyBoat object
+	* \param boat Boat we are visiting */
 	virtual void VisitSketchy(CSketchyBoat* boat) {}
 };
 
