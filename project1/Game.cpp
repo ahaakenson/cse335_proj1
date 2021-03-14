@@ -19,6 +19,7 @@
 #include "Car.h"
 #include "IsCargoVisitor.h"
 #include "IsVehicleVisitor.h"
+#include "IsCarVisitor.h"
 #include "IsBoatVisitor.h"
 #include "IsSketchyVisitor.h"
 #include "ControlPanel.h"
@@ -613,13 +614,13 @@ void CGame::DrawControlPanel(Gdiplus::Graphics* graphics)
 void CGame::CollisionTest(double x, double y)
 {
     CDecorTypeVisitor decorVisitor;
-    CIsVehicleVisitor visitor;
+    CIsCarVisitor visitor;
 
     for (auto i = mItems.rbegin(); i != mItems.rend(); i++)
     {
         (*i)->Accept(&visitor);
 
-        if (visitor.GetIsVehicle() && visitor.GetVehicle()->HitTest(x, y) && !mRoadCheatEnabled)
+        if (visitor.GetIsCar() && visitor.GetCar()->HitTest(x, y) && !mRoadCheatEnabled)
         {
 
             // Lost because a vehicle hit hero
