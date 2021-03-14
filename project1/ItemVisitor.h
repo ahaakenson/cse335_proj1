@@ -11,6 +11,7 @@
 // Forward reference to all item types
 class CCargo;
 class CVehicle;
+class CCar;
 class CHero;
 class CDecor;
 class CBoat;
@@ -29,6 +30,10 @@ public:
 	/** Visit a CVehicle object
 	 * \param vehicle Vehicle we are visiting */
 	virtual void VisitVehicle(CVehicle* vehicle) {}
+
+	/** Visit a CVehicle object
+	* \param vehicle Vehicle we are visiting */
+	virtual void VisitCar(CCar* car) {}
 
 	/** Visit a CHero object
 	 * \param hero Hero we are visiting */
