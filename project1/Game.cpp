@@ -532,6 +532,9 @@ void CGame::Load(const int level)
     // Set this control panel to the level
     mControlPanel->SetLevel(mLevels[level], level);
 
+    // Make sure the mGameWon variable is set to false
+    mGameWon = false;
+
     return;
 }
 
