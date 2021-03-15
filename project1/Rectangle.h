@@ -20,7 +20,7 @@ public:
 	/// Default contructor (disabled)
 	CRectangle() = delete;
 
-	/// Copy constructor (disabled)
+	/// Copy constructor
 	CRectangle(const CRectangle&);
 
 	virtual void XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node);

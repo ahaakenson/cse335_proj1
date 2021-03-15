@@ -63,8 +63,12 @@ public:
     */
     void SetOnBoat(bool onBoat) { mOnBoat = onBoat; }
 
+    /// Setter for whether hero is on a sketchy boat
+    /// \param onSketchy what to set mOnSketchy to
     void SetOnSketchy(bool onSketchy) { mOnSketchy = onSketchy; }
 
+    /// Getter for whether hero is on a sketchy boat.
+    /// \return whether hero is on a sketchy boat
     bool GetOnSketchy() const { return mOnSketchy; }
 
     /** Gets whether hero is carrying something.

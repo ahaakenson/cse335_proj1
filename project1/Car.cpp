@@ -127,5 +127,12 @@ void CCar::Draw(Gdiplus::Graphics* graphics)
     }
 }
 
-
+/** Accept a visitor
+* \param visitor The visitor we accept */
+void CCar::Accept(CItemVisitor* visitor)
+{ 
+    // Do an upcall so the vehicle visitor still works
+    CVehicle::Accept(visitor);
+    visitor->VisitCar(this); 
+}
 
