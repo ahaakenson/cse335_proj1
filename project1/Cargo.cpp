@@ -8,6 +8,7 @@
 #include "Cargo.h"
 #include "Game.h"
 #include "IsCargoVisitor.h"
+#include "CarriedCargoVisitor.h"
 
 /// Number of pixels wide and tall a tile is.
 const double TileToPixels = 64;
@@ -101,9 +102,19 @@ void CCargo::XmlLoad(const std::shared_ptr<xmlnode::CXmlNode>& node)
  */
 void CCargo::PickUp()
 {
-	if (GetGame()->GetHero()->GetY() - GetY() <= TileToPixels &&
-		GetGame()->GetHero()->GetY() - GetY() >= -TileToPixels &&
-		!(GetGame()->GetHero()->GetCarrying()))
+	double heroY = GetGame()->GetHero()->GetY();
+
+	if (GetGame()->GetHero()->GetCarrying())
+	{
+		CCarriedCargoVisitor visitor;
+		GetGame()->Accept(&visitor);
+		if (heroY - GetY() <= TileToPixels && heroY - GetY() >= -TileToPixels)
+		{
+			visitor.GetCarriedCargo()->Release();
+		}
+	}
+
+	if (heroY - GetY() <= TileToPixels && heroY - GetY() >= -TileToPixels)
 	{
 		mCarriedByHero = true;
 		GetGame()->GetHero()->SetCarrying(true);
