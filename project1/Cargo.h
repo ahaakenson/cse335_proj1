@@ -25,7 +25,7 @@ public:
 	/// Default contructor (disabled)
 	CCargo() = delete;
 
-	/// Copy constructor (disabled)
+	/// Copy constructor
 	CCargo(const CCargo&);
 
 	CCargo(CGame* game, std::shared_ptr<Gdiplus::Bitmap> bitmap, std::shared_ptr<Gdiplus::Bitmap> mCarriedItemImage);
