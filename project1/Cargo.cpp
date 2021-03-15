@@ -44,6 +44,7 @@ CCargo::CCargo(const CCargo& cargo) : CItem(cargo)
 	mId = cargo.mId;
 	mImageNormal = cargo.mImageNormal;
 	mCarriedImage = cargo.mCarriedImage;
+	mHomeX = cargo.mHomeX;
 }
 
 /** Draws a cargo object
@@ -114,11 +115,24 @@ void CCargo::PickUp()
  */
 void CCargo::Release()
 {
-	mCarriedByHero = false;
-	GetGame()->GetHero()->SetCarrying(false);
-	//mLevel->GetImage([])
-	
-	//GetGame()->CheckWinState();
+	double heroY = GetGame()->GetHero()->GetY();
+
+	if (heroY <= TileToPixels * 2 || heroY >= TileToPixels * 14)
+	{
+		mCarriedByHero = false;
+
+			if (heroY <= TileToPixels * 2)
+			{
+				SetLocation(mHomeX, TileToPixels * 0.5);
+			}
+			if (heroY >= TileToPixels * 14)
+			{
+				SetLocation(mHomeX, TileToPixels * 15.5);
+			}
+			GetGame()->GetHero()->SetCarrying(false);
+	}
+
+	GetGame()->CheckWinState();
 }
 
 /** Checks if this cargo was hit by a mouse click.
