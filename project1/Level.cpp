@@ -87,7 +87,7 @@ void CLevel::Load(const std::wstring& filename)
                 for (auto node : section->GetChildren())
                 {
                     // If the type was decor or boat or sketchy boat
-                    if (node->GetType() == NODE_ELEMENT && (node->GetName() == L"decor" || node->GetName() == L"boat") || node->GetName() == L"sketchy")
+                    if (node->GetType() == NODE_ELEMENT && (node->GetName() == L"decor" || node->GetName() == L"boat"))
                     {
                         wstring imageName = L".\\images\\" + node->GetAttributeValue(L"image", L"");
                         wstring id = node->GetAttributeValue(L"id", L"");
@@ -95,7 +95,7 @@ void CLevel::Load(const std::wstring& filename)
                     }
 
                     // If the type was car
-                    if (node->GetType() == NODE_ELEMENT && node->GetName() == L"car")
+                    if (node->GetType() == NODE_ELEMENT && (node->GetName() == L"car" || node->GetName() == L"sketchy"))
                     {
                         wstring imageName1 = L".\\images\\" + node->GetAttributeValue(L"image1", L"");
                         wstring imageName2 = L".\\images\\" + node->GetAttributeValue(L"image2", L"");
@@ -233,7 +233,7 @@ void CLevel::XmlItem(const std::shared_ptr<xmlnode::CXmlNode>& node, const doubl
     else if (type == L"sketchy")
     {
         int xPos = node->GetAttributeIntValue(L"x", 0);
-        item = make_shared<CSketchyBoat>(mGame, mImageMap[id][0], speed * TileToPixels,
+        item = make_shared<CSketchyBoat>(mGame, mImageMap[id][0], mImageMap[id][1], speed * TileToPixels,
             (int)(32 + yPos * TileToPixels), (int)(xPos * TileToPixels), width);
     }
     /* Format of hero vector in map:

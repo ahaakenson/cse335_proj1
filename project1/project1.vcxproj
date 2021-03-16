@@ -191,6 +191,7 @@
     <ClInclude Include="Car.h" />
     <ClInclude Include="Cargo.h" />
     <ClInclude Include="CargoEatenVisitor.h" />
+    <ClInclude Include="CarriedCargoVisitor.h" />
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="ControlPanel.h" />
     <ClInclude Include="Decor.h" />
@@ -222,6 +223,7 @@
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="Cargo.cpp" />
     <ClCompile Include="CargoEatenVisitor.cpp" />
+    <ClCompile Include="CarriedCargoVisitor.cpp" />
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="Decor.cpp" />
