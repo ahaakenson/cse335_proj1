@@ -62,7 +62,7 @@ private:
     bool mHitCar = false;
 
     //Timer for Image Swap Animation
-    double timerCar = 0.0
+    double timerCar = 0.0;
 
 
 };
