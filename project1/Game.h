@@ -105,9 +105,7 @@ public:
 	/// \param state State to set the Road Cheat to.
 	void SetRoadCheatState(bool state) { mRoadCheatEnabled = state; }
 
-	/// Sets the River Cheat state
-	/// \param state State to set the River Cheat to.
-	void SetRiverCheatState(bool state) { mRiverCheatEnabled = state; }
+	void SetRiverCheatState(bool state);
 
 	/// Gets the condition of the game's loss
 	/// \returns int representing condition of game's loss.

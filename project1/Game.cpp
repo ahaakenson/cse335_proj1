@@ -712,3 +712,15 @@ void CGame::CheckWinState()
 
 
 }
+
+/// Sets the River Cheat state
+/// \param state State to set the River Cheat to.
+void CGame::SetRiverCheatState(bool state)
+{
+    mRiverCheatEnabled = state; 
+    // Check if hero is on a boat if cheats turned off
+    if (!mRiverCheatEnabled)
+    {
+        BoatTest();
+    }
+}
