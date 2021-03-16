@@ -39,10 +39,10 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     FontFamily fontFamily(L"Verdana");
 
     // Font for "Get Ready!"
-    Gdiplus::Font getReadyFont(&fontFamily, 20);
+    Gdiplus::Font getReadyFont(&fontFamily, 16, FontStyleBold);
 
     // Font for timer
-    Gdiplus::Font timerFont(&fontFamily, 22);
+    Gdiplus::Font timerFont(&fontFamily, 28);
  
     // Brush for "Level x begin"
     SolidBrush orange(Color(255, 111, 1));
@@ -51,7 +51,9 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     Gdiplus::Font levelBeginFont(&fontFamily, 44, FontStyleBold);
 
     // Brush for "Get ready!"
-    SolidBrush white(Color(248, 242, 218));
+    //SolidBrush white(Color(248, 242, 248));
+
+    SolidBrush white(Color().AliceBlue);
 
     // The amount of time to display the level icon for
     const double displayLevelTime = 3.0; // Seconds
@@ -60,7 +62,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     if (mTime < displayLevelTime)
     {
         graphics->DrawString(L"Get Ready!", -1,
-            &getReadyFont, PointF(1024, 2), &white);
+            &getReadyFont, PointF(1034, 10), &white);
 
         // Draw "Level x Begin"
         switch (mLevelNumber)
@@ -102,13 +104,13 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
         {
             // Draw timer
             graphics->DrawString(minute, -1,
-                &timerFont, PointF(1040, 2), &white); // minutes
+                &timerFont, PointF(1093, 10), &white); // minutes
         }
         else
         {
             // Draw timer
             graphics->DrawString(minute, -1,
-                &timerFont, PointF(1060, 2), &white); // minutes
+                &timerFont, PointF(1116, 10), &white); // minutes
         }
 
 
@@ -117,25 +119,25 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
         {
             // Draw a leading zero
             graphics->DrawString(L"0", -1,
-                &timerFont, PointF(1090, 2), &white); // seconds
+                &timerFont, PointF(1150, 10), &white); // seconds
             graphics->DrawString(second, -1,
-                &timerFont, PointF(1110, 2), &white); // seconds
+                &timerFont, PointF(1170, 10), &white); // seconds
         }
         // else draw the whole double digit
         else
         {
             graphics->DrawString(second, -1,
-                &timerFont, PointF(1090, 2), &white); // seconds
+                &timerFont, PointF(1150, 10), &white); // seconds
         }
 
         graphics->DrawString(L":", -1,
-            &timerFont, PointF(1075, 2), &white); // colon
+            &timerFont, PointF(1135, 10), &white); // colon
 
 
     }
 
     // Font for level
-    Gdiplus::Font font(&fontFamily, 24);
+    Gdiplus::Font font(&fontFamily, 23, FontStyleBold);
 
      
     // Draw the level number
@@ -145,19 +147,19 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     {
     case 0:
         graphics->DrawString(L"Level 0", -1,
-            &font, PointF(1024, 40), &green);
+            &font, PointF(1034, 80), &green);
         break;
     case 1:
         graphics->DrawString(L"Level 1", -1,
-            &font, PointF(1024, 40), &green);
+            &font, PointF(1034, 80), &green);
         break;
     case 2:
         graphics->DrawString(L"Level 2", -1,
-            &font, PointF(1024, 40), &green);
+            &font, PointF(1034, 80), &green);
         break;
     case 3:
         graphics->DrawString(L"Level 3", -1,
-            &font, PointF(1024, 40), &green);
+            &font, PointF(1034, 80), &green);
         break;
     }
 
@@ -166,16 +168,16 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
     // Draw the Cargo
 
-    int i = 90;
+    int i = 150;
     for (auto name : mCargoNames)
     {
 
         // Convert to WCHAR*
         const WCHAR* cargoName = name.c_str(); // name
         graphics->DrawString(cargoName, -1, 
-            &font, PointF((Gdiplus::REAL)1024, (Gdiplus::REAL)i), &pink); // draw
+            &font, PointF((Gdiplus::REAL)1034, (Gdiplus::REAL)i), &pink); // draw
 
-        i += 40;
+        i += 42;
 
     }
 
