@@ -48,6 +48,7 @@ public:
     virtual void Accept(CItemVisitor* visitor) override;
 
 
+
 private:
     /// Image swap time
     double mSwapTime = .5;
@@ -62,7 +63,14 @@ private:
     bool mHitCar = false;
 
     //Timer for Image Swap Animation
-    double timerCar = 0.0;
+    double mTimeCar = 0.0;
+    //keeps track of seconds
+    double mSeconds = 0.0;
+    
+  
+
+
+   
 
 
 };

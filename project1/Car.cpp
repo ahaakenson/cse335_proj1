@@ -64,6 +64,16 @@ void CCar::Update(double elapsed)
 
     CVehicle::Update(elapsed);
 
+     mTimeCar += elapsed;
+
+     // Convert to Seconds
+
+     int seconds = ((int)mTimeCar) % 60;
+
+      // Set  seconds
+
+      mSeconds = seconds;
+
 }
 
 /**
@@ -110,14 +120,20 @@ void CCar::Draw(Gdiplus::Graphics* graphics)
         graphics->FillRectangle(&black, float(Width), float(GetY() - hit / 2),
             (float)800, (float)800);
     }
-    else if (mSwapTime++)
+    else if (mTimeCar > .5)
     {
-        mSwapTime = 0;
+       
         double wid = mSwappedImage->GetWidth();
         double hit = mSwappedImage->GetHeight();
         graphics->DrawImage(mSwappedImage.get(),
             float(GetX() - wid / 2), float(GetY() - hit / 2),
-            (float)wid, (float)hit);    
+            (float)wid, (float)hit); 
+        mTimeCar = 0;
+      
+
+        
+        
+        
         
     }
     else 
