@@ -61,6 +61,9 @@ private:
     /// Flag if Sparty hit a car
     bool mHitCar = false;
 
+    //Timer for Image Swap Animation
+    double timerCar = 0.0
+
 
 };
 
