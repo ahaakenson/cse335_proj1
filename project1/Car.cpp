@@ -129,12 +129,6 @@ void CCar::Draw(Gdiplus::Graphics* graphics)
             float(GetX() - wid / 2), float(GetY() - hit / 2),
             (float)wid, (float)hit); 
         mTimeCar = 0;
-      
-
-        
-        
-        
-        
     }
     else 
     {
