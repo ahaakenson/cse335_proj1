@@ -9,6 +9,7 @@
 #include "SketchyBoat.h"
 #include "Hero.h"
 
+using namespace Gdiplus;
 
 /**
  * Constructor
@@ -54,6 +55,7 @@ void CSketchyBoat::Draw(Gdiplus::Graphics* graphics)
     else
     {
         CVehicle::Draw(graphics);
+
     }
 
     
