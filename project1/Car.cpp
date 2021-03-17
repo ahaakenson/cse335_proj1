@@ -93,36 +93,8 @@ void CCar::Draw(Gdiplus::Graphics* graphics)
     const double Width = 1024.0;
     const double mSwap = .5;
 
-    // If the vehcile is starting to pass the left boundary
-    if (GetX() - GetWidth() / 2 < 0)
-    {
-        // Draw the vehiclke
-        CItem::Draw(graphics);
-
-        // Create a solid black brush
-        SolidBrush black(Color(0, 0, 0));
-
-        // Fill a rectangle starting off the screen and going to the edge of the boundary
-        graphics->FillRectangle(&black, float(-600), float(GetY() - hit / 2),
-            (float)600, (float)800);
-
-    }
-    // If the vehicle is over the right boundary
-    else if (GetWidth() / 2 + GetX() > Width)
-    {
-
-        // Draw the vehicle
-        CItem::Draw(graphics);
-
-        // Create a solid black brush
-        SolidBrush black(Color(0, 0, 0));
-
-        // Fill a recntangle starting at the width of the boundary to off screen
-        graphics->FillRectangle(&black, float(Width), float(GetY() - hit / 2),
-            (float)800, (float)800);
-    }
     
-    else if (mTimeCar > mSwap)
+    if (mTimeCar > mSwap)
     {
        
         double wid = mSwappedImage->GetWidth();
@@ -137,11 +109,58 @@ void CCar::Draw(Gdiplus::Graphics* graphics)
         {
             mTimeCar = 0;
         }
+        // If the vehcile is starting to pass the left boundary
+        if (GetX() - GetWidth() / 2 < 0)
+        {
+
+            // Create a solid black brush
+            SolidBrush black(Color(0, 0, 0));
+
+            // Fill a rectangle starting off the screen and going to the edge of the boundary
+            graphics->FillRectangle(&black, float(-600), float(GetY() - hit / 2),
+                (float)600, (float)800);
+
+        }
+        // If the vehicle is over the right boundary
+        else if (GetWidth() / 2 + GetX() > Width)
+        {
+
+            // Create a solid black brush
+            SolidBrush black(Color(0, 0, 0));
+
+            // Fill a recntangle starting at the width of the boundary to off screen
+            graphics->FillRectangle(&black, float(Width), float(GetY() - hit / 2),
+                (float)800, (float)800);
+        }
     }
     else 
     {
 
         CItem::Draw(graphics);
+
+        // If the vehcile is starting to pass the left boundary
+        if (GetX() - GetWidth() / 2 < 0)
+        {
+
+            // Create a solid black brush
+            SolidBrush black(Color(0, 0, 0));
+
+            // Fill a rectangle starting off the screen and going to the edge of the boundary
+            graphics->FillRectangle(&black, float(-600), float(GetY() - hit / 2),
+                (float)600, (float)800);
+
+        }
+        // If the vehicle is over the right boundary
+        else if (GetWidth() / 2 + GetX() > Width)
+        {
+
+            // Create a solid black brush
+            SolidBrush black(Color(0, 0, 0));
+
+            // Fill a recntangle starting at the width of the boundary to off screen
+            graphics->FillRectangle(&black, float(Width), float(GetY() - hit / 2),
+                (float)800, (float)800);
+        }
     }
 }
 
