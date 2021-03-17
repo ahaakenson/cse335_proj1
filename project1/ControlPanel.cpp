@@ -205,6 +205,8 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
     enum LossCondition { None, HitByCar, FellInRiver, CargoEaten, OutOfBounds };
 
+    CCargoEatenVisitor eatenVisitor(mGame->GetHero());
+
     switch (mGame->GameLossCondition())
     {
     // Sparty hit a car
@@ -256,38 +258,40 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
     // Cargo ate something
     case CargoEaten:
-        for (auto name : mCargoNames)
-        {   
-            
-            CCargoEatenVisitor eatenVisitor(mGame->GetHero());
-            mGame->Accept(&eatenVisitor);
+        
+        mGame->Accept(&eatenVisitor);
 
 
-            graphics->DrawString(L"has eaten\n", -1,
-                &levelLossFont, PointF(300, 430), &orange); // draw
+        graphics->DrawString(L"has eaten\n", -1,
+            &levelLossFont, PointF(300, 430), &orange); // draw
               
-            if (eatenVisitor.GetMediumEaten())
-            {      
+        if (eatenVisitor.GetMediumEaten())
+        {      
+            graphics->DrawString(L"The", -1,
+                &levelLossFont, PointF(300, 370), &orange); // draw
+            graphics->DrawString(eatenVisitor.GetLargeCargo()->GetName().c_str(), -1,
+                &levelLossFont, PointF(450, 370), &orange); // draw
+            graphics->DrawString(L"The", -1,
+                &levelLossFont, PointF(300, 490), &orange); // draw
+            graphics->DrawString(eatenVisitor.GetMediumCargo()->GetName().c_str(), -1,
+                &levelLossFont, PointF(450, 490), &orange); // draw 
                 
-                graphics->DrawString(eatenVisitor.GetLargeCargo()->GetName().c_str(), -1,
-                    &levelLossFont, PointF(390, 370), &orange); // draw
-                graphics->DrawString(eatenVisitor.GetMediumCargo()->GetName().c_str(), -1,
-                    &levelLossFont, PointF(370, 490), &orange); // draw 
-                
-            
-            }
-            else if (eatenVisitor.GetSmallEaten())
-            {
-                
-                graphics->DrawString(eatenVisitor.GetMediumCargo()->GetName().c_str(), -1,
-                    &levelLossFont, PointF(390, 370), &orange); // draw
-                graphics->DrawString(eatenVisitor.GetSmallCargo()->GetName().c_str(), -1,
-                    &levelLossFont, PointF(370, 490), &orange); // draw
-            
-            }   
             
         }
-        break;
+        else if (eatenVisitor.GetSmallEaten())
+        {
+            graphics->DrawString(L"The", -1,
+                &levelLossFont, PointF(300, 370), &orange); // draw
+            graphics->DrawString(eatenVisitor.GetMediumCargo()->GetName().c_str(), -1,
+                &levelLossFont, PointF(450, 370), &orange); // draw
+            graphics->DrawString(L"The", -1,
+                &levelLossFont, PointF(300, 490), &orange); // draw
+            graphics->DrawString(eatenVisitor.GetSmallCargo()->GetName().c_str(), -1,
+                &levelLossFont, PointF(450, 490), &orange); // draw
+            
+        }
+
+    break;
 
     // Sparty drifted out of bounds
     case OutOfBounds:
