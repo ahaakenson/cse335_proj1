@@ -269,9 +269,9 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
             if (eatenVisitor.GetMediumEaten())
             {      
                 
-                graphics->DrawString(L"The Fox", -1,
+                graphics->DrawString(eatenVisitor.GetLargeCargo()->GetName().c_str(), -1,
                     &levelLossFont, PointF(390, 370), &orange); // draw
-                graphics->DrawString(L"The Goose", -1,
+                graphics->DrawString(eatenVisitor.GetMediumCargo()->GetName().c_str(), -1,
                     &levelLossFont, PointF(370, 490), &orange); // draw 
                 
             
@@ -279,28 +279,12 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
             else if (eatenVisitor.GetSmallEaten())
             {
                 
-                graphics->DrawString(L"The Goose", -1,
+                graphics->DrawString(eatenVisitor.GetMediumCargo()->GetName().c_str(), -1,
                     &levelLossFont, PointF(390, 370), &orange); // draw
-                graphics->DrawString(L"The Grain", -1,
+                graphics->DrawString(eatenVisitor.GetSmallCargo()->GetName().c_str(), -1,
                     &levelLossFont, PointF(370, 490), &orange); // draw
             
             }   
-            else if (eatenVisitor.GetSmallEaten())
-            {
-                graphics->DrawString(L"The Badger", -1,
-                    &levelLossFont, PointF(390, 370), &orange); // draw
-                graphics->DrawString(L"The Gopher", -1,
-                    &levelLossFont, PointF(370, 490), &orange); // draw
-             
-            }
-            else if (eatenVisitor.GetMediumEaten())
-            {
-                graphics->DrawString(L"The Gopher", -1,
-                    &levelLossFont, PointF(390, 370), &orange); // draw
-                graphics->DrawString(L"The Buckeye", -1,
-                    &levelLossFont, PointF(370, 490), &orange); // draw
-              
-            }
             
         }
         break;
