@@ -54,7 +54,7 @@
   </river>
   <river y="4" speed="3.0" width="20">
     <sketchy id="sketchy" x="3"/>
-    <sketchy id="sketchy" x="11"/>
+    <boat id="b3b" x="11"/>
     <sketchy id="sketchy" x="15"/>
   </river>
   <river y="5" speed="-3.0" width="20">
