@@ -21,7 +21,7 @@ const int lowerBorder = 896;
 /// Number of pixels wide and tall a tile is.
 const double TileToPixels = 64;
 
-// Width of the window
+/// Width of the window
 const double Width = 1024.0;
 
 /**
