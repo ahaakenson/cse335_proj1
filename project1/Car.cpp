@@ -121,7 +121,7 @@ void CCar::Draw(Gdiplus::Graphics* graphics)
             (float)800, (float)800);
     }
     
-    else if (mTimeCar > mSwapTime)
+    else if (mTimeCar > .5)
     {
        
         double wid = mSwappedImage->GetWidth();
@@ -132,7 +132,7 @@ void CCar::Draw(Gdiplus::Graphics* graphics)
         
         // If the image has been displayed for the length of its swap time
         // set the time back to 0
-        if (mTimeCar > mSwapTime*2)
+        if (mTimeCar > .5*2)
         {
             mTimeCar = 0;
         }
