@@ -32,10 +32,22 @@ public:
     * \returns True if small Cargo eaten, False otherwise. */
     bool GetMediumEaten() { return mMediumEaten; }
 
+    /**
+     * Gets a pointer to the small cargo object
+     * \returns CCargo pointer
+     */
     CCargo* GetSmallCargo() { return mSmallCargo; }
 
+    /**
+     * Gets a pointer to the medium cargo object
+     * \returns CCargo pointer
+     */
     CCargo* GetMediumCargo() { return mMediumCargo; }
 
+    /**
+     * Gets a pointer to the large cargo object
+     * \returns CCargo pointer
+     */
     CCargo* GetLargeCargo() { return mLargeCargo; }
 
 private:
