@@ -44,8 +44,8 @@
   <cargo id="gopher" x="10.5" name="Gopher" image="gopher.png" carried-image="gopher-carried.png" eats="buckeye"/>
   <cargo id="badger" x="4.5" name="Badger" image="badger.png" carried-image="badger-carried.png" eats="gopher"/>
   <river y="2" speed="1.5" width="20">
-    <sketchy id="sketchy" x="7"/>
-    <sketchy id="sketchy" x="11"/>
+    <boat id="b3r" x="5"/>
+    <boat id="b3b" x="11"/>
     <sketchy id="sketchy" x="15"/>
   </river>
   <river y="3" speed="-4.5" width="20">
@@ -53,7 +53,7 @@
     <boat id="b3c" x="12"/>
   </river>
   <river y="4" speed="3.0" width="20">
-    <sketchy id="sketchy" x="3"/>
+    <boat id="b2" x="3"/>
     <boat id="b3b" x="11"/>
     <sketchy id="sketchy" x="15"/>
   </river>
