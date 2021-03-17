@@ -39,7 +39,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     FontFamily fontFamily(L"Verdana");
 
     // Font for "Get Ready!"
-    Gdiplus::Font getReadyFont(&fontFamily, 16, FontStyleBold);
+    Gdiplus::Font getReadyFont(&fontFamily, 15, FontStyleBold);
 
     // Font for timer
     Gdiplus::Font timerFont(&fontFamily, 28);
@@ -87,7 +87,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
 
     }
     // Draw the timer
-    else
+    else if (!(mGame->GetGameLost()) && !(mGame->GetGameWon()))
     {
         // Convert to wstring
         wstring minutes = to_wstring(mMinutes); // minutes
@@ -134,6 +134,17 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
             &timerFont, PointF(1135, 10), &white); // colon
 
 
+    }
+    else if (mGame->GetGameLost())
+    {
+        graphics->DrawString(L"Level Complete", -1,
+            &getReadyFont, PointF(1034, 10), &white);
+    }
+    // else the game is won
+    else
+    {
+        graphics->DrawString(L"Winner!", -1,
+            &getReadyFont, PointF(1034, 10), &white);
     }
 
     // Font for level
@@ -258,7 +269,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
                 graphics->DrawString(L"The Goose", -1,
                     &levelLossFont, PointF(370, 490), &orange); // draw 
                 
-
+                break;
             }
             else if (name == L"Fox")
             {
@@ -268,7 +279,24 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
                 graphics->DrawString(L"The Grain", -1,
                     &levelLossFont, PointF(370, 490), &orange); // draw
                 break;
-            }    
+            }
+            
+            if (name == L"")
+            {
+                graphics->DrawString(L"The Badger", -1,
+                    &levelLossFont, PointF(390, 370), &orange); // draw
+                graphics->DrawString(L"The Gopher", -1,
+                    &levelLossFont, PointF(370, 490), &orange); // draw
+                break;
+            }
+            else if (name == L"")
+            {
+                graphics->DrawString(L"The Gopher", -1,
+                    &levelLossFont, PointF(390, 370), &orange); // draw
+                graphics->DrawString(L"The Buckeye", -1,
+                    &levelLossFont, PointF(370, 490), &orange); // draw
+                break;
+            }
             
         }
         break;
@@ -289,7 +317,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     if (mGame->GetGameWon())
     {
         graphics->DrawString(L"Level Complete!", -1,
-            &font, PointF(350, 480), &orange);
+            &levelBeginFont, PointF(300, 480), &orange);
     }
 
 }
