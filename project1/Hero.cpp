@@ -10,6 +10,8 @@
 #include "Item.h"
 #include <iostream>
 
+using namespace Gdiplus;
+
 /// The upper border of the screen
 const int topBorder = 128;
 
@@ -18,6 +20,9 @@ const int lowerBorder = 896;
 
 /// Number of pixels wide and tall a tile is.
 const double TileToPixels = 64;
+
+// Width of the window
+const double Width = 1024.0;
 
 /**
  * Constructor for the Hero
@@ -179,6 +184,31 @@ void CHero::Draw(Gdiplus::Graphics* graphics)
         graphics->DrawImage(mItemMask.get(),
             float(GetX() - wid / 2), float(GetY() - hit / 2),
             (float)mItemMask->GetWidth(), (float)mItemMask->GetHeight());
+
+        // If the vehcile is starting to pass the left boundary
+        if (GetX() - GetWidth() / 2 < 0)
+        {
+
+            // Create a solid black brush
+            SolidBrush black(Color(0, 0, 0));
+
+            // Fill a rectangle starting off the screen and going to the edge of the boundary
+            graphics->FillRectangle(&black, float(-600), float(GetY() - hit / 2),
+                (float)600, (float)800);
+
+        }
+        // If the vehicle is over the right boundary
+        else if (GetWidth() / 2 + GetX() > Width)
+        {
+
+            // Create a solid black brush
+            SolidBrush black(Color(0, 0, 0));
+
+            // Fill a recntangle starting at the width of the boundary to off screen
+            graphics->FillRectangle(&black, float(Width), float(GetY() - hit / 2),
+                (float)800, (float)800);
+        }
+
     }
     // If hero drifted off screen
     else if (game->GameLossCondition() == 4)
