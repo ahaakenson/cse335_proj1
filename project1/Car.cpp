@@ -91,6 +91,7 @@ void CCar::Draw(Gdiplus::Graphics* graphics)
 
     // Width of the window
     const double Width = 1024.0;
+    const double mSwap = .5;
 
     // If the vehcile is starting to pass the left boundary
     if (GetX() - GetWidth() / 2 < 0)
@@ -121,7 +122,7 @@ void CCar::Draw(Gdiplus::Graphics* graphics)
             (float)800, (float)800);
     }
     
-    else if (mTimeCar > .5)
+    else if (mTimeCar > mSwap)
     {
        
         double wid = mSwappedImage->GetWidth();
@@ -132,7 +133,7 @@ void CCar::Draw(Gdiplus::Graphics* graphics)
         
         // If the image has been displayed for the length of its swap time
         // set the time back to 0
-        if (mTimeCar > .5*2)
+        if (mTimeCar > mSwap*2)
         {
             mTimeCar = 0;
         }

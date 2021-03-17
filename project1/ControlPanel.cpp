@@ -256,8 +256,8 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     case CargoEaten:
         for (auto name : mCargoNames)
         {   
+        
 
-            
             graphics->DrawString(L"has eaten\n", -1,
                 &levelLossFont, PointF(300, 430), &orange); // draw
                       
@@ -271,7 +271,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
                 
                 break;
             }
-            else if (name == L"Fox")
+            else if (name == L"Fox" )
             {
                 
                 graphics->DrawString(L"The Goose", -1,
@@ -279,9 +279,8 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
                 graphics->DrawString(L"The Grain", -1,
                     &levelLossFont, PointF(370, 490), &orange); // draw
                 break;
-            }
-            
-            if (name == L"")
+            }   
+            else if (name == L"Buckeye")
             {
                 graphics->DrawString(L"The Badger", -1,
                     &levelLossFont, PointF(390, 370), &orange); // draw
@@ -289,7 +288,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
                     &levelLossFont, PointF(370, 490), &orange); // draw
                 break;
             }
-            else if (name == L"")
+            else if (name == L"Badger")
             {
                 graphics->DrawString(L"The Gopher", -1,
                     &levelLossFont, PointF(390, 370), &orange); // draw
