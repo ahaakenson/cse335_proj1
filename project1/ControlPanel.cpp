@@ -123,7 +123,7 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
             graphics->DrawString(L"0", -1,
                 &timerFont, PointF(1150, 10), &white); // seconds
             graphics->DrawString(second, -1,
-                &timerFont, PointF(1170, 10), &white); // seconds
+                &timerFont, PointF(1173, 10), &white); // seconds
         }
         // else draw the whole double digit
         else
