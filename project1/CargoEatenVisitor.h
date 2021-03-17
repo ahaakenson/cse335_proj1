@@ -32,6 +32,12 @@ public:
     * \returns True if small Cargo eaten, False otherwise. */
     bool GetMediumEaten() { return mMediumEaten; }
 
+    CCargo* GetSmallCargo() { return mSmallCargo; }
+
+    CCargo* GetMediumCargo() { return mMediumCargo; }
+
+    CCargo* GetLargeCargo() { return mLargeCargo; }
+
 private:
     /// Whether or not the small Cargo has been eaten.
     bool mSmallEaten = false;
