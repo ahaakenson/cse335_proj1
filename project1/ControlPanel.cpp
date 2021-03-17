@@ -12,7 +12,9 @@
 #include "IsCargoVisitor.h"
 #include "Vehicle.h"
 #include "CargoEatenVisitor.h"
+#include "ItemVisitor.h"
 #include <sstream>
+
 
 using namespace std;
 using namespace Gdiplus;
@@ -256,12 +258,15 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
     case CargoEaten:
         for (auto name : mCargoNames)
         {   
-        
+            
+            CCargoEatenVisitor eatenVisitor(mGame->GetHero());
+            mGame->Accept(&eatenVisitor);
+
 
             graphics->DrawString(L"has eaten\n", -1,
                 &levelLossFont, PointF(300, 430), &orange); // draw
-                      
-            if (name == L"Grain")
+              
+            if (eatenVisitor.GetMediumEaten())
             {      
                 
                 graphics->DrawString(L"The Fox", -1,
@@ -269,32 +274,32 @@ void CControlPanel::Draw(Gdiplus::Graphics* graphics)
                 graphics->DrawString(L"The Goose", -1,
                     &levelLossFont, PointF(370, 490), &orange); // draw 
                 
-                break;
+            
             }
-            else if (name == L"Fox" )
+            else if (eatenVisitor.GetSmallEaten())
             {
                 
                 graphics->DrawString(L"The Goose", -1,
                     &levelLossFont, PointF(390, 370), &orange); // draw
                 graphics->DrawString(L"The Grain", -1,
                     &levelLossFont, PointF(370, 490), &orange); // draw
-                break;
+            
             }   
-            else if (name == L"Buckeye")
+            else if (eatenVisitor.GetSmallEaten())
             {
                 graphics->DrawString(L"The Badger", -1,
                     &levelLossFont, PointF(390, 370), &orange); // draw
                 graphics->DrawString(L"The Gopher", -1,
                     &levelLossFont, PointF(370, 490), &orange); // draw
-                break;
+             
             }
-            else if (name == L"Badger")
+            else if (eatenVisitor.GetMediumEaten())
             {
                 graphics->DrawString(L"The Gopher", -1,
                     &levelLossFont, PointF(390, 370), &orange); // draw
                 graphics->DrawString(L"The Buckeye", -1,
                     &levelLossFont, PointF(370, 490), &orange); // draw
-                break;
+              
             }
             
         }
@@ -360,4 +365,6 @@ void CControlPanel::Clear()
     // Clear cargo names
     mCargoNames.erase(mCargoNames.begin(), mCargoNames.end());
 }
+
+
 
