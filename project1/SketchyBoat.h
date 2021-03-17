@@ -37,15 +37,21 @@ public:
     virtual void Accept(CItemVisitor* visitor) override;
 
     virtual void Draw(Gdiplus::Graphics* graphics) override;
-
+    /** Gets time hero has been on the boat
+    * \return time hero has been on the boat
+    */
     double GetTimeRidden() const { return mTimeRidden; }
 
+    /** Sets if this boat has hero on it
+    * \param rid whether hero is on this boat
+    */
     void SetIsRidden(bool rid) { mIsRidden = rid; }
 
 private:
     /// If the boat is occupied by the hero
     bool mIsRidden = false;
-
+    
+    /// Time since hero stepped onto this boat
     double mTimeRidden = 0;
 
     /// The swapped image of this item

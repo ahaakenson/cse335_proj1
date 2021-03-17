@@ -14,6 +14,7 @@
  * Constructor
  * \param game Pointer to game object
  * \param bitmap Bitmap image of the object to draw
+ * \param bitmap1 Bitmap of broken boat image
  * \param speed Speed the object is moving in its lane
  * \param yPos Lane position
  * \param xPos Where in the lane the object gets initally drawn
